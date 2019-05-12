@@ -14,7 +14,12 @@ const routes: Routes = [
   {
     path: 'data',
     loadChildren: '../pages/data/data.module#DataPageModule'
+  },
+  {
+    path: 'data2',
+    loadChildren: '../pages/data2/data2.module#Data2PageModule'
   }
+
 
 ];
 
