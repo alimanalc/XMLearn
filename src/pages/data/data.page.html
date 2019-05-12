@@ -1,3 +1,37 @@
 <ion-content>
 
+    <img src="../../assets/img/Logo.png" />
+
+    <ion-text class="texto">
+        <h2>Elige el lenguaje con el que quieres trabajar:</h2>
+    </ion-text>
+
+    <ion-segment [(ngModel)]="lenguaje">
+        <ion-segment-button ion-button block button-large class="button1" value="php" (ionSelect)="selected1()">
+            <h2> PHP </h2>
+        </ion-segment-button>
+        <ion-segment-button ion-button block button-large class="button2" value="javaScript" (ionSelect)="selected1()">
+            <h2> JS </h2>
+        </ion-segment-button>
+    </ion-segment>
+
+    <ion-text class="choose">
+        <h1>Puedes elegir entre probar en un formulario tuyo o probar</h1>
+        <h1> en uno que se facilita de ejemplo:</h1>
+    </ion-text>
+
+    <ion-segment [(ngModel)]="formulario">
+        <ion-segment-button ion-button block button-large class="button3" value="example" (ionSelect)="selected2()">
+            <h2> Ejemplo </h2>
+        </ion-segment-button>
+        <ion-segment-button ion-button block button-large class="button4" value="mine" (ionSelect)="selected2()">
+            <h2> Mio </h2>
+        </ion-segment-button>
+    </ion-segment>
+
+
+    <button ion-button block button-large (click)="siguiente()" class="button">
+        <h2> Listo </h2>
+    </button>
+
 </ion-content>
