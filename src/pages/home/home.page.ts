@@ -18,6 +18,6 @@ export class HomePage implements OnInit {
 
   siguiente() {
 
-    this.navCtrl.navigateRoot('/list');
+    this.navCtrl.navigateRoot('/data');
   }
 }
