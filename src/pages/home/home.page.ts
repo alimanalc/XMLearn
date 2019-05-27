@@ -16,8 +16,8 @@ export class HomePage implements OnInit {
     this.menuCtrl.enable(false);
   }
 
-  siguiente() {
-
+  //Método para pasar de página
+  nextPage() {
     this.navCtrl.navigateRoot('/data');
   }
 }

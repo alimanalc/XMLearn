@@ -1,84 +1,32 @@
 
-img {
+  img {
     display:block;
     margin-left: auto;
     margin-right: auto;
     height: 210px;
-    width: 280px;
-  }
-  
-  .texto {
-    text-align: center;
-    position: absolute;
-    top: 200px;
-    left: 500px;
-  }
-  
-  .h1 {
-    text-align: center;
-    position: absolute;
-    top: 500px;
-    left: 480px;
-  }
-
-  .choose {
-    text-align: center;
-    position: absolute;
-    top: 350px;
-    left: 400px;
+    width: 320px;
   }
   
   .button {
-    position: absolute;
-    top: 600px;
-    left: 670px;
-    width: 160px;
     background-color: #A7E1EF;
     border-color: #4048CF;  
     border-radius:5px;
     color: white;
   }
 
-  .button1 {
-    position: absolute;
-    top: 280px;
-    left: 570px;
-    width: 160px;
-    background-color: #A7E1EF;
-    border-color: #4048CF;  
+  .url {
+    border-style: solid;
+    border-color: gray;
     border-radius:5px;
-    color: white;
+    width: 400px;
+    text-align: center;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .button2 {
-    position: absolute;
-    top: 280px;
-    left: 760px;
-    width: 160px;
-    background-color: #A7E1EF;
-    border-color: #4048CF;  
-    border-radius:5px;
-    color: white;
-  }
-
-  .button3 {
-    position: absolute;
-    top: 470px;
-    left: 570px;
-    width: 160px;
-    background-color: #A7E1EF;
-    border-color: #4048CF;  
-    border-radius:5px;
-    color: white;
-  }
-
-  .button4 {
-    position: absolute;
-    top: 470px;
-    left: 760px;
-    width: 160px;
-    background-color: #A7E1EF;
-    border-color: #4048CF;  
-    border-radius:5px;
-    color: white;
+  :host {
+    ion-content {
+        --background: linear-gradient(135deg, #F2C0F6, var(--ion-color-primary-contrast));
+    }
   }

@@ -8,8 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./data.page.scss'],
 })
 export class DataPage implements OnInit {
-  lenguaje: string = "";
-  formulario: string = "";
+  url: string;
   constructor(public menuCtrl: MenuController,
     public navCtrl: NavController, private cookieService: CookieService) { }
 
@@ -17,26 +16,19 @@ export class DataPage implements OnInit {
     this.menuCtrl.enable(false);
   }
 
-  siguiente() {
+  nextPage() {
 
     this.navCtrl.navigateRoot('/data2');
   }
 
-  selected1() {
-    if (this.lenguaje === "php")
-      this.cookieService.set('lenguaje', "php");
+  selectedLanguage(language) {
+    if (language === true)
+      this.cookieService.set('language', "php");
 
-    if (this.lenguaje === "javaScript")
-      this.cookieService.set('lenguaje', "javaScript");
+    if (language === false)
+      this.cookieService.set('language', "javaScript");
 
-  }
-
-  selected2() {
-    if (this.formulario === "example")
-      this.cookieService.set('formulario', "example");
-
-    if (this.formulario === "mine")
-      this.cookieService.set('formulario', "mine");
+    console.log(this.cookieService.get('language'));
 
   }
 

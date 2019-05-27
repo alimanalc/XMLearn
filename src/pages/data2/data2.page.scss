@@ -1,0 +1,53 @@
+  img {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 210px;
+    width: 320px;
+  }
+
+  .button {
+    background-color: #A7E1EF;
+    border-color: #4048CF;  
+    border-radius:5px;
+    color: white;
+    margin: auto; 
+    display: block; 
+    width: 160px;
+  }
+
+  .input {
+    border-style: solid;
+    border-color: gray;
+    border-radius:5px;
+    text-align: center;
+  }
+
+  .delete {
+    color:red; 
+    height:30px; 
+    width: 30px;
+    cursor: pointer;
+  }
+
+  .inf {
+    color: black; 
+    height:30px; 
+    width: 30px;
+    cursor: pointer;
+  }
+
+  :host {
+    ion-content {
+        --background: linear-gradient(135deg, #F2C0F6, var(--ion-color-primary-contrast));
+    }
+  }
+
+  .add {
+    text-decoration: underline;
+    text-decoration-color: #0DC0EE;
+    color:#0BD900; 
+    text-align: center;
+    cursor: pointer;
+  }
+  

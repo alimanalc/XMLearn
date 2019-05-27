@@ -1,3 +1,51 @@
 <ion-content>
+  <img src="../../assets/img/Logo.png" />
 
+  <ion-text style="text-align: center;">
+    <h2>Añade los distintos campos de tu formulario:</h2>
+  </ion-text>
+
+  <div class="form">
+    <ion-grid>
+
+      <div *ngFor="let campo of form">
+        <ion-row>
+          <ion-col size="3">
+            <ion-icon style="float:right" class="inf" name="information-circle-outline"></ion-icon>
+          </ion-col>
+          <ion-col size="6">
+            <ion-input [(ngModel)]="campo['name']" placeholder="nombre de la variable" class="input" type="text">
+            </ion-input>
+
+            <ng-container *ngIf="campo['type']=='none'">
+              <ion-input [(ngModel)]="campo['value']"
+                placeholder="valor permitido de la variable en caso de no ser string" class="input" type="text">
+              </ion-input>
+            </ng-container>
+            <ng-container *ngIf="campo['type']=='string'">
+            </ng-container>
+
+          </ion-col>
+          <ion-col size="3">
+            <ion-icon (click)="deleteCampo(campo)" class="delete" name="close-circle-outline"></ion-icon><br>
+          </ion-col>
+          <ion-col size="3"></ion-col>
+        </ion-row>
+      </div>
+
+    </ion-grid>
+  </div>
+
+
+  <ion-text (click)="addCampoString()" class="add">
+    <h3>Añadir campo string</h3>
+  </ion-text>
+  <ion-text (click)="addCampo()" class="add">
+    <h3>Añadir campo no string</h3>
+  </ion-text>
+  <br><br>
+
+  <button ion-button block button-large (click)="nextPage()" class="button">
+    <h2> Listo </h2>
+  </button><br>
 </ion-content>
