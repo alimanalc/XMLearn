@@ -55,7 +55,7 @@ export class Data2Page implements OnInit {
   nextPage() {
     this.cookieService.set('form', JSON.stringify(this.form));
     console.log(this.cookieService.get('form'));
-    // this.navCtrl.navigateRoot('/test1');
+    this.navCtrl.navigateRoot('/test1');
   }
 
   async mostrarInfoString(ev: any) {

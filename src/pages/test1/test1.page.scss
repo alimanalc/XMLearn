@@ -1,0 +1,12 @@
+img {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 210px;
+    width: 320px;
+  }
+  :host {
+    ion-content {
+        --background: linear-gradient(135deg, #F2C0F6, var(--ion-color-primary-contrast));
+   }
+ }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-test1',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Test1Page implements OnInit {
 
-  constructor() { }
+  constructor(public menuCtrl: MenuController,
+    public navCtrl: NavController) { }
 
   ngOnInit() {
+    this.menuCtrl.enable(true);
   }
 
 }
