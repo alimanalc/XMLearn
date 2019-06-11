@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { stringify } from '@angular/compiler/src/util';
-import { MenuController, NavController } from '@ionic/angular';
+import { MenuController, NavController, PopoverController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
 import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
+import { InfoStringComponent } from 'src/app/components/info-string/info-string.component';
 
 @Component({
   selector: 'app-data2',
@@ -14,7 +15,8 @@ export class Data2Page implements OnInit {
   form = [{ 'id': 0, 'name': '', 'value': '', 'type': 'string' }, { 'id': 1, 'name': '', 'value': '', 'type': 'none' }, { 'id': 2, 'name': '', 'value': '', 'type': 'string' }];
 
   constructor(public menuCtrl: MenuController,
-    public navCtrl: NavController, private cookieService: CookieService) {
+    public navCtrl: NavController, private cookieService: CookieService,
+    private popoverController: PopoverController) {
   }
 
   ngOnInit() {
@@ -47,5 +49,16 @@ export class Data2Page implements OnInit {
     console.log(this.cookieService.get('form'));
     // this.navCtrl.navigateRoot('/test1');
   }
+
+  async mostrarInfoString(ev: any) {
+    const popover = await this.popoverController.create({
+      component: InfoStringComponent,
+      event: ev,
+      showBackdrop: true,
+    });
+    return await popover.present();
+  }
+
+
 
 }

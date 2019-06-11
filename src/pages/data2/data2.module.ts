@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { Data2Page } from './data2.page';
+import { InfoStringComponent } from 'src/app/components/info-string/info-string.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const routes: Routes = [
   {
@@ -15,12 +17,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  entryComponents: [
+    InfoStringComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ComponentsModule
   ],
   declarations: [Data2Page]
 })
-export class Data2PageModule {}
+export class Data2PageModule { }
