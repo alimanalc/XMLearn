@@ -1,3 +1,23 @@
 <ion-content>
   <img src="../../assets/img/Logo.png" />
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <ion-text style="text-align: center;">
+          <h3>Este test consiste en introducir en determinados campos del formulario
+            caracteres que son utilizados en la representación del lenguaje XML.
+            De esta forma se pone en compromiso la estructura del archivo XML. Estos caracteres son >, <, ]]> .</h3><br>
+        </ion-text>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <button ion-button block button-large (click)="runTest()" class="button">
+    <h2> Ejecutar </h2>
+  </button>
+
 </ion-content>

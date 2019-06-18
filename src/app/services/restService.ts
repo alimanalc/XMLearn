@@ -3,6 +3,7 @@ import { ConfigService } from './../../config/configService';
 import { AbstractService } from './abstractService';
 import { Injectable } from "@angular/core";
 import { CookieService } from 'ngx-cookie-service';
+import { Form } from '../app.data.model';
 
 @Injectable()
 export class RestService extends AbstractService {
@@ -18,5 +19,30 @@ export class RestService extends AbstractService {
         this.path = this.config.getConfig().restUrlPrefix;
     }
 
+
+    public runTest(test: string) {
+        const fd = new FormData();
+        let form: Form;
+        form = JSON.parse(this.cookieService.get('form'));
+        for (let entry of form.atributos) {
+            let nombre: string;
+            nombre = entry.name;
+            if (entry.value === 'none') {
+                fd.append(nombre, entry.value);
+            } else {
+                fd.append(nombre, test);
+            }
+        }
+
+        return this.makePostRequest(this.path, fd)
+            .then(res => {
+                console.log('Logged successfully');
+                return Promise.resolve(res);
+            })
+            .catch(error => {
+                console.log('Error: ' + error);
+                return Promise.reject(error);
+            });
+    }
 
 }
