@@ -10,16 +10,17 @@ import { DataManagement } from 'src/app/services/dataManagement';
 export class Test1Page implements OnInit {
 
   constructor(public menuCtrl: MenuController,
-    public navCtrl: NavController,
-    private dm: DataManagement) { }
+    public dM: DataManagement,
+    public navCtrl: NavController) { }
 
   ngOnInit() {
     this.menuCtrl.enable(true);
   }
 
   runTest() {
-    this.dm
-      .runTest(']]>')
+    let test: string = "]]>";
+    this.dM
+      .runTest(test)
       .then(data => {
 
       })
