@@ -7,7 +7,7 @@
   width: 320px;
 }
 
-.button {
+.buttonN {
   background-color: #A7E1EF;
   border-color: #4048CF;  
   border-radius:5px;
@@ -61,4 +61,10 @@
   display:block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.buttonBack {
+  margin: auto; 
+  display: block;
+  color: white;
 }

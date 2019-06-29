@@ -1,3 +1,13 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
+        </ion-buttons>
+        <ion-title color="light">
+            <h1>Cambiar formulario</h1>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
 <ion-content>
     <img src="../../assets/img/Logo.png" />
 
@@ -13,9 +23,6 @@
             <div *ngFor="let campo of form.atributos">
                 <ion-row>
                     <ion-col size="3">
-                        <ion-icon (click)="mostrarInfoString($event)" sc-ion-popover-ios style="float:right" class="inf"
-                            name="information-circle-outline">
-                        </ion-icon>
                     </ion-col>
                     <ion-col size="6">
                         <ion-input [(ngModel)]="campo.name" placeholder="nombre de la variable" class="input"
@@ -43,16 +50,17 @@
         </ion-grid>
     </div>
 
+    <ng-container *ngIf="form.atributos.length < 15 ">
+        <ion-text (click)="addCampoString()" class="add">
+            <h3>+ campo</h3>
+        </ion-text>
+        <ion-text (click)="addCampo()" class="add">
+            <h3>+ campo y valor</h3>
+        </ion-text>
+        <br><br>
+    </ng-container>
 
-    <ion-text (click)="addCampoString()" class="add">
-        <h3>Añadir campo string</h3>
-    </ion-text>
-    <ion-text (click)="addCampo()" class="add">
-        <h3>Añadir campo no string</h3>
-    </ion-text>
-    <br><br>
-
-    <button ion-button block button-large (click)="nextPage()" class="button">
+    <button ion-button block button-large (click)="nextPage()" class="buttonN">
         <h2> Listo </h2>
     </button><br>
 </ion-content>

@@ -10,11 +10,16 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
+.split-pane-md.split-pane-visible>.split-pane-side {
+  min-width: 274px;
+  max-width: 16%;
+}
+
 ion-menu {
     ion-header {
       ion-toolbar {
         &.ion-color-dark {
-          --ion-color-base: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary)) !important;
+          --ion-color-base: #771667 !important;
       }
     }
   }
@@ -24,7 +29,10 @@ ion-menu {
 
 ion-toolbar {
   &.ion-color-primary {
-    --ion-color-base: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary)) !important;
+    --ion-color-base: #771667 !important;
   }
 }
+
+
+
 
