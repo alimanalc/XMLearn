@@ -31,10 +31,10 @@ const routes: Routes = [
     path: 'about',
     loadChildren: '../pages/about/about.module#AboutPageModule'
   },
-
-
-
-
+  {
+    path: 'more',
+    loadChildren: '../pages/more/more.module#MorePageModule'
+  },
 
 ];
 

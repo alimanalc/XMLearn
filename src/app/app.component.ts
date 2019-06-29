@@ -22,6 +22,11 @@ export class AppComponent {
       direct: 'root',
     },
     {
+      title: 'Saber más',
+      url: '/more',
+      direct: 'root',
+    },
+    {
       title: 'Cambiar formulario',
       url: '/data',
       direct: 'root',
