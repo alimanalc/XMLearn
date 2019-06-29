@@ -23,6 +23,16 @@ const routes: Routes = [
     path: 'test1',
     loadChildren: '../pages/test1/test1.module#Test1PageModule'
   },
+  {
+    path: 'test2',
+    loadChildren: '../pages/test2/test2.module#Test2PageModule'
+  },
+  {
+    path: 'about',
+    loadChildren: '../pages/about/about.module#AboutPageModule'
+  },
+
+
 
 
 

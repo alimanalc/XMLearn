@@ -14,11 +14,24 @@ export class AppComponent {
     {
       title: 'Test 1',
       url: '/test1',
+      direct: 'root',
+    },
+    {
+      title: 'Test 2',
+      url: '/test2',
+      direct: 'root',
     },
     {
       title: 'Cambiar formulario',
       url: '/data',
+      direct: 'root',
+    },
+    {
+      title: 'Sobre nosotros',
+      url: '/about',
+      direct: 'root',
     }
+
   ];
 
   constructor(
