@@ -9,31 +9,31 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: '../pages/home/home.module#HomePageModule'
+    loadChildren: './pages/home/home.module#HomePageModule'
   },
   {
     path: 'data',
-    loadChildren: '../pages/data/data.module#DataPageModule'
+    loadChildren: './pages/data/data.module#DataPageModule'
   },
   {
     path: 'test1',
-    loadChildren: '../pages/test1/test1.module#Test1PageModule'
+    loadChildren: './pages/test1/test1.module#Test1PageModule'
   },
   {
     path: 'test2',
-    loadChildren: '../pages/test2/test2.module#Test2PageModule'
+    loadChildren: './pages/test2/test2.module#Test2PageModule'
   },
   {
     path: 'about',
-    loadChildren: '../pages/about/about.module#AboutPageModule'
+    loadChildren: './pages/about/about.module#AboutPageModule'
   },
   {
     path: 'more',
-    loadChildren: '../pages/more/more.module#MorePageModule'
+    loadChildren: './pages/more/more.module#MorePageModule'
   },
   {
     path: 'gdpr',
-    loadChildren: '../pages/gdpr/gdpr.module#GdprPageModule'
+    loadChildren: './pages/gdpr/gdpr.module#GdprPageModule'
   },
 
 
