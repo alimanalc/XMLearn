@@ -31,6 +31,11 @@ const routes: Routes = [
     path: 'more',
     loadChildren: '../pages/more/more.module#MorePageModule'
   },
+  {
+    path: 'gdpr',
+    loadChildren: '../pages/gdpr/gdpr.module#GdprPageModule'
+  },
+
 
 ];
 
