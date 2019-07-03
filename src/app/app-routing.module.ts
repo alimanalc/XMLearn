@@ -16,10 +16,6 @@ const routes: Routes = [
     loadChildren: '../pages/data/data.module#DataPageModule'
   },
   {
-    path: 'data2',
-    loadChildren: '../pages/data2/data2.module#Data2PageModule'
-  },
-  {
     path: 'test1',
     loadChildren: '../pages/test1/test1.module#Test1PageModule'
   },

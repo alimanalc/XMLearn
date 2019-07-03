@@ -6,6 +6,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { DataPage } from './data.page';
+import { InfoStringComponent } from 'src/app/components/info-string/info-string.component';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { InfoURLComponent } from 'src/app/components/info-url/info-url.component';
 
 const routes: Routes = [
   {
@@ -15,12 +18,17 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  entryComponents: [
+    InfoStringComponent,
+    InfoURLComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ComponentsModule
   ],
   declarations: [DataPage]
 })
-export class DataPageModule {}
+export class DataPageModule { }

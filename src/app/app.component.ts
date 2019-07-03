@@ -12,6 +12,11 @@ import { DataManagement } from './services/dataManagement';
 export class AppComponent {
   public appPages = [
     {
+      title: 'Crear petición',
+      url: '/data',
+      direct: 'root',
+    },
+    {
       title: 'Test 1',
       url: '/test1',
       direct: 'root',
@@ -26,11 +31,7 @@ export class AppComponent {
       url: '/more',
       direct: 'root',
     },
-    {
-      title: 'Cambiar formulario',
-      url: '/data',
-      direct: 'root',
-    },
+
     {
       title: 'Sobre nosotros',
       url: '/about',

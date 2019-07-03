@@ -18,6 +18,6 @@ export class HomePage implements OnInit {
 
   //Método para pasar de página
   nextPage() {
-    this.navCtrl.navigateRoot('/data2');
+    this.navCtrl.navigateRoot('/data');
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { DataManagement } from 'src/app/services/dataManagement';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-test2',
@@ -10,6 +11,7 @@ import { DataManagement } from 'src/app/services/dataManagement';
 export class Test2Page implements OnInit {
   tag: string = "</test>"
   constructor(public menuCtrl: MenuController,
+    private cookieService: CookieService,
     public dM: DataManagement,
     public navCtrl: NavController) { }
 
@@ -19,8 +21,9 @@ export class Test2Page implements OnInit {
 
   runTest() {
     let test: string = this.tag;
+    let url: string = this.cookieService.get('url');
     this.dM
-      .runTest(test)
+      .runTest(test, url)
       .then(data => {
 
       })

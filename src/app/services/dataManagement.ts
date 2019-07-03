@@ -10,9 +10,9 @@ export class DataManagement {
 
     }
 
-    public runTest(test: string): Promise<any> {
+    public runTest(test: string, url: string): Promise<any> {
         return this.restService
-            .runTest(test)
+            .runTest(test, url)
             .then(data => {
                 return Promise.resolve(data);
             })

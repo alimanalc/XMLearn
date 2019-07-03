@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Data2Page } from './data2.page';
+import { InfoURLComponent } from './info-url.component';
 
-describe('Data2Page', () => {
-  let component: Data2Page;
-  let fixture: ComponentFixture<Data2Page>;
+describe('InfoURLComponent', () => {
+  let component: InfoURLComponent;
+  let fixture: ComponentFixture<InfoURLComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Data2Page ],
+      declarations: [ InfoURLComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Data2Page);
+    fixture = TestBed.createComponent(InfoURLComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

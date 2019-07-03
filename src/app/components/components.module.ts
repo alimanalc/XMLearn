@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { InfoStringComponent } from './info-string/info-string.component';
 import { IonicModule } from '@ionic/angular';
+import { InfoURLComponent } from './info-url/info-url.component';
 
 
 @NgModule({
 	declarations: [
-		InfoStringComponent
+		InfoStringComponent,
+		InfoURLComponent
 	],
 	imports: [
 		CommonModule,
@@ -15,7 +17,8 @@ import { IonicModule } from '@ionic/angular';
 		RouterModule,
 	],
 	exports: [
-		InfoStringComponent
+		InfoStringComponent,
+		InfoURLComponent
 	],
 })
 

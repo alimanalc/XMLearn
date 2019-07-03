@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController, PopoverController } from '@ionic/angular';
+import { MenuController, NavController, PopoverController, AlertController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
 import { Atributo, Form } from 'src/app/app.data.model';
 import { InfoStringComponent } from 'src/app/components/info-string/info-string.component';
+import { InfoURLComponent } from 'src/app/components/info-url/info-url.component';
 
 @Component({
   selector: 'app-data',
@@ -10,16 +11,18 @@ import { InfoStringComponent } from 'src/app/components/info-string/info-string.
   styleUrls: ['./data.page.scss'],
 })
 export class DataPage implements OnInit {
-  atributo1: Atributo = { 'id': 0, 'name': '', 'value': '', 'type': 'string' };
-  atributo2: Atributo = { 'id': 1, 'name': '', 'value': '', 'type': 'none' };
-  atributo3: Atributo = { 'id': 2, 'name': '', 'value': '', 'type': 'string' };
+  atributo1: Atributo = { 'name': '', 'value': '', 'type': 'string' };
+  atributo2: Atributo = { 'name': '', 'value': '', 'type': 'none' };
+  atributo3: Atributo = { 'name': '', 'value': '', 'type': 'string' };
   form: Form = new Form();
+  url: string = '';
 
   //form = [{ 'id': 0, 'name': '', 'value': '', 'type': 'string' }, { 'id': 1, 'name': '', 'value': '', 'type': 'none' }, { 'id': 2, 'name': '', 'value': '', 'type': 'string' }];
 
   constructor(public menuCtrl: MenuController,
     public navCtrl: NavController, private cookieService: CookieService,
-    private popoverController: PopoverController) {
+    private popoverController: PopoverController,
+    public alertController: AlertController) {
     this.form.atributos = Array<Atributo>();
     this.form.atributos.push(this.atributo1);
     this.form.atributos.push(this.atributo2);
@@ -31,13 +34,13 @@ export class DataPage implements OnInit {
   }
 
   addCampoString() {
-    let atributo: Atributo = { 'id': this.form.atributos.length, 'name': '', 'value': '', 'type': 'string' };
+    let atributo: Atributo = { 'name': '', 'value': '', 'type': 'string' };
     this.form.atributos.push(atributo);
     //this.form.push({ 'id': this.form.length, 'name': '', 'value': '', 'type': 'string' });
   }
 
   addCampo() {
-    let atributo: Atributo = { 'id': this.form.atributos.length, 'name': '', 'value': '', 'type': 'none' };
+    let atributo: Atributo = { 'name': '', 'value': '', 'type': 'none' };
     this.form.atributos.push(atributo);
     // this.form.push({ 'id': this.form.length, 'name': '', 'value': '', 'type': 'none' });
   }
@@ -50,14 +53,49 @@ export class DataPage implements OnInit {
   }
 
   nextPage() {
-    this.cookieService.set('form', JSON.stringify(this.form));
-    console.log(this.cookieService.get('form'));
-    this.navCtrl.navigateRoot('/test1');
+    let vacio: boolean = false;
+    for (let entry of this.form.atributos) {
+      if ((entry.name === '') || (entry.type === 'none' && entry.value === '') || (this.url === '')) {
+        vacio = true;
+      }
+    }
+    if (vacio) {
+      this.alertController
+        .create({
+          header: 'Todos los campos deben estar rellenos',
+          buttons: ['OK']
+        }).then(alertEl => {
+          alertEl.present();
+        });
+
+    } else {
+      this.cookieService.set('form', JSON.stringify(this.form));
+      console.log(this.cookieService.get('form'));
+      this.cookieService.set('url', this.url);
+      this.alertController
+        .create({
+          header: 'Los datos se han guardado correctamente',
+          buttons: ['OK']
+        }).then(alertEl => {
+          alertEl.present();
+        });
+    }
   }
+
+
 
   async mostrarInfoString(ev: any) {
     const popover = await this.popoverController.create({
       component: InfoStringComponent,
+      event: ev,
+      showBackdrop: true,
+    });
+    return await popover.present();
+  }
+
+  async mostrarInfoURL(ev: any) {
+    const popover = await this.popoverController.create({
+      component: InfoURLComponent,
       event: ev,
       showBackdrop: true,
     });
