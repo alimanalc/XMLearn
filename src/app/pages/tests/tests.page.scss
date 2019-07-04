@@ -1,0 +1,23 @@
+img {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 210px;
+    width: 320px;
+  }
+
+  :host {
+    ion-content {
+        --background: linear-gradient(135deg, #F2C0F6, var(--ion-color-primary-contrast));
+    }
+  }
+
+  .buttonN {
+    margin: auto; 
+    display: block;
+  
+    background-color: #A7E1EF;
+    border-color: #4048CF;  
+    border-radius:5px;
+    color: white;
+  }

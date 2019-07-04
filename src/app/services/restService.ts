@@ -20,20 +20,7 @@ export class RestService extends AbstractService {
     }
 
 
-    public runTest(test: string, url: string) {
-        const fd = new FormData();
-        let form: Form;
-        form = JSON.parse(this.cookieService.get('form'));
-        for (let entry of form.atributos) {
-            let nombre: string;
-            nombre = entry.name;
-            console.log(entry.name);
-            if (entry.value === 'none') {
-                fd.append(nombre, entry.value);
-            } else {
-                fd.append(nombre, test);
-            }
-        }
+    public runTest(url: string, fd: FormData) {
 
         return this.makePostRequest(url, fd)
             .then(res => {
@@ -45,5 +32,4 @@ export class RestService extends AbstractService {
                 return Promise.reject(error);
             });
     }
-
 }

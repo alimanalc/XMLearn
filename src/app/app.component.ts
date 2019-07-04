@@ -17,13 +17,8 @@ export class AppComponent {
       direct: 'root',
     },
     {
-      title: 'Test 1',
-      url: '/test1',
-      direct: 'root',
-    },
-    {
-      title: 'Test 2',
-      url: '/test2',
+      title: 'Tests',
+      url: '/tests',
       direct: 'root',
     },
     {

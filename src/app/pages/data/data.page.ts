@@ -16,6 +16,7 @@ export class DataPage implements OnInit {
   atributo3: Atributo = { 'name': '', 'value': '', 'type': 'string' };
   form: Form = new Form();
   url: string = '';
+  formBefore: Form = new Form();
 
   //form = [{ 'id': 0, 'name': '', 'value': '', 'type': 'string' }, { 'id': 1, 'name': '', 'value': '', 'type': 'none' }, { 'id': 2, 'name': '', 'value': '', 'type': 'string' }];
 
@@ -52,13 +53,14 @@ export class DataPage implements OnInit {
     }
   }
 
-  nextPage() {
+  createForm() {
     let vacio: boolean = false;
     for (let entry of this.form.atributos) {
       if ((entry.name === '') || (entry.type === 'none' && entry.value === '') || (this.url === '')) {
         vacio = true;
       }
     }
+    //Si los campos estan vacios
     if (vacio) {
       this.alertController
         .create({
@@ -68,17 +70,66 @@ export class DataPage implements OnInit {
           alertEl.present();
         });
 
+      //Si los campos estan llenos
     } else {
-      this.cookieService.set('form', JSON.stringify(this.form));
-      console.log(this.cookieService.get('form'));
-      this.cookieService.set('url', this.url);
-      this.alertController
-        .create({
-          header: 'Los datos se han guardado correctamente',
-          buttons: ['OK']
-        }).then(alertEl => {
-          alertEl.present();
-        });
+      //Si hay un formalio creado anteriormente
+      if (this.cookieService.get('form')) {
+        this.alertController
+          .create({
+            header: '¿Desea guardar la última petición que realizó además de esta?',
+            buttons: [
+              {
+                //Si desea guardar ambas peticiones
+                text: 'Guardar ambas',
+                handler: () => {
+                  this.formBefore = JSON.parse(this.cookieService.get('form'));
+                  this.cookieService.set('formBefore', JSON.stringify(this.formBefore));
+                  this.form.url = this.url;
+                  this.cookieService.set('form', JSON.stringify(this.form));
+                  console.log(this.cookieService.get('form'));
+                  this.alertController
+                    .create({
+                      header: 'Los datos se han guardado correctamente',
+                      buttons: ['OK']
+                    }).then(alertEl => {
+                      alertEl.present();
+                    });
+                }
+              },
+              {
+                //Si solo desea guardar esta petición
+                text: 'Solo esta',
+                handler: () => {
+                  this.form.url = this.url;
+                  this.cookieService.set('form', JSON.stringify(this.form));
+                  console.log(this.cookieService.get('form'));
+                  this.cookieService.set('url', this.url);
+                  this.alertController
+                    .create({
+                      header: 'Los datos se han guardado correctamente',
+                      buttons: ['OK']
+                    }).then(alertEl => {
+                      alertEl.present();
+                    });
+                }
+              }]
+          }).then(alertEl => {
+            alertEl.present();
+          });
+        // Si es la primera petición
+      } else {
+        this.form.url = this.url;
+        this.cookieService.set('form', JSON.stringify(this.form));
+        console.log(this.cookieService.get('form'));
+        this.cookieService.set('url', this.url);
+        this.alertController
+          .create({
+            header: 'Los datos se han guardado correctamente',
+            buttons: ['OK']
+          }).then(alertEl => {
+            alertEl.present();
+          });
+      }
     }
   }
 

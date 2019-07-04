@@ -6,5 +6,6 @@ export class Atributo {
 }
 
 export class Form {
+    url: string;
     atributos: Atributo[];
 }

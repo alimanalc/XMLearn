@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">
+      <h1>Test 3</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="../../assets/img/Logo.png" />
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <ion-text style="text-align: center;">
+          <h3>Este test llamado XML Bomb consiste en introducir una gran cantidad de datos hasta llenar la memoria de la
+            base de datos,
+            para ello se introduce el siguiente esquema: </h3> <br>
+        </ion-text>
+        <img src="../../assets/img/bombXML.PNG" />
+        <ion-text style="text-align: center;">
+          <h3>En este esquema se crean 10 entidades desde lol-lol9, cada una de ellas en su interior hace referencia
+            a la anterior, de esta forma la base de datos se llena al intentar resolver todas las referencias. El numero
+            de entidades que se crean se puede regular.</h3> <br>
+        </ion-text>
+        <ion-text style="text-align: center;">
+          <h3>Elige el numero de entidades que quieres que sean creadas: </h3> <br>
+        </ion-text>
+        <ion-item>
+          <ion-label>Cantidad:</ion-label>
+          <ion-select placeholder="Select One" [(ngModel)]="option">
+            <ion-select-option value="diez">10</ion-select-option>
+            <ion-select-option value="veinte">20</ion-select-option>
+            <ion-select-option value="treinta">30</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <ng-container *ngIf="option != diez || option != veinte || option != treinta">
+    <button ion-button block button-large (click)="runTest()" class="buttonN">
+      <h2> Ejecutar </h2>
+    </button>
+  </ng-container>
+
+</ion-content>

@@ -35,6 +35,12 @@ const routes: Routes = [
     path: 'gdpr',
     loadChildren: './pages/gdpr/gdpr.module#GdprPageModule'
   },
+  {
+    path: 'tests',
+    loadChildren: './pages/tests/tests.module#TestsPageModule'
+  },  { path: 'test3', loadChildren: './pages/test3/test3.module#Test3PageModule' },
+
+
 
 
 ];

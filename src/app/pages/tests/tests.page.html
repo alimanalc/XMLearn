@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">
+      <h1>Tests</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="../../assets/img/Logo.png" />
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <ion-text style="text-align: center;">
+          <h3>Aquí encontraras una serie de test estructurados por categorias:</h3><br>
+        </ion-text><br>
+
+        <ion-text style="text-align: center;">
+          <h3>Tests para principiantes:</h3><br>
+        </ion-text>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+    <ion-row>
+      <button ion-button block button-large (click)="test1()" class="buttonN">
+        <h2> Test 1 </h2>
+      </button>
+    </ion-row><br>
+    <ion-row>
+      <button ion-button block button-large (click)="test2()" class="buttonN">
+        <h2> Test 2 </h2>
+      </button>
+    </ion-row>
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <ion-text style="text-align: center;">
+          <h3>XML Bomb:</h3><br>
+        </ion-text>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+    <ion-row>
+      <button ion-button block button-large (click)="test3()" class="buttonN">
+        <h2> Test 3 </h2>
+      </button>
+    </ion-row><br>
+
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <ion-text style="text-align: center;">
+          <h3>Comprobación de Login:</h3><br>
+        </ion-text>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+    <ion-row>
+      <button ion-button block button-large (click)="test4()" class="buttonN">
+        <h2> Test 4 </h2>
+      </button>
+    </ion-row><br>
+    <ion-row>
+      <button ion-button block button-large (click)="test4()" class="buttonN">
+        <h2> Test 5 </h2>
+      </button>
+    </ion-row><br>
+
+  </ion-grid>
+
+</ion-content>
