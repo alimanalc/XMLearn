@@ -17,8 +17,9 @@ export class DataPage implements OnInit {
   form: Form = new Form();
   url: string = '';
   formBefore: Form = new Form();
+  chooseForm: string;
+  dosForms: string = this.cookieService.get('dosForms');
 
-  //form = [{ 'id': 0, 'name': '', 'value': '', 'type': 'string' }, { 'id': 1, 'name': '', 'value': '', 'type': 'none' }, { 'id': 2, 'name': '', 'value': '', 'type': 'string' }];
 
   constructor(public menuCtrl: MenuController,
     public navCtrl: NavController, private cookieService: CookieService,
@@ -34,18 +35,19 @@ export class DataPage implements OnInit {
     this.menuCtrl.enable(true);
   }
 
+  //Crea un campo con sin un valor
   addCampoString() {
     let atributo: Atributo = { 'name': '', 'value': '', 'type': 'string' };
     this.form.atributos.push(atributo);
-    //this.form.push({ 'id': this.form.length, 'name': '', 'value': '', 'type': 'string' });
   }
 
+  //Crea un campo al que se le puede añadir un valor
   addCampo() {
     let atributo: Atributo = { 'name': '', 'value': '', 'type': 'none' };
     this.form.atributos.push(atributo);
-    // this.form.push({ 'id': this.form.length, 'name': '', 'value': '', 'type': 'none' });
   }
 
+  //Elimina un campo
   deleteCampo(campo) {
     let index = this.form.atributos.indexOf(campo, 0);
     if (index > -1) {
@@ -53,6 +55,7 @@ export class DataPage implements OnInit {
     }
   }
 
+  //Crea una nueva petición
   createForm() {
     let vacio: boolean = false;
     for (let entry of this.form.atributos) {
@@ -82,10 +85,12 @@ export class DataPage implements OnInit {
                 //Si desea guardar ambas peticiones
                 text: 'Guardar ambas',
                 handler: () => {
+                  this.cookieService.set('dosForms', 'true');
                   this.formBefore = JSON.parse(this.cookieService.get('form'));
                   this.cookieService.set('formBefore', JSON.stringify(this.formBefore));
                   this.form.url = this.url;
                   this.cookieService.set('form', JSON.stringify(this.form));
+                  this.cookieService.set('formNew', JSON.stringify(this.form));
                   console.log(this.cookieService.get('form'));
                   this.alertController
                     .create({
@@ -135,6 +140,7 @@ export class DataPage implements OnInit {
 
 
 
+  //Muestra la información para los campos
   async mostrarInfoString(ev: any) {
     const popover = await this.popoverController.create({
       component: InfoStringComponent,
@@ -144,6 +150,7 @@ export class DataPage implements OnInit {
     return await popover.present();
   }
 
+  //Muestra la información para la url
   async mostrarInfoURL(ev: any) {
     const popover = await this.popoverController.create({
       component: InfoURLComponent,
@@ -151,6 +158,20 @@ export class DataPage implements OnInit {
       showBackdrop: true,
     });
     return await popover.present();
+  }
+
+  selected1() {
+    if (this.chooseForm === "anterior") {
+      let formBefore = JSON.parse(this.cookieService.get('formBefore'));
+      this.cookieService.set('form', formBefore);
+    }
+
+
+
+    if (this.chooseForm === "nuevo") {
+      let formNew = JSON.parse(this.cookieService.get('formNew'));
+      this.cookieService.set('form', formNew);
+    }
   }
 
 }

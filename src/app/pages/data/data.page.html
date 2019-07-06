@@ -10,6 +10,22 @@
 </ion-header>
 <ion-content>
     <img src="../../assets/img/Logo.png" />
+    <ng-container *ngIf="dosForms === true">
+
+        <ion-text style="text-align: center;">
+            <h2>Aquí puedes elegir cual de las dos peticiones usar. </h2><br>
+            <h2>Por defecto se usará la petición actual.</h2>
+        </ion-text>
+        <ion-segment [(ngModel)]="chooseForm">
+            <ion-segment-button ion-button block button-large class="button1" value="anterior"
+                (ionSelect)="selected1()">
+                <h2> Petición guardada </h2>
+            </ion-segment-button>
+            <ion-segment-button ion-button block button-large class="button2" value="nuevo" (ionSelect)="selected1()">
+                <h2> Petición actual </h2>
+            </ion-segment-button>
+        </ion-segment>
+    </ng-container>
 
     <ion-text style="text-align: center;">
         <h2>Añade los distintos campos de tu formulario:</h2>
