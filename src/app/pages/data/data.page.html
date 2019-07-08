@@ -9,22 +9,19 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <img src="../../assets/img/Logo.png" />
-    <ng-container *ngIf="dosForms === true">
+    <img src="../../assets/img/Logo.png" /><br>
 
-        <ion-text style="text-align: center;">
-            <h2>Aquí puedes elegir cual de las dos peticiones usar. </h2><br>
-            <h2>Por defecto se usará la petición actual.</h2>
-        </ion-text>
-        <ion-segment>
-            <ion-segment-button ion-button block button-large class="button1" (ionSelect)="selected1('anterior')">
-                <h2> Petición guardada </h2>
-            </ion-segment-button>
-            <ion-segment-button ion-button block button-large class="button2" (ionSelect)="selected1('nuevo')">
-                <h2> Petición actual </h2>
-            </ion-segment-button>
-        </ion-segment>
-    </ng-container>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="4">
+            </ion-col>
+            <ion-col size="4">
+                <ion-input [(ngModel)]="nameForm" class="url" placeholder="Nombre de la petición" type="text">
+                </ion-input>
+            </ion-col>
+            <ion-col size="3"></ion-col>
+        </ion-row>
+    </ion-grid>
 
     <ion-text style="text-align: center;">
         <h2>Añade los distintos campos de tu formulario:</h2>
@@ -67,7 +64,8 @@
 
                     </ion-col>
                     <ion-col size="3">
-                        <ion-icon (click)="deleteCampo(campo)" class="delete" name="close-circle-outline"></ion-icon>
+                        <ion-icon (click)="deleteCampo(campo)" class="delete" name="close-circle-outline">
+                        </ion-icon>
                         <br>
                     </ion-col>
                     <ion-col size="3"></ion-col>

@@ -11,12 +11,15 @@ import { DataManagement } from 'src/app/services/dataManagement';
   styleUrls: ['./tests.page.scss'],
 })
 export class TestsPage implements OnInit {
-
+  runTest1: Number;
+  runTest2: Number;
+  runTest3: Number;
   constructor(public menuCtrl: MenuController,
     public navCtrl: NavController,
     public cookieService: CookieService,
     public dM: DataManagement,
     public alertController: AlertController) {
+
   }
 
   ngOnInit() {
@@ -43,14 +46,60 @@ export class TestsPage implements OnInit {
   }
 
   allTests() {
-    let runTest1: Number = this.Test1();
-    let runTest2: Number = this.Test2();
-    let runTest3: Number = this.Test3();
-    console.log(runTest1);
-    console.log(runTest2);
-    console.log(runTest3);
+    let run1: Number = this.Test1();
+    let run2: Number = this.Test2();
+    let run3: Number = this.Test3();
 
-    if (runTest1 === 200 && runTest2 === 200 && runTest3 === 200) {
+    this.Test1()
+      .then(data => {
+        this.Test2()
+          .then(data => {
+            this.Test3()
+              .then(data => {
+
+              })
+              .catch(error => {
+
+              });
+          })
+          .catch(error => {
+            this.Test3()
+              .then(data => {
+
+              })
+              .catch(error => {
+
+              });
+          });
+      })
+      .catch(error => {
+        this.Test2()
+          .then(data => {
+            this.Test3()
+              .then(data => {
+
+              })
+              .catch(error => {
+
+              });
+          })
+          .catch(error => {
+            this.Test3()
+              .then(data => {
+
+              })
+              .catch(error => {
+
+              });
+          });
+      });
+
+
+
+
+
+
+    if (this.runTest1 === 200 && this.runTest2 === 200 && this.runTest3 === 200) {
       this.alertController
         .create({
           header: 'Ningún test ha sido superado',
@@ -59,7 +108,7 @@ export class TestsPage implements OnInit {
           alertEl.present();
         });
     }
-    if (runTest1 === 400 && runTest2 === 400 && runTest3 === 400) {
+    if (this.runTest1 === 400 && this.runTest2 === 400 && this.runTest3 === 400) {
       this.alertController
         .create({
           header: 'Todos los test han sido superados con exito',
@@ -71,7 +120,7 @@ export class TestsPage implements OnInit {
   }
 
 
-  Test1(): Number {
+  Test1(): any {
     let test: string = "]]>";
     let fd = new HttpParams();
     let form: Form;
@@ -86,22 +135,22 @@ export class TestsPage implements OnInit {
       }
     }
 
-    let runTest1: Number = 0;
-    this.dM
+
+    return this.dM
       .runTest(url, fd)
       .then(data => {
         console.log("ha entrado aqui");
-        runTest1 = 200;
+        this.runTest1 = 200;
       })
       .catch(error => {
         console.log(error);
         console.log("ha entrado aqui");
-        runTest1 = 400;
+        this.runTest1 = 400;
       });
-    return runTest1;
+
   }
 
-  Test2(): Number {
+  Test2(): any {
     let test: string = "</test>";
     let fd = new HttpParams();
     let form: Form;
@@ -115,23 +164,22 @@ export class TestsPage implements OnInit {
       }
     }
 
-    let runTest2: Number = 0;
-    this.dM
+
+    return this.dM
       .runTest(url, fd)
       .then(data => {
         console.log("ha entrado aqui");
-        runTest2 = 200;
+        this.runTest2 = 200;
       })
       .catch(error => {
         console.log(error);
         console.log("ha entrado aqui");
-        runTest2 = 400;
+        this.runTest2 = 400;
       });
-    return runTest2;
   }
 
 
-  Test3(): Number {
+  Test3(): any {
     let repeticiones = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     let test: string = '<?XML version="1.0"?> <!DOCTYPE lolz [ <!ELEMENT lolz (#PCDATA)> <!ENTITY lol "lol"> ';
@@ -164,19 +212,18 @@ export class TestsPage implements OnInit {
       }
     }
 
-    let runTest3: Number = 0;
-    this.dM
+
+    return this.dM
       .runTest(url, fd)
       .then(data => {
         console.log("ha entrado aqui");
-        runTest3 = 200;
+        this.runTest3 = 200;
       })
       .catch(error => {
         console.log(error);
         console.log("ha entrado aqui");
-        runTest3 = 400;
+        this.runTest3 = 400;
       });
-    return runTest3;
   }
 
 }

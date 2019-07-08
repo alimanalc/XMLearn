@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController, PopoverController, AlertController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
-import { Atributo, Form } from 'src/app/app.data.model';
+import { Atributo, Form, ListForm } from 'src/app/app.data.model';
 import { InfoStringComponent } from 'src/app/components/info-string/info-string.component';
 import { InfoURLComponent } from 'src/app/components/info-url/info-url.component';
 
@@ -16,8 +16,8 @@ export class DataPage implements OnInit {
   atributo3: Atributo = { 'name': '', 'value': '', 'type': 'string' };
   form: Form = new Form();
   url: string = '';
-  formBefore: Form = new Form();
   dosForms: boolean;
+  nameForm: string = '';
 
 
   constructor(public menuCtrl: MenuController,
@@ -28,11 +28,7 @@ export class DataPage implements OnInit {
     this.form.atributos.push(this.atributo1);
     this.form.atributos.push(this.atributo2);
     this.form.atributos.push(this.atributo3);
-    if (this.cookieService.get('dosForms') === 'true') {
-      this.dosForms = true;
-    } else {
-      this.dosForms = false;
-    }
+    this.form.nameForm = this.nameForm;
   }
 
   ngOnInit() {
@@ -63,7 +59,7 @@ export class DataPage implements OnInit {
   createForm() {
     let vacio: boolean = false;
     for (let entry of this.form.atributos) {
-      if ((entry.name === '') || (entry.type === 'none' && entry.value === '') || (this.url === '')) {
+      if ((entry.name === '') || (entry.type === 'none' && entry.value === '') || (this.url === '') || (this.nameForm === '')) {
         vacio = true;
       }
     }
@@ -79,70 +75,32 @@ export class DataPage implements OnInit {
 
       //Si los campos estan llenos
     } else {
-      //Si hay un formalio creado anteriormente
-      if (this.cookieService.get('form')) {
-        this.alertController
-          .create({
-            header: '¿Desea guardar la última petición que realizó además de esta?',
-            buttons: [
-              {
-                //Si desea guardar ambas peticiones
-                text: 'Guardar ambas',
-                handler: () => {
-                  this.cookieService.set('dosForms', 'true');
-                  this.dosForms = true;
-                  this.formBefore = JSON.parse(this.cookieService.get('form'));
-                  this.cookieService.set('formBefore', JSON.stringify(this.formBefore));
-                  this.form.url = this.url;
-                  this.cookieService.set('form', JSON.stringify(this.form));
-                  this.cookieService.set('formNew', JSON.stringify(this.form));
-                  console.log(this.cookieService.get('form'));
-                  this.alertController
-                    .create({
-                      header: 'Los datos se han guardado correctamente',
-                      buttons: ['OK']
-                    }).then(alertEl => {
-                      alertEl.present();
-                    });
-                }
-              },
-              {
-                //Si solo desea guardar esta petición
-                text: 'Solo esta',
-                handler: () => {
-                  this.form.url = this.url;
-                  this.cookieService.set('form', JSON.stringify(this.form));
-                  this.cookieService.set('formNew', JSON.stringify(this.form));
-                  console.log(this.cookieService.get('form'));
-                  this.cookieService.set('url', this.url);
-                  this.alertController
-                    .create({
-                      header: 'Los datos se han guardado correctamente',
-                      buttons: ['OK']
-                    }).then(alertEl => {
-                      alertEl.present();
-                    });
-                }
-              }]
-          }).then(alertEl => {
-            alertEl.present();
-          });
-        // Si es la primera petición
+      this.form.url = this.url;
+      this.form.nameForm = this.nameForm;
+      let forms: ListForm = new ListForm();
+      forms.forms = Array<Form>();
+      if (this.cookieService.get('forms')) {
+        forms = JSON.parse(this.cookieService.get('forms'));
+        forms.forms.push(this.form);
+        this.cookieService.set('forms', JSON.stringify(forms));
+        this.cookieService.set('formUse', this.form.nameForm);
       } else {
-        this.form.url = this.url;
-        this.cookieService.set('form', JSON.stringify(this.form));
-        console.log(this.cookieService.get('form'));
-        this.cookieService.set('url', this.url);
-        this.alertController
-          .create({
-            header: 'Los datos se han guardado correctamente',
-            buttons: ['OK']
-          }).then(alertEl => {
-            alertEl.present();
-          });
+        forms.forms.push(this.form);
+        this.cookieService.set('forms', JSON.stringify(forms));
+        this.cookieService.set('formUse', this.form.nameForm);
       }
+      console.log(forms);
+      this.cookieService.set(this.nameForm, JSON.stringify(this.form));
+      this.cookieService.set('form', JSON.stringify(this.form));
+      console.log(this.cookieService.get('form'));
+      this.alertController
+        .create({
+          header: 'Los datos se han guardado correctamente',
+          buttons: ['OK']
+        }).then(alertEl => {
+          alertEl.present();
+        });
     }
-    console.log(JSON.parse(this.cookieService.get('form')));
   }
 
 
@@ -167,19 +125,5 @@ export class DataPage implements OnInit {
     return await popover.present();
   }
 
-  selected1(text) {
-    if (text == "anterior") {
-      console.log("anterior");
-      let formBefore = JSON.parse(this.cookieService.get('formBefore'));
-      this.cookieService.set('form', JSON.stringify(formBefore));
-      console.log(JSON.parse(this.cookieService.get('form')));
-    }
-    if (text == "nuevo") {
-      console.log("nuevo");
-      let formNew = JSON.parse(this.cookieService.get('formNew'));
-      this.cookieService.set('form', JSON.stringify(formNew));
-      console.log(JSON.parse(this.cookieService.get('form')));
-    }
-  }
 
 }

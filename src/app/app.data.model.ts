@@ -6,6 +6,11 @@ export class Atributo {
 }
 
 export class Form {
+    nameForm: string;
     url: string;
     atributos: Atributo[];
+}
+
+export class ListForm {
+    forms: Form[];
 }

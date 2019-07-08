@@ -17,6 +17,11 @@ export class AppComponent {
       direct: 'root',
     },
     {
+      title: 'Lista de tus peticiones',
+      url: '/list',
+      direct: 'root',
+    },
+    {
       title: 'Tests',
       url: '/tests',
       direct: 'root',
@@ -26,12 +31,17 @@ export class AppComponent {
       url: '/more',
       direct: 'root',
     },
-
     {
       title: 'Sobre nosotros',
       url: '/about',
       direct: 'root',
+    },
+    {
+      title: 'Términos y condiciones',
+      url: '/gdpr2',
+      direct: 'root',
     }
+
 
   ];
 
