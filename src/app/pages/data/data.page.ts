@@ -17,8 +17,7 @@ export class DataPage implements OnInit {
   form: Form = new Form();
   url: string = '';
   formBefore: Form = new Form();
-  chooseForm: string;
-  dosForms: string = this.cookieService.get('dosForms');
+  dosForms: boolean;
 
 
   constructor(public menuCtrl: MenuController,
@@ -29,6 +28,11 @@ export class DataPage implements OnInit {
     this.form.atributos.push(this.atributo1);
     this.form.atributos.push(this.atributo2);
     this.form.atributos.push(this.atributo3);
+    if (this.cookieService.get('dosForms') === 'true') {
+      this.dosForms = true;
+    } else {
+      this.dosForms = false;
+    }
   }
 
   ngOnInit() {
@@ -86,6 +90,7 @@ export class DataPage implements OnInit {
                 text: 'Guardar ambas',
                 handler: () => {
                   this.cookieService.set('dosForms', 'true');
+                  this.dosForms = true;
                   this.formBefore = JSON.parse(this.cookieService.get('form'));
                   this.cookieService.set('formBefore', JSON.stringify(this.formBefore));
                   this.form.url = this.url;
@@ -107,6 +112,7 @@ export class DataPage implements OnInit {
                 handler: () => {
                   this.form.url = this.url;
                   this.cookieService.set('form', JSON.stringify(this.form));
+                  this.cookieService.set('formNew', JSON.stringify(this.form));
                   console.log(this.cookieService.get('form'));
                   this.cookieService.set('url', this.url);
                   this.alertController
@@ -136,6 +142,7 @@ export class DataPage implements OnInit {
           });
       }
     }
+    console.log(JSON.parse(this.cookieService.get('form')));
   }
 
 
@@ -160,17 +167,18 @@ export class DataPage implements OnInit {
     return await popover.present();
   }
 
-  selected1() {
-    if (this.chooseForm === "anterior") {
+  selected1(text) {
+    if (text == "anterior") {
+      console.log("anterior");
       let formBefore = JSON.parse(this.cookieService.get('formBefore'));
-      this.cookieService.set('form', formBefore);
+      this.cookieService.set('form', JSON.stringify(formBefore));
+      console.log(JSON.parse(this.cookieService.get('form')));
     }
-
-
-
-    if (this.chooseForm === "nuevo") {
+    if (text == "nuevo") {
+      console.log("nuevo");
       let formNew = JSON.parse(this.cookieService.get('formNew'));
-      this.cookieService.set('form', formNew);
+      this.cookieService.set('form', JSON.stringify(formNew));
+      console.log(JSON.parse(this.cookieService.get('form')));
     }
   }
 

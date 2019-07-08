@@ -10,12 +10,25 @@ export class AbstractService {
 
     }
 
-    private getHeaders(): Promise<HttpHeaders> {
-        return new Promise((resolve) => {
+    // private getHeaders(): Promise<HttpHeaders> {
+    //     return new Promise((resolve) => {
+    //         let headers = new HttpHeaders();
+    //         headers = headers.append("Accept", "application/json");
+    //         resolve(headers);
+    //     })
+    // }
+
+
+
+    private getHeaders(token: string): Promise<HttpHeaders> {
+        return new Promise(resolve => {
             let headers = new HttpHeaders();
-            headers = headers.append("Accept", "application/json");
+            headers = new HttpHeaders().set('Accept', 'application/json');
+            // headers = headers.append('Access-Control-Allow-Origin', '*');
+            // headers = headers.append('Access-Control-Allow-Headers', 'Content-Type');
+            headers = headers.append('Content-Type', "application/x-www-form-urlencoded");
             resolve(headers);
-        })
+        });
     }
 
     private getHeaders2(user, password): Promise<HttpHeaders> {
@@ -31,7 +44,7 @@ export class AbstractService {
         if (!paramsRequest)
             paramsRequest = {};
 
-        return this.getHeaders().then((result) => {
+        return this.getHeaders(null).then((result) => {
             return new Promise((resolve, reject) => {
                 this.http.get(path, { headers: result, params: paramsRequest }).subscribe(response => {
                     resolve(response);
@@ -67,7 +80,7 @@ export class AbstractService {
     }
 
     protected makePostRequest(path: string, data: any): Promise<any> {
-        return this.getHeaders().then((result) => {
+        return this.getHeaders(null).then((result) => {
             return this.http.post(path, data, { headers: result })
                 .toPromise()
                 .then((result: HttpResponse<any>) => {

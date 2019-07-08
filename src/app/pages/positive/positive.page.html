@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">
+      <h1>Ha superado el test</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br><br><br><br>
+  <img src="../../assets/img/positivo.png" /><br><br><br>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <ion-text style="text-align: center;">
+          <h3>El test ha sido un exito.</h3>
+          <h3>Tu aplicación no es vulnerable ante este tipo de ataque.</h3><br>
+          <h3>Si lo desea puede ejecutar el test de nuevo:</h3>
+        </ion-text>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <button ion-button block button-large (click)="runTest()" class="buttonN">
+    <h2> Ejecutar </h2>
+  </button>
+
+</ion-content>

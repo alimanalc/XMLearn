@@ -10,7 +10,7 @@ export class DataManagement {
 
     }
 
-    public runTest(url: string, fd: FormData): Promise<any> {
+    public runTest(url: string, fd: any): Promise<any> {
         return this.restService
             .runTest(url, fd)
             .then(data => {

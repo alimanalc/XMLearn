@@ -1,4 +1,4 @@
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
 import { ConfigService } from './../../config/configService';
 import { AbstractService } from './abstractService';
 import { Injectable } from "@angular/core";
@@ -20,7 +20,7 @@ export class RestService extends AbstractService {
     }
 
 
-    public runTest(url: string, fd: FormData) {
+    public runTest(url: string, fd: HttpParams) {
 
         return this.makePostRequest(url, fd)
             .then(res => {

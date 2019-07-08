@@ -38,7 +38,12 @@ const routes: Routes = [
   {
     path: 'tests',
     loadChildren: './pages/tests/tests.module#TestsPageModule'
-  },  { path: 'test3', loadChildren: './pages/test3/test3.module#Test3PageModule' },
+  },
+  { path: 'test3', loadChildren: './pages/test3/test3.module#Test3PageModule' },
+  { path: 'positive', loadChildren: './pages/positive/positive.module#PositivePageModule' },
+  { path: 'negative', loadChildren: './pages/negative/negative.module#NegativePageModule' },
+  { path: 'negative/:test', loadChildren: './pages/negative/negative.module#NegativePageModule' },
+
 
 
 

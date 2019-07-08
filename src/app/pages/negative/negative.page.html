@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">
+      <h1>No ha superado el test</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br><br>
+  <img src="../../assets/img/negative.png" /><br>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <ion-text style="text-align: center;">
+          <h3>El test no ha sido superado.</h3>
+          <h3>Tu aplicación es vulnerable ante este tipo de ataque.</h3><br>
+        </ion-text>
+        <ion-text style="text-align: center;">
+          <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
+            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
+            mediante expresiones regulares.
+          </h3><br>
+        </ion-text>
+        <ion-text style="text-align: center;">
+          <h3>Si lo desea puede ejecutar el test de nuevo:</h3>
+        </ion-text>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <button ion-button block button-large (click)="runTest()" class="buttonN">
+    <h2> Ejecutar </h2>
+  </button><br>
+
+</ion-content>
