@@ -14,6 +14,7 @@ export class TestsPage implements OnInit {
   runTest1: Number;
   runTest2: Number;
   runTest3: Number;
+  hayForm: boolean = false;
   constructor(public menuCtrl: MenuController,
     public navCtrl: NavController,
     public cookieService: CookieService,
@@ -23,6 +24,10 @@ export class TestsPage implements OnInit {
   }
 
   ngOnInit() {
+    if (this.cookieService.get('form')) {
+      this.hayForm = true;
+    }
+
   }
 
   test1() {
@@ -49,54 +54,6 @@ export class TestsPage implements OnInit {
     let run1: Number = this.Test1();
     let run2: Number = this.Test2();
     let run3: Number = this.Test3();
-
-    this.Test1()
-      .then(data => {
-        this.Test2()
-          .then(data => {
-            this.Test3()
-              .then(data => {
-
-              })
-              .catch(error => {
-
-              });
-          })
-          .catch(error => {
-            this.Test3()
-              .then(data => {
-
-              })
-              .catch(error => {
-
-              });
-          });
-      })
-      .catch(error => {
-        this.Test2()
-          .then(data => {
-            this.Test3()
-              .then(data => {
-
-              })
-              .catch(error => {
-
-              });
-          })
-          .catch(error => {
-            this.Test3()
-              .then(data => {
-
-              })
-              .catch(error => {
-
-              });
-          });
-      });
-
-
-
-
 
 
     if (this.runTest1 === 200 && this.runTest2 === 200 && this.runTest3 === 200) {

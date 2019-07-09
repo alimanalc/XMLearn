@@ -12,12 +12,17 @@ import { ListForm, Form } from 'src/app/app.data.model';
 export class ListPage implements OnInit {
   forms: ListForm;
   name: string;
+  hayForms: boolean = false;
   constructor(public menuCtrl: MenuController,
     private cookieService: CookieService,
     public dM: DataManagement,
     public navCtrl: NavController,
     public alertController: AlertController) {
-    this.forms = JSON.parse(this.cookieService.get('forms'));
+    if (this.cookieService.get('forms')) {
+      this.forms = JSON.parse(this.cookieService.get('forms'));
+      this.hayForms = true;
+    }
+
     this.name = this.cookieService.get('formUse');
   }
 
