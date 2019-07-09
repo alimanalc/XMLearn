@@ -10,58 +10,62 @@
 </ion-header>
 
 <ion-content>
-  <br><br>
-  <img src="../../assets/img/negative.png" /><br>
-
+  <img src="../../assets/img/negative.png" />
 
   <ion-grid>
     <ion-row>
-      <ion-col size="1"></ion-col>
-      <ion-col size="10">
+      <ion-col size="3"></ion-col>
+      <ion-col size="6">
         <ion-text style="text-align: center;">
-          <h3>El test no ha sido superado.</h3>
-          <h3>Tu aplicación es vulnerable ante este tipo de ataque.</h3>
-        </ion-text>
+          <h1>El test no ha sido superado.</h1>
+        </ion-text><br>
         <ion-text *ngIf="test === '1'" style="text-align: justify;">
-          <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
+          <h3 class="borde">Para poder corregir esta vulnerabilidad se
+            recomienda buscar un gestor
+            de base de datos
             que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
             mediante expresiones regulares.
           </h3>
         </ion-text>
+
         <ion-text *ngIf="test === '2'" style="text-align: justify;">
-          <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
+          <h3 class="borde">Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
             que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
             mediante expresiones regulares.
           </h3>
         </ion-text>
         <ion-text *ngIf="test === '3'" style="text-align: justify;">
-          <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
+          <h3 class="borde">Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
             que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
             mediante expresiones regulares.
           </h3>
         </ion-text>
         <ion-text *ngIf="test === '4'" style="text-align: justify;">
-          <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
-            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
-            mediante expresiones regulares.
+          <h3 class="borde">Para poder corregir esta vulnerabilidad se recomienda supervisar estas entradas para
+            comprobar
+            que no provocan fallos en las consultas que se realizan. Otra forma de evitarlo sería no utilizar este
+            tipo de consultas en lugares a los que tenga acceso el usuario.
           </h3>
         </ion-text>
         <ion-text *ngIf="test === '5'" style="text-align: justify;">
-          <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
+          <h3 class="borde">Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
             que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
             mediante expresiones regulares.
           </h3>
         </ion-text>
-        <ion-text style="text-align: center;">
-          <h3>Si lo desea puede ejecutar el test de nuevo:</h3>
+        <br>
+        <ion-text style="text-align: justify;">
+          <h4>Nota informativa: Se determina que un test no ha sido superado cuando la realización de este mediante
+            la petición ofrecida ha dado de respuesta 200 ó 201. Esto es considerado así debido a que la base de datos
+            o el servidor al que se realizan las peticiones debería de tener ciertas restricciones en los datos
+            introducidos
+            dando por tanto como respuesta un 400.
+          </h4>
         </ion-text>
       </ion-col>
-      <ion-col size="1"></ion-col>
+      <ion-col size="3"></ion-col>
     </ion-row>
 
   </ion-grid>
-  <button ion-button block button-large (click)="runTest()" class="buttonN">
-    <h2> Ejecutar </h2>
-  </button><br>
 
 </ion-content>
