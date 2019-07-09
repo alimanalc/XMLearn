@@ -20,13 +20,37 @@
       <ion-col size="10">
         <ion-text style="text-align: center;">
           <h3>El test no ha sido superado.</h3>
-          <h3>Tu aplicación es vulnerable ante este tipo de ataque.</h3><br>
+          <h3>Tu aplicación es vulnerable ante este tipo de ataque.</h3>
         </ion-text>
-        <ion-text style="text-align: center;">
+        <ion-text *ngIf="test === '1'" style="text-align: justify;">
           <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
             que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
             mediante expresiones regulares.
-          </h3><br>
+          </h3>
+        </ion-text>
+        <ion-text *ngIf="test === '2'" style="text-align: justify;">
+          <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
+            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
+            mediante expresiones regulares.
+          </h3>
+        </ion-text>
+        <ion-text *ngIf="test === '3'" style="text-align: justify;">
+          <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
+            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
+            mediante expresiones regulares.
+          </h3>
+        </ion-text>
+        <ion-text *ngIf="test === '4'" style="text-align: justify;">
+          <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
+            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
+            mediante expresiones regulares.
+          </h3>
+        </ion-text>
+        <ion-text *ngIf="test === '5'" style="text-align: justify;">
+          <h3>Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
+            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
+            mediante expresiones regulares.
+          </h3>
         </ion-text>
         <ion-text style="text-align: center;">
           <h3>Si lo desea puede ejecutar el test de nuevo:</h3>

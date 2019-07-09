@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController, AlertController } from '@ionic/angular';
-import { DataManagement } from 'src/app/services/dataManagement';
 import { CookieService } from 'ngx-cookie-service';
-import { Form } from 'src/app/app.data.model';
+import { DataManagement } from 'src/app/services/dataManagement';
 import { HttpParams } from '@angular/common/http';
+import { Form } from 'src/app/app.data.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-test1',
-  templateUrl: './test1.page.html',
-  styleUrls: ['./test1.page.scss'],
+  selector: 'app-test4',
+  templateUrl: './test4.page.html',
+  styleUrls: ['./test4.page.scss'],
 })
-export class Test1Page implements OnInit {
+export class Test4Page implements OnInit {
 
   constructor(public menuCtrl: MenuController,
     private cookieService: CookieService,
@@ -21,28 +21,36 @@ export class Test1Page implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.menuCtrl.enable(true);
   }
 
+
+
   runTest() {
-    let test: string = "]]>";
+    let test: string = "";
     let fd = new HttpParams();
     let form: Form;
     form = JSON.parse(this.cookieService.get('form'));
     let url = form.url;
     for (let entry of form.atributos) {
-      console.log(entry.name);
       if (entry.type === 'none') {
         fd = fd.append(entry.name, entry.value);
       } else {
-        fd = fd.append(entry.name, test);
+        if (entry.name === 'username') {
+          fd = fd.append(entry.name, test);
+        } else {
+          fd = fd.append(entry.name, 'blah');
+        }
+
       }
     }
+
+
+
 
     this.dM
       .runTest(url, fd)
       .then(data => {
-        this.router.navigate(['/negative', 1]);
+        this.router.navigate(['/negative', 4]);
       })
       .catch(error => {
         console.log(error);

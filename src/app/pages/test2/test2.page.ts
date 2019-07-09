@@ -4,6 +4,7 @@ import { DataManagement } from 'src/app/services/dataManagement';
 import { CookieService } from 'ngx-cookie-service';
 import { Form } from 'src/app/app.data.model';
 import { HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test2',
@@ -16,7 +17,8 @@ export class Test2Page implements OnInit {
     private cookieService: CookieService,
     public dM: DataManagement,
     public navCtrl: NavController,
-    public alertController: AlertController) { }
+    public alertController: AlertController,
+    private router: Router) { }
 
   ngOnInit() {
     this.menuCtrl.enable(true);
@@ -39,7 +41,7 @@ export class Test2Page implements OnInit {
     this.dM
       .runTest(url, fd)
       .then(data => {
-        this.navCtrl.navigateRoot('/negative');
+        this.router.navigate(['/negative', 2]);
       })
       .catch(error => {
         console.log(error);
