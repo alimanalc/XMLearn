@@ -15,29 +15,29 @@
   <ng-container *ngIf="hayForms">
     <ion-grid>
       <ion-row>
-        <ion-col size="1"></ion-col>
-        <ion-col size="10">
+        <ion-col size="2"></ion-col>
+        <ion-col size="8">
           <ion-text style="text-align: center;">
-            <h3>Esta es una lista de tus peticiones, la flecha indica que petición se esta usando. Para cambiar de
+            <h3>Esta es una lista de tus peticiones, la flecha indica que petición se está usando. Para cambiar de
               petición solo
               hay que hacer click en ella.
             </h3><br>
           </ion-text>
         </ion-col>
-        <ion-col size="1"></ion-col>
+        <ion-col size="2"></ion-col>
       </ion-row>
 
     </ion-grid>
-
+    <ion-text style="text-align: center;">
+      <h2 style=" text-decoration: underline;
+      text-decoration-color: blueviolet;">Nombre de la petición</h2>
+    </ion-text>
     <ion-grid>
       <ng-container *ngFor="let form of forms.forms">
         <ion-row>
-
           <ion-col size="4"></ion-col>
           <ion-col size="4">
-            <ion-text style="text-align: center;">
-              <h3 (click)="changeForm(form)" style="cursor: pointer;">{{form.nameForm}}</h3><br>
-            </ion-text>
+            <h3 (click)="changeForm(form)" style="cursor: pointer;  text-align: center;">{{form.nameForm}}</h3>
           </ion-col>
           <ion-col size="4">
             <ng-container *ngIf="form.nameForm === name">
