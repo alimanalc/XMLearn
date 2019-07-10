@@ -13,80 +13,81 @@
   <img src="../../assets/img/Logo.png" />
 
   <ng-container *ngIf="hayForm">
+
+    <ion-text style="text-align: center;">
+      <h3>Aquí encontraras una serie de test estructurados por categorias:</h3><br>
+    </ion-text>
+
+    <ion-text style="text-align: center;">
+      <h3>Tests para principiantes:</h3>
+    </ion-text>
     <ion-grid>
       <ion-row>
-        <ion-col size="1"></ion-col>
-        <ion-col size="10">
-          <ion-text style="text-align: center;">
-            <h3>Aquí encontraras una serie de test estructurados por categorias:</h3><br>
-          </ion-text><br>
+        <ion-col size="4"></ion-col>
+        <ion-col size="4">
 
-          <ion-text style="text-align: center;">
-            <h3>Tests para principiantes:</h3><br>
-          </ion-text>
-        </ion-col>
-        <ion-col size="1"></ion-col>
-      </ion-row>
-      <ion-row>
-        <button ion-button block button-large (click)="test1()" class="buttonN">
-          <h2> Test 1 </h2>
-        </button>
-      </ion-row><br>
-      <ion-row>
-        <button ion-button block button-large (click)="test2()" class="buttonN">
-          <h2> Test 2 </h2>
-        </button>
-      </ion-row>
-      <ion-row>
-        <ion-col size="1"></ion-col>
-        <ion-col size="10">
-          <ion-text style="text-align: center;">
-            <h3>XML Bomb:</h3><br>
-          </ion-text>
-        </ion-col>
-        <ion-col size="1"></ion-col>
-      </ion-row>
-      <ion-row>
-        <button ion-button block button-large (click)="test3()" class="buttonN">
-          <h2> Test 3 </h2>
-        </button>
-      </ion-row><br>
+          <button ion-button block button-large style="float: left; margin-left: 19%; margin-top:4%;" (click)="test1()"
+            class="buttonN">
+            <h2> Test 1 </h2>
+          </button>
 
-      <ion-row>
-        <ion-col size="1"></ion-col>
-        <ion-col size="10">
-          <ion-text style="text-align: center;">
-            <h3>Comprobación de Login:</h3><br>
-          </ion-text>
+          <button ion-button block button-large style="float: right; margin-right: 19%; margin-top:4%;"
+            (click)="test2()" class="buttonN">
+            <h2> Test 2 </h2>
+          </button>
+
         </ion-col>
-        <ion-col size="1"></ion-col>
+        <ion-col size="4"></ion-col>
       </ion-row>
-      <ion-row>
-        <button ion-button block button-large (click)="test4()" class="buttonN">
-          <h2> Test 4 </h2>
-        </button>
-      </ion-row><br>
-      <ion-row>
-        <button ion-button block button-large (click)="test4()" class="buttonN">
-          <h2> Test 5 </h2>
-        </button>
-      </ion-row><br>
-      <ion-row>
-        <ion-col size="1"></ion-col>
-        <ion-col size="10">
-          <ion-text style="text-align: center;">
-            <h3>Ejecutar todos los test a la vez:</h3><br>
-          </ion-text>
-        </ion-col>
-        <ion-col size="1"></ion-col>
-      </ion-row>
-      <ion-row>
-        <button ion-button block button-large (click)="allTests()" class="buttonN">
-          <h2> Ejecutar </h2>
-        </button>
-      </ion-row><br>
     </ion-grid>
+
+    <ion-text style="text-align: center;">
+      <h3>Denegación de Servicios(DDoS):</h3><br>
+    </ion-text>
+    <button ion-button block button-large (click)="test3()" class="buttonN">
+      <h2> Test 3 </h2>
+    </button>
+
+
+
+    <ion-text style="text-align: center;">
+      <h3>Comprobación de Login:</h3>
+    </ion-text>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4"></ion-col>
+        <ion-col size="4">
+
+          <button ion-button block button-large style="float: left; margin-left: 19%; margin-top:4%;" (click)="test4()"
+            class="buttonN">
+            <h2> Test 4 </h2>
+          </button>
+
+          <button ion-button block button-large style="float: right; margin-right: 19%; margin-top:4%;"
+            (click)="test5()" class="buttonN">
+            <h2> Test 5 </h2>
+          </button>
+
+        </ion-col>
+        <ion-col size="4"></ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+    <ion-text style="text-align: center;">
+      <h3>Ejecutar tests 1, 2 y 3 juntos:</h3><br>
+    </ion-text>
+    <button ion-button block button-large (click)="allTests()" class="buttonN">
+      <h2> Ejecutar </h2>
+    </button> <br>
+
+
   </ng-container>
+
+
+
+
   <ng-container *ngIf="!hayForm">
     <br><br><br><br>
     <ion-grid>
