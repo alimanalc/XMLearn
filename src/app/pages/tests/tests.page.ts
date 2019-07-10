@@ -50,34 +50,75 @@ export class TestsPage implements OnInit {
     this.navCtrl.navigateRoot('/test5');
   }
 
+  test6() {
+    this.navCtrl.navigateRoot('/test6');
+  }
+
   allTests() {
-    let run1: Number = this.Test1();
-    let run2: Number = this.Test2();
-    let run3: Number = this.Test3();
+    let pro1 = this.Test1();
+    let pro2 = this.Test2();
+    let pro3 = this.Test3();
 
+    Promise.all([pro1, pro2, pro3]).then(() => {
+      console.log("testall then");
+      if (this.runTest1 === 400 && this.runTest2 === 400 && this.runTest3 === 400) {
+        this.alertController
+          .create({
+            header: 'Todos los test han sido superados con exito',
+            buttons: ['OK']
+          }).then(alertEl => {
+            alertEl.present();
+          });
+      }
 
-    if (this.runTest1 === 200 && this.runTest2 === 200 && this.runTest3 === 200) {
-      this.alertController
-        .create({
-          header: 'Ningún test ha sido superado',
+      if (this.runTest1 === 404) {
+        this.alertController.create({
+          header: 'Hay un fallo con la petición creada por favor creala de nuevo.',
           buttons: ['OK']
         }).then(alertEl => {
           alertEl.present();
         });
-    }
-    if (this.runTest1 === 400 && this.runTest2 === 400 && this.runTest3 === 400) {
-      this.alertController
-        .create({
-          header: 'Todos los test han sido superados con exito',
+      }
+      if (this.runTest1 === 500 || this.runTest1 === 502 || this.runTest1 === 503 || this.runTest1 === 504) {
+        this.alertController.create({
+          header: 'Ha habido un error con su servidor por favor inténtelo más tarde.',
           buttons: ['OK']
         }).then(alertEl => {
           alertEl.present();
         });
-    }
+      }
+      if (this.runTest1 === 429) {
+        this.alertController.create({
+          header: 'Han sido enviadas demasiadas solicitudes por favor inténtelo de nuevo más tarde.',
+          buttons: ['OK']
+        }).then(alertEl => {
+          alertEl.present();
+        });
+      }
+      if (this.runTest1 === 408) {
+        this.alertController.create({
+          header: 'Por motivos ajenos a nosotros se ha excedido el tiempo de espera de la respuesta por favor inténtelo de nuevo más tarde.',
+          buttons: ['OK']
+        }).then(alertEl => {
+          alertEl.present();
+        });
+      }
+    }).catch((data) => {
+      console.log("testall catch");
+
+      this.alertController.create({
+        header: 'Algún test ha fallado, ejecute cada test individualmente para más información.',
+        buttons: ['OK']
+      }).then(alertEl => {
+        alertEl.present();
+      });
+
+
+    });
   }
 
 
-  Test1(): any {
+  Test1(): Promise<any> {
     let test: string = "]]>";
     let fd = new HttpParams();
     let form: Form;
@@ -96,18 +137,22 @@ export class TestsPage implements OnInit {
     return this.dM
       .runTest(url, fd)
       .then(data => {
-        console.log("ha entrado aqui");
+        console.log("test1 then");
         this.runTest1 = 200;
+        console.log(this.runTest1);
+        return Promise.reject("errortest1");
       })
       .catch(error => {
         console.log(error);
-        console.log("ha entrado aqui");
-        this.runTest1 = 400;
+        console.log("test1 catch");
+        this.runTest1 = error.status;
+        console.log(this.runTest1);
+        return Promise.resolve();
       });
 
   }
 
-  Test2(): any {
+  Test2(): Promise<any> {
     let test: string = "</test>";
     let fd = new HttpParams();
     let form: Form;
@@ -125,18 +170,22 @@ export class TestsPage implements OnInit {
     return this.dM
       .runTest(url, fd)
       .then(data => {
-        console.log("ha entrado aqui");
+        console.log("test2 then");
         this.runTest2 = 200;
+        console.log(this.runTest2);
+        return Promise.reject();
       })
       .catch(error => {
         console.log(error);
-        console.log("ha entrado aqui");
-        this.runTest2 = 400;
+        console.log("test3 catch");
+        this.runTest2 = error.status;
+        console.log(this.runTest2);
+        return Promise.resolve();
       });
   }
 
 
-  Test3(): any {
+  Test3(): Promise<any> {
     let repeticiones = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     let test: string = '<?XML version="1.0"?> <!DOCTYPE lolz [ <!ELEMENT lolz (#PCDATA)> <!ENTITY lol "lol"> ';
@@ -173,13 +222,17 @@ export class TestsPage implements OnInit {
     return this.dM
       .runTest(url, fd)
       .then(data => {
-        console.log("ha entrado aqui");
+        console.log("test3 then");
         this.runTest3 = 200;
+        console.log(this.runTest3);
+        return Promise.reject();
       })
       .catch(error => {
         console.log(error);
-        console.log("ha entrado aqui");
-        this.runTest3 = 400;
+        console.log("test3 catch");
+        this.runTest3 = error.status;
+        console.log(this.runTest3);
+        return Promise.resolve();
       });
   }
 

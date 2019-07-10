@@ -66,7 +66,9 @@ const routes: Routes = [
   {
     path: 'test4',
     loadChildren: './pages/test4/test4.module#Test4PageModule'
-  },
+  },  { path: 'test5', loadChildren: './pages/test5/test5.module#Test5PageModule' },
+  { path: 'test6', loadChildren: './pages/test6/test6.module#Test6PageModule' },
+
 
 
 

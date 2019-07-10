@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">
+      <h1>Reemplazo</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="../../assets/img/Logo.png" />
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <ion-text style="text-align: justify;">
+          <h3>Este test consiste en reemplazar el valor del campo userid por el valor que tu quieras mediante
+            el registro de un usuario. Esto se consigue introduciendo a traves del campo password:
+            "{{text1}}" y a traves del campo email: "{{text2}}" . Quedando en el
+            archivo XML de esta forma: </h3> <br>
+        </ion-text>
+        <img style="height: 133px; width: 537px;" src="../../assets/img/test6.PNG" />
+        <ion-text style="text-align: justify;">
+          <h3>Vemos que la etiqueda de userid que habia ha sido comentada introduciendo asi un nuevo userid.
+          </h3><br>
+        </ion-text>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+  <button ion-button block button-large (click)="runTest()" class="buttonN">
+    <h2> Ejecutar </h2>
+  </button>
+
+</ion-content>
