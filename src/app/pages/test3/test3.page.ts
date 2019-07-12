@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class Test3Page implements OnInit {
 
   option: string;
+  hayForm: boolean = false;
   constructor(public menuCtrl: MenuController,
     private cookieService: CookieService,
     public dM: DataManagement,
@@ -24,6 +25,9 @@ export class Test3Page implements OnInit {
   }
 
   ngOnInit() {
+    if (this.cookieService.get('form')) {
+      this.hayForm = true;
+    }
   }
 
   runTest() {
@@ -79,7 +83,7 @@ export class Test3Page implements OnInit {
       })
       .catch(error => {
         console.log(error);
-        if (error.status === 400) {
+        if (error.status === 400 || error.status === 422) {
           this.navCtrl.navigateRoot('/positive');
         }
         if (error.status === 500 || error.status === 502 || error.status === 503 || error.status === 504) {

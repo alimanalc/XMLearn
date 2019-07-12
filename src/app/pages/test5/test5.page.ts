@@ -12,8 +12,10 @@ import { Form } from 'src/app/app.data.model';
   styleUrls: ['./test5.page.scss'],
 })
 export class Test5Page implements OnInit {
+
   text1: string = "</email><userid>";
   text2: string = "</userid><email>";
+  hayForm: boolean = false;
   constructor(public menuCtrl: MenuController,
     private cookieService: CookieService,
     public dM: DataManagement,
@@ -22,6 +24,9 @@ export class Test5Page implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    if (this.cookieService.get('form')) {
+      this.hayForm = true;
+    }
   }
 
 
@@ -54,7 +59,7 @@ export class Test5Page implements OnInit {
       })
       .catch(error => {
         console.log(error);
-        if (error.status === 400) {
+        if (error.status === 400 || error.status === 422) {
           this.navCtrl.navigateRoot('/positive');
         }
         if (error.status === 500 || error.status === 502 || error.status === 503 || error.status === 504) {

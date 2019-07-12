@@ -12,53 +12,72 @@
 <ion-content>
   <img src="../../assets/img/Logo.png" />
 
+  <ng-container *ngIf="hayForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1"></ion-col>
+        <ion-col size="10">
+          <ion-text style="text-align: justify;">
+            <h3>Este test es de tipo Inyección XPath, este tipo de ataque se da cuando un sitio web usa datos
+              suministrados por el usuario para crear consultas. Supongamos que tenemos este archivo XML:</h3> <br>
+          </ion-text>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col size="1"></ion-col>
-      <ion-col size="10">
-        <ion-text style="text-align: justify;">
-          <h3>Este test es de tipo Inyección XPath, este tipo de ataque se da cuando un sitio web usa datos
-            suministrados por el usuario para crear consultas. Supongamos que tenemos este archivo XML:</h3> <br>
-        </ion-text>
+          <img style="height: 375px; width: 370px;" src="../../assets/img/test4.PNG" />
 
-        <img style="height: 375px; width: 370px;" src="../../assets/img/test4.PNG" />
+          <ion-text style="text-align: justify;">
+            <h3> Al tener un formulario donde los usuarios se logueen, un usuario malintencionado puede
+              introducir en el campo username: blah' or 1=1 or 'a'='a , y en la contraseña: blah (Nota: el valor de la
+              contraseña es irrelevante).
+            </h3>
+          </ion-text>
+          <ion-text style="text-align: justify;">
+            <h3>
+              De esta forma cuando se haga una consulta como esta: Employee[UserName/text()='" & Request("Username") &
+              "'
+              And Password/text()='" & Request("Password") & "']", con los datos anteriores se quedaría de esta forma:
+              Employee[UserName/text()='blah' or 1=1 or
+              'a'='a' And Password/text()='blah']. </h3>
+          </ion-text>
+          <ion-text style="text-align: justify;">
+            <h3>
+              Como 1=1 siempre va a
+              ser verdadero va a devolver toda la lista de empleados.
+              Si esta consulta se realiza en una página accesible por los usuarios estos podrían acceder al listado
+              completo de empleados.</h3> <br>
+          </ion-text>
 
-        <ion-text style="text-align: justify;">
-          <h3> Al tener un formulario donde los usuarios se logueen, un usuario malintencionado puede
-            introducir en el campo username: blah' or 1=1 or 'a'='a , y en la contraseña: blah (Nota: el valor de la
-            contraseña es irrelevante).
-          </h3>
-        </ion-text>
-        <ion-text style="text-align: justify;">
-          <h3>
-            De esta forma cuando se haga una consulta como esta: Employee[UserName/text()='" & Request("Username") & "'
-            And Password/text()='" & Request("Password") & "']", con los datos anteriores se quedaría de esta forma:
-            Employee[UserName/text()='blah' or 1=1 or
-            'a'='a' And Password/text()='blah']. </h3>
-        </ion-text>
-        <ion-text style="text-align: justify;">
-          <h3>
-            Como 1=1 siempre va a
-            ser verdadero va a devolver toda la lista de empleados.
-            Si esta consulta se realiza en una página accesible por los usuarios estos podrían acceder al listado
-            completo de empleados.</h3> <br>
-        </ion-text>
+          <ion-text style="text-align: justify;">
+            <h3>
+              Lo que se va a hacer en este test es introducir el valor blah' or 1=1 or 'a'='a en el campo username,
+              el valor blah en el resto siempre y cuando no le hayas dado tu un valor por defecto. Por tanto, este test
+              no
+              tiene sentido que se realice en peticiones que no sean para loguearse en alguna aplicación web, si se
+              realiza en otro tipo de petición que no sea para loguearse puede dar resultados incongruentes.</h3> <br>
+          </ion-text>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+      </ion-row>
 
-        <ion-text style="text-align: justify;">
-          <h3>
-            Lo que se va a hacer en este test es introducir el valor blah' or 1=1 or 'a'='a en el campo username,
-            el valor blah en el resto siempre y cuando no le hayas dado tu un valor por defecto. Por tanto, este test no
-            tiene sentido que se realice en peticiones que no sean para loguearse en alguna aplicación web, si se
-            realiza en otro tipo de petición que no sea para loguearse puede dar resultados incongruentes.</h3> <br>
-        </ion-text>
-      </ion-col>
-      <ion-col size="1"></ion-col>
-    </ion-row>
+    </ion-grid>
+    <button ion-button block button-large (click)="runTest()" class="buttonN">
+      <h2> Ejecutar </h2>
+    </button>
+  </ng-container>
+  <ng-container *ngIf="!hayForm">
+    <br><br><br><br>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1"></ion-col>
+        <ion-col size="10">
+          <ion-text style="text-align: center;">
+            <h1>Upss no deberías estar aun aquí.</h1>
+            <br>
+          </ion-text>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
 
-  </ion-grid>
-  <button ion-button block button-large (click)="runTest()" class="buttonN">
-    <h2> Ejecutar </h2>
-  </button>
 
 </ion-content>

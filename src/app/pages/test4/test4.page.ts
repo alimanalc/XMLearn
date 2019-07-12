@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class Test4Page implements OnInit {
 
+  hayForm: boolean = false;
   constructor(public menuCtrl: MenuController,
     private cookieService: CookieService,
     public dM: DataManagement,
@@ -21,12 +22,15 @@ export class Test4Page implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    if (this.cookieService.get('form')) {
+      this.hayForm = true;
+    }
   }
 
 
 
   runTest() {
-    let test: string = "";
+    let test: string = "blah' or 1=1 or 'a'='a";
     let fd = new HttpParams();
     let form: Form;
     form = JSON.parse(this.cookieService.get('form'));
@@ -54,7 +58,7 @@ export class Test4Page implements OnInit {
       })
       .catch(error => {
         console.log(error);
-        if (error.status === 400) {
+        if (error.status === 400 || error.status === 422) {
           this.navCtrl.navigateRoot('/positive');
         }
         if (error.status === 500 || error.status === 502 || error.status === 503 || error.status === 504) {
