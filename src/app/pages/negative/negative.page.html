@@ -19,25 +19,12 @@
         <ion-text style="text-align: center;">
           <h1>El test no ha sido superado.</h1>
         </ion-text><br>
-        <ion-text *ngIf="test === '1'" style="text-align: justify;">
-          <h3 class="borde">Para poder corregir esta vulnerabilidad se
-            recomienda buscar un gestor
-            de base de datos
-            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
-            mediante expresiones regulares.
-          </h3>
-        </ion-text>
-
-        <ion-text *ngIf="test === '2'" style="text-align: justify;">
-          <h3 class="borde">Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
-            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
-            mediante expresiones regulares.
-          </h3>
-        </ion-text>
         <ion-text *ngIf="test === '3'" style="text-align: justify;">
-          <h3 class="borde">Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
-            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
-            mediante expresiones regulares.
+          <h3 class="borde">Para poder corregir esta vulnerabilidad se recomienda utilizar un gestor de base de datos
+            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de ciertos caracteres como
+            <,> o /
+              mediante expresiones regulares. Además de todo esto se debería limitar el consumo excesivo de los recursos
+              del servidor.
           </h3>
         </ion-text>
         <ion-text *ngIf="test === '4'" style="text-align: justify;">
@@ -47,10 +34,11 @@
             tipo de consultas en lugares a los que tenga acceso el usuario.
           </h3>
         </ion-text>
-        <ion-text *ngIf="test === '5'" style="text-align: justify;">
-          <h3 class="borde">Para poder corregir esta vulnerabilidad se recomienda buscar un gestor de base de datos
-            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de estos caracteres
-            mediante expresiones regulares.
+        <ion-text *ngIf="test === '5' || test === '1' || test === '2' || test === '6'" style="text-align: justify;">
+          <h3 class="borde">Para poder corregir esta vulnerabilidad se recomienda utilizar un gestor de base de datos
+            que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de ciertos caracteres como
+            <,> o /
+              mediante expresiones regulares.
           </h3>
         </ion-text>
         <br>

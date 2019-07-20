@@ -31,7 +31,7 @@ export class Test5Page implements OnInit {
 
 
   runTest() {
-    let test: string = "a</mail><userid>0 OR true</userid><mail>a@b.com";
+    let test: string = "a</email><userid>0 OR true</userid><email>a@b.com";
     let fd = new HttpParams();
     let form: Form;
     form = JSON.parse(this.cookieService.get('form'));

@@ -22,7 +22,7 @@ export class AppComponent {
       direct: 'root',
     },
     {
-      title: 'Tests',
+      title: 'Test',
       url: '/tests',
       direct: 'root',
     },
