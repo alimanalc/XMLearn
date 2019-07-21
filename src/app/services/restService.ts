@@ -24,7 +24,7 @@ export class RestService extends AbstractService {
 
         return this.makePostRequest(url, fd)
             .then(res => {
-                console.log('Logged successfully');
+                console.log("Data: " + res.status);
                 return Promise.resolve(res);
             })
             .catch(error => {

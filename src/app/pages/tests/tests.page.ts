@@ -14,6 +14,7 @@ export class TestsPage implements OnInit {
   runTest1: Number;
   runTest2: Number;
   runTest3: Number;
+  fallo: Number;
   hayForm: boolean = false;
   constructor(public menuCtrl: MenuController,
     public navCtrl: NavController,
@@ -107,7 +108,7 @@ export class TestsPage implements OnInit {
       console.log("testall catch");
 
       this.alertController.create({
-        header: 'Algún test ha fallado, ejecute cada test individualmente para más información.',
+        header: 'El test ' + this.fallo + ' ha fallado.',
         buttons: ['OK']
       }).then(alertEl => {
         alertEl.present();
@@ -140,7 +141,8 @@ export class TestsPage implements OnInit {
         console.log("test1 then");
         this.runTest1 = 200;
         console.log(this.runTest1);
-        return Promise.reject("errortest1");
+        this.fallo = 1;
+        return Promise.reject();
       })
       .catch(error => {
         console.log(error);
@@ -173,6 +175,7 @@ export class TestsPage implements OnInit {
         console.log("test2 then");
         this.runTest2 = 200;
         console.log(this.runTest2);
+        this.fallo = 2;
         return Promise.reject();
       })
       .catch(error => {
@@ -225,6 +228,7 @@ export class TestsPage implements OnInit {
         console.log("test3 then");
         this.runTest3 = 200;
         console.log(this.runTest3);
+        this.fallo = 3;
         return Promise.reject();
       })
       .catch(error => {

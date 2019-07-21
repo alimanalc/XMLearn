@@ -10,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./negative.page.scss'],
 })
 export class NegativePage implements OnInit {
-  test = null;
+  test: string;
+  status: string;
   constructor(public menuCtrl: MenuController,
     private cookieService: CookieService,
     public dM: DataManagement,
@@ -21,8 +22,10 @@ export class NegativePage implements OnInit {
   }
 
   ngOnInit() {
-    this.test = this.activeRoute.snapshot.paramMap.get('test');
+    this.test = this.activeRoute.snapshot.params.test;
     console.log(this.test);
+    this.status = this.activeRoute.snapshot.params.status;
+    console.log(this.status);
   }
 
 }

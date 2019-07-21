@@ -44,11 +44,11 @@ const routes: Routes = [
     loadChildren: './pages/test3/test3.module#Test3PageModule'
   },
   {
-    path: 'positive',
+    path: 'positive/:status',
     loadChildren: './pages/positive/positive.module#PositivePageModule'
   },
   {
-    path: 'negative',
+    path: 'negative/:test/:status',
     loadChildren: './pages/negative/negative.module#NegativePageModule'
   },
   {
@@ -66,8 +66,15 @@ const routes: Routes = [
   {
     path: 'test4',
     loadChildren: './pages/test4/test4.module#Test4PageModule'
-  },  { path: 'test5', loadChildren: './pages/test5/test5.module#Test5PageModule' },
-  { path: 'test6', loadChildren: './pages/test6/test6.module#Test6PageModule' },
+  },
+  {
+    path: 'test5',
+    loadChildren: './pages/test5/test5.module#Test5PageModule'
+  },
+  {
+    path: 'test6',
+    loadChildren: './pages/test6/test6.module#Test6PageModule'
+  },
 
 
 

@@ -83,8 +83,8 @@ export class AbstractService {
         return this.getHeaders(null).then((result) => {
             return this.http.post(path, data, { headers: result })
                 .toPromise()
-                .then((result: HttpResponse<any>) => {
-                    return Promise.resolve(result);
+                .then(request => {
+                    return Promise.resolve(request);
                 }).catch((err) => {
                     return Promise.reject(err);
                 });
