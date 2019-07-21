@@ -60,56 +60,75 @@ export class Test6Page implements OnInit {
       .then(data => {
         let status: string = data.status;
         console.log("Status: " + status);
-        this.router.navigate(['/negative', 1, status]);
+        this.router.navigate(['/negative', 6, status]);
       })
       .catch(error => {
         console.log(error);
-        if (error.status === 400 || error.status === 422) {
-          this.router.navigate(['/positive', error.status]);
-        }
-        if (error.status === 500 || error.status === 502 || error.status === 503 || error.status === 504) {
-          this.alertController
-            .create({
-              header: 'Ha habido un error con su servidor por favor inténtelo más tarde.',
-              subHeader: 'Estado devuelto:',
-              message: error.status,
-              buttons: ['OK']
-            }).then(alertEl => {
-              alertEl.present();
-            });
-        }
-        if (error.status === 404) {
-          this.alertController
-            .create({
-              header: 'Hay un fallo con la petición creada por favor creala de nuevo.',
-              subHeader: 'Estado devuelto:',
-              message: error.status,
-              buttons: ['OK']
-            }).then(alertEl => {
-              alertEl.present();
-            });
-        }
-        if (error.status === 429) {
-          this.alertController
-            .create({
-              header: 'Han sido enviadas demasiadas solicitudes por favor inténtelo de nuevo más tarde.',
-              subHeader: 'Estado devuelto:',
-              message: error.status,
-              buttons: ['OK']
-            }).then(alertEl => {
-              alertEl.present();
-            });
-        }
-        if (error.status === 408) {
-          this.alertController
-            .create({
-              header: 'Por motivos ajenos a nosotros se ha excedido el tiempo de espera de la respuesta por favor inténtelo de nuevo más tarde.',
-              subHeader: 'Estado devuelto:',
-              message: error.status,
-              buttons: ['OK']
-            }).then(alertEl => {
-              alertEl.present();
-            });
+
+
+        switch (error.status) {
+          case 400 || 422: {
+            this.router.navigate(['/positive', error.status]);
+            break;
+          }
+          case 500 || 502 || 503 || 504: {
+            this.alertController
+              .create({
+                header: 'Ha habido un error con su servidor por favor inténtelo más tarde.',
+                subHeader: 'Estado devuelto:',
+                message: error.status,
+                buttons: ['OK']
+              }).then(alertEl => {
+                alertEl.present();
+              });
+            break;
+          }
+          case 404: {
+            this.alertController
+              .create({
+                header: 'Hay un fallo con la petición creada por favor creala de nuevo.',
+                subHeader: 'Estado devuelto:',
+                message: error.status,
+                buttons: ['OK']
+              }).then(alertEl => {
+                alertEl.present();
+              });
+            break;
+          }
+          case 429: {
+            this.alertController
+              .create({
+                header: 'Han sido enviadas demasiadas solicitudes por favor inténtelo de nuevo más tarde.',
+                subHeader: 'Estado devuelto:',
+                message: error.status,
+                buttons: ['OK']
+              }).then(alertEl => {
+                alertEl.present();
+              });
+            break;
+          }
+          case 408: {
+            this.alertController
+              .create({
+                header: 'Por motivos ajenos a nosotros se ha excedido el tiempo de espera de la respuesta por favor inténtelo de nuevo más tarde.',
+                subHeader: 'Estado devuelto:',
+                message: error.status,
+                buttons: ['OK']
+              }).then(alertEl => {
+                alertEl.present();
+              });
+            break;
+          }
+          default: {
+            this.alertController
+              .create({
+                header: 'Ha habido un error y no sabemos el motivo.',
+                buttons: ['OK']
+              }).then(alertEl => {
+                alertEl.present();
+              });
+            break;
+          }
         }
       });
   }
