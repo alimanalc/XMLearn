@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController, AlertController } from '@ionic/angular';
 import { HttpParams } from '@angular/common/http';
-import { Form } from 'src/app/app.data.model';
+import { Request } from 'src/app/app.data.model';
 import { CookieService } from 'ngx-cookie-service';
 import { DataManagement } from 'src/app/services/dataManagement';
 
@@ -61,54 +61,100 @@ export class TestsPage implements OnInit {
     let pro3 = this.Test3();
 
     Promise.all([pro1, pro2, pro3]).then(() => {
-      console.log("testall then");
-      if (this.runTest1 === 400 && this.runTest2 === 400 && this.runTest3 === 400) {
-        this.alertController
-          .create({
-            header: 'Todos los test han sido superados con exito',
+      switch (true) {
+        case (this.runTest1 === 400 || this.runTest1 === 422) && (this.runTest2 === 400 || this.runTest2 === 422) && (this.runTest3 === 400 || this.runTest3 === 422): {
+          this.alertController
+            .create({
+              header: 'Todos los test han sido superados con exito',
+              buttons: ['OK']
+            }).then(alertEl => {
+              alertEl.present();
+            });
+        } case this.runTest1 === 404: {
+          this.alertController.create({
+            header: 'Hay un fallo con la petición creada por favor creala de nuevo.',
             buttons: ['OK']
           }).then(alertEl => {
             alertEl.present();
           });
-      }
+        } case this.runTest1 === 500 || this.runTest1 === 502 || this.runTest1 === 503 || this.runTest1 === 504: {
+          this.alertController.create({
+            header: 'Ha habido un error con su servidor por favor inténtelo más tarde.',
+            buttons: ['OK']
+          }).then(alertEl => {
+            alertEl.present();
+          });
+        } case this.runTest1 === 429: {
+          this.alertController.create({
+            header: 'Han sido enviadas demasiadas solicitudes por favor inténtelo de nuevo más tarde.',
+            buttons: ['OK']
+          }).then(alertEl => {
+            alertEl.present();
+          });
+        } case this.runTest1 === 408: {
+          this.alertController.create({
+            header: 'Por motivos ajenos a nosotros se ha excedido el tiempo de espera de la respuesta por favor inténtelo de nuevo más tarde.',
+            buttons: ['OK']
+          }).then(alertEl => {
+            alertEl.present();
+          });
+        } default: {
+          this.alertController.create({
+            header: 'Ha ocurrido un error por favor vuelva a intentarlo más adelante.',
+            buttons: ['OK']
+          }).then(alertEl => {
+            alertEl.present();
+          });
+        }
 
-      if (this.runTest1 === 404) {
-        this.alertController.create({
-          header: 'Hay un fallo con la petición creada por favor creala de nuevo.',
-          buttons: ['OK']
-        }).then(alertEl => {
-          alertEl.present();
-        });
+
       }
-      if (this.runTest1 === 500 || this.runTest1 === 502 || this.runTest1 === 503 || this.runTest1 === 504) {
-        this.alertController.create({
-          header: 'Ha habido un error con su servidor por favor inténtelo más tarde.',
-          buttons: ['OK']
-        }).then(alertEl => {
-          alertEl.present();
-        });
-      }
-      if (this.runTest1 === 429) {
-        this.alertController.create({
-          header: 'Han sido enviadas demasiadas solicitudes por favor inténtelo de nuevo más tarde.',
-          buttons: ['OK']
-        }).then(alertEl => {
-          alertEl.present();
-        });
-      }
-      if (this.runTest1 === 408) {
-        this.alertController.create({
-          header: 'Por motivos ajenos a nosotros se ha excedido el tiempo de espera de la respuesta por favor inténtelo de nuevo más tarde.',
-          buttons: ['OK']
-        }).then(alertEl => {
-          alertEl.present();
-        });
-      }
+      // if (this.runTest1 === 400 && this.runTest2 === 400 && this.runTest3 === 400) {
+      //   this.alertController
+      //     .create({
+      //       header: 'Todos los test han sido superados con exito',
+      //       buttons: ['OK']
+      //     }).then(alertEl => {
+      //       alertEl.present();
+      //     });
+      // }
+
+      // if (this.runTest1 === 404) {
+      //   this.alertController.create({
+      //     header: 'Hay un fallo con la petición creada por favor creala de nuevo.',
+      //     buttons: ['OK']
+      //   }).then(alertEl => {
+      //     alertEl.present();
+      //   });
+      // }
+      // if (this.runTest1 === 500 || this.runTest1 === 502 || this.runTest1 === 503 || this.runTest1 === 504) {
+      //   this.alertController.create({
+      //     header: 'Ha habido un error con su servidor por favor inténtelo más tarde.',
+      //     buttons: ['OK']
+      //   }).then(alertEl => {
+      //     alertEl.present();
+      //   });
+      // }
+      // if (this.runTest1 === 429) {
+      //   this.alertController.create({
+      //     header: 'Han sido enviadas demasiadas solicitudes por favor inténtelo de nuevo más tarde.',
+      //     buttons: ['OK']
+      //   }).then(alertEl => {
+      //     alertEl.present();
+      //   });
+      // }
+      // if (this.runTest1 === 408) {
+      //   this.alertController.create({
+      //     header: 'Por motivos ajenos a nosotros se ha excedido el tiempo de espera de la respuesta por favor inténtelo de nuevo más tarde.',
+      //     buttons: ['OK']
+      //   }).then(alertEl => {
+      //     alertEl.present();
+      //   });
+      // }
     }).catch((data) => {
-      console.log("testall catch");
 
       this.alertController.create({
-        header: 'El test ' + this.fallo + ' ha fallado.',
+        header: 'Ha fallado en el test ' + this.fallo,
         buttons: ['OK']
       }).then(alertEl => {
         alertEl.present();
@@ -122,10 +168,10 @@ export class TestsPage implements OnInit {
   Test1(): Promise<any> {
     let test: string = "]]>";
     let fd = new HttpParams();
-    let form: Form;
+    let form: Request;
     form = JSON.parse(this.cookieService.get('form'));
     let url = form.url;
-    for (let entry of form.atributos) {
+    for (let entry of form.attributes) {
       console.log(entry.name);
       if (entry.type === 'none') {
         fd = fd.append(entry.name, entry.value);
@@ -157,10 +203,10 @@ export class TestsPage implements OnInit {
   Test2(): Promise<any> {
     let test: string = "</test>";
     let fd = new HttpParams();
-    let form: Form;
+    let form: Request;
     form = JSON.parse(this.cookieService.get('form'));
     let url = form.url;
-    for (let entry of form.atributos) {
+    for (let entry of form.attributes) {
       if (entry.type === 'none') {
         fd = fd.append(entry.name, entry.value);
       } else {
@@ -210,10 +256,10 @@ export class TestsPage implements OnInit {
 
 
     let fd = new HttpParams();
-    let form: Form;
+    let form: Request;
     form = JSON.parse(this.cookieService.get('form'));
     let url = form.url;
-    for (let entry of form.atributos) {
+    for (let entry of form.attributes) {
       if (entry.type === 'none') {
         fd = fd.append(entry.name, entry.value);
       } else {

@@ -6,6 +6,14 @@
         <ion-title color="light">
             <h1>Crear petición</h1>
         </ion-title>
+        <ion-item style="width:350px; float: right;">
+            <ion-icon name="globe" color="light"></ion-icon>
+            <ion-label color="light">Idioma</ion-label>
+            <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+                <ion-select-option value="es">Español</ion-select-option>
+                <ion-select-option value="en">English</ion-select-option>
+            </ion-select>
+        </ion-item>
     </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -16,7 +24,8 @@
             <ion-col size="4">
             </ion-col>
             <ion-col size="4">
-                <ion-input [(ngModel)]="nameForm" class="url" placeholder="Nombre de la petición" type="text">
+                <ion-input [(ngModel)]="name" maxlength="25" minlength="1" class="url"
+                    placeholder="Nombre de la petición" type="text">
                 </ion-input>
             </ion-col>
             <ion-col size="3"></ion-col>
@@ -37,13 +46,14 @@
                     </ion-icon>
                 </ion-col>
                 <ion-col size="4">
-                    <ion-input [(ngModel)]="url" class="url" placeholder="URL petición" type="text"></ion-input>
+                    <ion-input [(ngModel)]="url" class="url" maxlength="100" minlength="1" placeholder="URL petición"
+                        type="url"></ion-input>
                 </ion-col>
                 <ion-col size="3"></ion-col>
             </ion-row>
             <br>
 
-            <div *ngFor="let campo of form.atributos">
+            <div *ngFor="let attribute of request.attributes">
                 <ion-row>
                     <ion-col size="3">
                         <ion-icon (click)="mostrarInfoString($event)" sc-ion-popover-ios style="float:right" class="inf"
@@ -51,21 +61,24 @@
                         </ion-icon>
                     </ion-col>
                     <ion-col size="6">
-                        <ion-input [(ngModel)]="campo.name" placeholder="nombre del campo" class="input" type="text">
+                        <ion-input [(ngModel)]="attribute.name" maxlength="40" minlength="1"
+                            placeholder="nombre del campo" class="input" type="text">
                         </ion-input>
-                        <ng-container *ngIf="campo.type=='none'">
-                            <ion-input [(ngModel)]="campo.value"
+                        <ng-container *ngIf="attribute.type=='none'">
+                            <ion-input [(ngModel)]="attribute.value"
                                 placeholder="valor permitido del campo en caso de tener alguna restricción"
-                                class="input" type="text">
+                                class="input" maxlength="40" minlength="1" type="text">
                             </ion-input>
                         </ng-container>
-                        <ng-container *ngIf="campo.type=='string'">
+                        <ng-container *ngIf="attribute.type=='string'">
                         </ng-container>
 
                     </ion-col>
                     <ion-col size="3">
-                        <ion-icon (click)="deleteCampo(campo)" class="delete" name="close-circle-outline">
-                        </ion-icon>
+                        <ng-container *ngIf="request.attributes.length > 1">
+                            <ion-icon (click)="deleteCampo(attribute)" class="delete" name="close-circle-outline">
+                            </ion-icon>
+                        </ng-container>
                         <br>
                     </ion-col>
                     <ion-col size="3"></ion-col>
@@ -75,7 +88,7 @@
         </ion-grid>
     </div>
 
-    <ng-container *ngIf="form.atributos.length < 15 ">
+    <ng-container *ngIf="request.attributes.length < 15 ">
         <ion-text (click)="addCampoString()" class="add">
             <h3>+ campo</h3>
         </ion-text>

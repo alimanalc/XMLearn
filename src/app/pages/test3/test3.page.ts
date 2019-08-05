@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController, AlertController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
 import { DataManagement } from 'src/app/services/dataManagement';
-import { Form } from 'src/app/app.data.model';
+import { Request } from 'src/app/app.data.model';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -65,10 +65,10 @@ export class Test3Page implements OnInit {
 
 
     let fd = new HttpParams();
-    let form: Form;
+    let form: Request;
     form = JSON.parse(this.cookieService.get('form'));
     let url = form.url;
-    for (let entry of form.atributos) {
+    for (let entry of form.attributes) {
       if (entry.type === 'none') {
         fd = fd.append(entry.name, entry.value);
       } else {

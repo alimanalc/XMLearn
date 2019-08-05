@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController, AlertController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
 import { DataManagement } from 'src/app/services/dataManagement';
-import { ListForm, Form } from 'src/app/app.data.model';
+import { Request } from 'src/app/app.data.model';
 
 @Component({
   selector: 'app-list',
@@ -10,7 +10,7 @@ import { ListForm, Form } from 'src/app/app.data.model';
   styleUrls: ['./list.page.scss'],
 })
 export class ListPage implements OnInit {
-  forms: ListForm;
+  requests: Request[];
   name: string;
   hayForms: boolean = false;
   constructor(public menuCtrl: MenuController,
@@ -18,22 +18,37 @@ export class ListPage implements OnInit {
     public dM: DataManagement,
     public navCtrl: NavController,
     public alertController: AlertController) {
-    if (this.cookieService.get('forms')) {
-      this.forms = JSON.parse(this.cookieService.get('forms'));
-      this.hayForms = true;
-    }
 
     this.name = this.cookieService.get('formUse');
   }
 
   ngOnInit() {
+    this.getRequests();
   }
 
 
-  changeForm(form: Form) {
-    this.cookieService.set('form', JSON.stringify(form));
-    this.cookieService.set('formUse', form.nameForm);
-    this.name = form.nameForm;
+  changeForm(request: Request) {
+    this.cookieService.set('form', JSON.stringify(request));
+    this.cookieService.set('formUse', request.name);
+    this.name = request.name;
+  }
+
+
+  getRequests() {
+    this.dM
+      .getRequests()
+      .then(data => {
+        let requests: Request[];
+        requests = JSON.parse(JSON.stringify(data.requests));
+        if (requests.length > 0) {
+          this.requests = data.requests;
+          this.hayForms = true;
+        }
+
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
 }

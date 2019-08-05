@@ -3,7 +3,7 @@ import { MenuController, NavController, AlertController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
 import { DataManagement } from 'src/app/services/dataManagement';
 import { HttpParams } from '@angular/common/http';
-import { Form } from 'src/app/app.data.model';
+import { Request } from 'src/app/app.data.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -32,10 +32,10 @@ export class Test4Page implements OnInit {
   runTest() {
     let test: string = "blah' or 1=1 or 'a'='a";
     let fd = new HttpParams();
-    let form: Form;
+    let form: Request;
     form = JSON.parse(this.cookieService.get('form'));
     let url = form.url;
-    for (let entry of form.atributos) {
+    for (let entry of form.attributes) {
       if (entry.type === 'none') {
         fd = fd.append(entry.name, entry.value);
       } else {

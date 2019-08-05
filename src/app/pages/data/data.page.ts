@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController, PopoverController, AlertController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
-import { Atributo, Form, ListForm } from 'src/app/app.data.model';
+import { Attribute, Request } from 'src/app/app.data.model';
 import { InfoStringComponent } from 'src/app/components/info-string/info-string.component';
 import { InfoURLComponent } from 'src/app/components/info-url/info-url.component';
+import { DataManagement } from 'src/app/services/dataManagement';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-data',
@@ -11,24 +13,26 @@ import { InfoURLComponent } from 'src/app/components/info-url/info-url.component
   styleUrls: ['./data.page.scss'],
 })
 export class DataPage implements OnInit {
-  atributo1: Atributo = { 'name': '', 'value': '', 'type': 'string' };
-  atributo2: Atributo = { 'name': '', 'value': '', 'type': 'none' };
-  atributo3: Atributo = { 'name': '', 'value': '', 'type': 'string' };
-  form: Form = new Form();
+  attribute1: Attribute = { 'name': '', 'value': '', 'type': 'string' };
+  attribute2: Attribute = { 'name': '', 'value': '', 'type': 'none' };
+  attribute3: Attribute = { 'name': '', 'value': '', 'type': 'string' };
+  request: Request = new Request();
   url: string = '';
   dosForms: boolean;
-  nameForm: string = '';
+  name: string = '';
 
 
   constructor(public menuCtrl: MenuController,
     public navCtrl: NavController, private cookieService: CookieService,
     private popoverController: PopoverController,
-    public alertController: AlertController) {
-    this.form.atributos = Array<Atributo>();
-    this.form.atributos.push(this.atributo1);
-    this.form.atributos.push(this.atributo2);
-    this.form.atributos.push(this.atributo3);
-    this.form.nameForm = this.nameForm;
+    public alertController: AlertController,
+    public dM: DataManagement,
+    private translate: TranslateService) {
+    this.request.attributes = Array<Attribute>();
+    this.request.attributes.push(this.attribute1);
+    this.request.attributes.push(this.attribute2);
+    this.request.attributes.push(this.attribute3);
+    this.request.name = this.name;
   }
 
   ngOnInit() {
@@ -37,29 +41,29 @@ export class DataPage implements OnInit {
 
   //Crea un campo con sin un valor
   addCampoString() {
-    let atributo: Atributo = { 'name': '', 'value': '', 'type': 'string' };
-    this.form.atributos.push(atributo);
+    let attribute: Attribute = { 'name': '', 'value': '', 'type': 'string' };
+    this.request.attributes.push(attribute);
   }
 
   //Crea un campo al que se le puede añadir un valor
   addCampo() {
-    let atributo: Atributo = { 'name': '', 'value': '', 'type': 'none' };
-    this.form.atributos.push(atributo);
+    let attributes: Attribute = { 'name': '', 'value': '', 'type': 'none' };
+    this.request.attributes.push(attributes);
   }
 
   //Elimina un campo
   deleteCampo(campo) {
-    let index = this.form.atributos.indexOf(campo, 0);
+    let index = this.request.attributes.indexOf(campo, 0);
     if (index > -1) {
-      this.form.atributos.splice(index, 1);
+      this.request.attributes.splice(index, 1);
     }
   }
 
   //Crea una nueva petición
   createForm() {
     let vacio: boolean = false;
-    for (let entry of this.form.atributos) {
-      if ((entry.name === '') || (entry.type === 'none' && entry.value === '') || (this.url === '') || (this.nameForm === '')) {
+    for (let entry of this.request.attributes) {
+      if ((entry.name === '') || (entry.type === 'none' && entry.value === '') || (this.url === '') || (this.name === '')) {
         vacio = true;
       }
     }
@@ -75,31 +79,78 @@ export class DataPage implements OnInit {
 
       //Si los campos estan llenos
     } else {
-      this.form.url = this.url;
-      this.form.nameForm = this.nameForm;
-      let forms: ListForm = new ListForm();
-      forms.forms = Array<Form>();
-      if (this.cookieService.get('forms')) {
-        forms = JSON.parse(this.cookieService.get('forms'));
-        forms.forms.push(this.form);
-        this.cookieService.set('forms', JSON.stringify(forms));
-        this.cookieService.set('formUse', this.form.nameForm);
-      } else {
-        forms.forms.push(this.form);
-        this.cookieService.set('forms', JSON.stringify(forms));
-        this.cookieService.set('formUse', this.form.nameForm);
-      }
-      console.log(forms);
-      this.cookieService.set(this.nameForm, JSON.stringify(this.form));
-      this.cookieService.set('form', JSON.stringify(this.form));
-      console.log(this.cookieService.get('form'));
-      this.alertController
-        .create({
-          header: 'Los datos se han guardado correctamente',
-          buttons: ['OK']
-        }).then(alertEl => {
-          alertEl.present();
+      this.request.url = this.url;
+      this.request.name = this.name;
+
+      //Conexion con la base de datos
+      this.dM
+        .getRequests()
+        .then(data => {
+          let nombreBueno = false;
+
+
+          let requests: Request[];
+          requests = JSON.parse(JSON.stringify(data.requests));
+          if (requests.length > 0) {
+            for (let entry of requests) {
+              if (this.request.name === entry.name) {
+                this.alertController
+                  .create({
+                    header: 'Ya tienes una petición con este nombre',
+                    buttons: ['OK']
+                  }).then(alertEl => {
+                    alertEl.present();
+                  });
+              } else {
+                nombreBueno = true;
+              }
+            }
+          } else {
+            this.dM
+              .createRequest(this.request)
+              .then(data => {
+
+                this.cookieService.set('formUse', this.request.name);
+                this.cookieService.set('form', JSON.stringify(this.request));
+                this.alertController
+                  .create({
+                    header: 'Los datos se han guardado correctamente',
+                    buttons: ['OK']
+                  }).then(alertEl => {
+                    alertEl.present();
+                  });
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          }
+
+          if (nombreBueno) {
+            this.dM
+              .createRequest(this.request)
+              .then(data => {
+
+                this.cookieService.set('formUse', this.request.name);
+                this.cookieService.set('form', JSON.stringify(this.request));
+                this.alertController
+                  .create({
+                    header: 'Los datos se han guardado correctamente',
+                    buttons: ['OK']
+                  }).then(alertEl => {
+                    alertEl.present();
+                  });
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          }
+
+
+        })
+        .catch(error => {
+          console.log(error);
         });
+
     }
   }
 
@@ -123,6 +174,13 @@ export class DataPage implements OnInit {
       showBackdrop: true,
     });
     return await popover.present();
+  }
+
+
+  //Cambiar el idioma
+  changeLanguage(selectedValue: { detail: { value: string } }) {
+    this.cookieService.set('lang', selectedValue.detail.value);
+    this.translate.use(selectedValue.detail.value);
   }
 
 

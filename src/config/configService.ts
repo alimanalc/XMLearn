@@ -8,7 +8,7 @@ export class ConfigService {
     }
 
     public getConfig(): any {
-        let urlPrefix = 'http://localhost.com/';
+        let urlPrefix = 'http://localhost:8001';
         let urlApi = '';
 
         return {

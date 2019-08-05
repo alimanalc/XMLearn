@@ -1,0 +1,93 @@
+<ion-content>
+  <img src="../../assets/img/Logo.png" /><br><br><br>
+
+
+
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+      </ion-col>
+      <ion-col size="4">
+        <button ion-button block button-large style="float:left;" (click)="formLogin()" class="buttonN">
+          <h2> Indetificarse </h2>
+        </button>
+
+        <button ion-button block button-large style="float: right;" (click)="formSignin()" class="buttonN">
+          <h2> Registrarse </h2>
+        </button><br>
+      </ion-col>
+      <ion-col size="3"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+  <ng-container *ngIf="form === 1">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+        </ion-col>
+        <ion-col size="4">
+          <ion-input [(ngModel)]="username" class="input" maxlength="15" minlength="1" placeholder="Usuario"
+            type="text">
+          </ion-input><br>
+          <ion-input [(ngModel)]="password" class="input" maxlength="15" minlength="4" placeholder="Contraseña"
+            type="password">
+          </ion-input><br>
+        </ion-col>
+        <ion-col size="3"></ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <button ion-button block button-large (click)="login()" class="buttonN">
+      <h2> Indetificate </h2>
+    </button><br>
+
+  </ng-container>
+
+  <ng-container *ngIf="form === 2">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+        </ion-col>
+        <ion-col size="4">
+          <ion-input [(ngModel)]="username" class="input" maxlength="15" minlength="1" placeholder="Usuario"
+            type="text">
+          </ion-input><br>
+          <ion-input [(ngModel)]="password" class="input" maxlength="15" minlength="4" placeholder="Contraseña"
+            type="password">
+          </ion-input><br>
+          <ion-input [(ngModel)]="password1" class="input" maxlength="15" minlength="4"
+            placeholder="Repita la Contraseña" type="password">
+          </ion-input><br>
+        </ion-col>
+        <ion-col size="3"></ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <button ion-button block button-large (click)="signin()" class="buttonN">
+      <h2> Registrate </h2>
+    </button><br>
+
+  </ng-container>
+
+</ion-content>
+
+
+
+
+
+<ion-footer>
+  <ion-toolbar>
+
+    <h4>
+      Al continuar usando nuestra aplicación usted acepta nuestros términos
+      y condiciones.
+      Para más información consulte nuestros <a href="{{path}}/gdpr" target="_blank">Términos y condiciones</a>
+    </h4>
+
+  </ion-toolbar>
+</ion-footer>

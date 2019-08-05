@@ -1,16 +1,19 @@
-export class Atributo {
+export class Attribute {
     name: string;
     value: string;
     type: string;
 
 }
 
-export class Form {
-    nameForm: string;
+export class Request {
+    name: string;
     url: string;
-    atributos: Atributo[];
+    attributes: Attribute[];
 }
 
-export class ListForm {
-    forms: Form[];
+export class User {
+    _id: string;
+    username: string;
+    password: string;
+    requests: Request[];
 }

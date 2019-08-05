@@ -4,7 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { DataManagement } from 'src/app/services/dataManagement';
 import { Router } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
-import { Form } from 'src/app/app.data.model';
+import { Request } from 'src/app/app.data.model';
 
 @Component({
   selector: 'app-test6',
@@ -34,10 +34,10 @@ export class Test6Page implements OnInit {
     let testEmail: string = "-><userid>0</userid><email>a@b.com";
     let testPass: string = "miC0nTR@s3ñA</password> <!-";
     let fd = new HttpParams();
-    let form: Form;
+    let form: Request;
     form = JSON.parse(this.cookieService.get('form'));
     let url = form.url;
-    for (let entry of form.atributos) {
+    for (let entry of form.attributes) {
       if (entry.type === 'none') {
         fd = fd.append(entry.name, entry.value);
       } else {
