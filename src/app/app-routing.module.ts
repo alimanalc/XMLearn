@@ -74,7 +74,8 @@ const routes: Routes = [
   {
     path: 'test6',
     loadChildren: './pages/test6/test6.module#Test6PageModule'
-  },
+  },  { path: 'user', loadChildren: './pages/user/user.module#UserPageModule' },
+
 
 
 

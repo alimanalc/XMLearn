@@ -12,7 +12,15 @@ import { CookieService } from 'ngx-cookie-service';
 import { DataManagement } from './services/dataManagement';
 import { RestService } from './services/restService';
 import { ConfigService } from 'src/config/configService';
-import { HttpClientModule } from '@angular/common/http';
+
+
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient, "../assets/i18n/", ".json");
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +29,14 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     StatusBar,

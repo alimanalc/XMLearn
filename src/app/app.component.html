@@ -3,7 +3,9 @@
     <ion-menu>
       <ion-header>
         <ion-toolbar color="dark">
-          <ion-title>Menu</ion-title>
+          <ion-title style="float: left; padding-top: 15px;">{{ 'MENU.MENU' | translate }}</ion-title>
+          <h5 (click)="logout()" style="cursor: pointer;float: right; padding-right: 15px;">
+            {{ 'MENU.SESION' | translate }}</h5>
         </ion-toolbar>
       </ion-header>
       <ion-content>

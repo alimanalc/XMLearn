@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { DataManagement } from './services/dataManagement';
+import { CookieService } from 'ngx-cookie-service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -49,15 +51,27 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public dM: DataManagement
+    public dM: DataManagement,
+    public cookieService: CookieService,
+    public navCtrl: NavController,
+    private translateService: TranslateService
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.translateService.setDefaultLang('es');
+      this.translateService.use('es');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  logout() {
+    this.cookieService.delete('user');
+    this.cookieService.delete('form');
+    this.cookieService.delete('formUse');
+    this.navCtrl.navigateRoot('/home');
   }
 }
