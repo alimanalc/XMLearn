@@ -121,7 +121,7 @@
     },
     "TEST2": {
         "TITLE": "Random closing tags",
-        "TEXT1": "This test consist in introduce in some attributes of the request random closing tags (for example {{tag}}) with the goal to the deform the XML error messages. With this, can see the structure of the XML file.",
+        "TEXT1": "This test consist in introduce in some attributes of the request random closing tags (for example </test>) with the goal to the deform the XML error messages. With this, can see the structure of the XML file.",
         "TEXT2": "Ups, you shouldn't be here!",
         "BUTTON": "Execute"
     },
@@ -147,14 +147,14 @@
     },
     "TEST5": {
         "TITLE": "Replicating",
-        "TEXT1": "This test consist in repeat the attributes id and email in the sign-in of an user, this attributes repeat have values which will make errors in the read of the data. This is possible when you enter for example in the attribute email, the value: a{{text1}}0 OR true{{text2}}a@b.com, this can be done in other attribute replacing email for the name of the attribute. In this way, we get to sign-in a user with this form:",
+        "TEXT1": "This test consist in repeat the attributes id and email in the sign-in of an user, this attributes repeat have values which will make errors in the read of the data. This is possible when you enter for example in the attribute email, the value: a</email><userid>0 OR true</userid><email>a@b.com, this can be done in other attribute replacing email for the name of the attribute. In this way, we get to sign-in a user with this form:",
         "TEXT2": "We can see that the tags userid and email were repeated. How there are repeated tags, the code reader only recognice the last tags, in this case this tags have the value that we want.",
         "TEXT3": "Ups, you shouldn't be here!",
         "BUTTON": "Execute"
     },
     "TEST6": {
         "TITLE": "Replacing",
-        "TEXT1": "This test consist to replace the value of the attribute userid for the value that you want in the sign-in of the user. We can do this by inserting in the attribute password: {{text1}} and in the attribute email: {{text2}}. We get this XML file: ",
+        "TEXT1": "This test consist to replace the value of the attribute userid for the value that you want in the sign-in of the user. We can do this by inserting in the attribute password: miC0nTR@s3ñA</password> <!- and in the attribute email: -><userid>0</userid><mail>a@b.com. We get this XML file: ",
         "TEXT2": "We can see that the tag of userid has been commented and the userid have a new value.",
         "TEXT3": "Ups, you shouldn't be here!",
         "BUTTON": "Execute"

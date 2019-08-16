@@ -121,7 +121,7 @@
     },
     "TEST2": {
         "TITLE": "Etiquetas cerradas aleatorias",
-        "TEXT1": "Este test consiste en introducir etiquetas de cierre aleatorias (como por ejemplo {{tag}}) con el objetivo de deformar los mensajes de error XML y así poderse ver la estructura del archivo XML.",
+        "TEXT1": "Este test consiste en introducir etiquetas de cierre aleatorias (como por ejemplo </test>) con el objetivo de deformar los mensajes de error XML y así poderse ver la estructura del archivo XML.",
         "TEXT2": "¡Ups, no deberías estar aquí!",
         "BUTTON": "Ejecutar"
     },
@@ -147,14 +147,14 @@
     },
     "TEST5": {
         "TITLE": "Replicado",
-        "TEXT1": "Este test consiste en repetir los campos id e email mediante el registro de un usuario con valores que produzcan fallos en la lectura de los datos. Esto se consigue introduciendo este valor por ejemplo en el campo email: a{{text1}}0 OR true{{text2}}a@b.com, esto puede ser realizado en otro campo sustituyendo email por el nombre del campo. De esta forma se conseguiría registrar un usuario de esta forma:",
+        "TEXT1": "Este test consiste en repetir los campos id e email mediante el registro de un usuario con valores que produzcan fallos en la lectura de los datos. Esto se consigue introduciendo este valor por ejemplo en el campo email: a</email><userid>0 OR true</userid><email>a@b.com, esto puede ser realizado en otro campo sustituyendo email por el nombre del campo. De esta forma se conseguiría registrar un usuario de esta forma:",
         "TEXT2": "Vemos que las etiquetas userid e email están repetidas. Al haber etiquetas repetidas el lector de código solo interpretará las últimas que se encuentren, en este caso las que tienen los valores introducidos por nosotros.",
         "TEXT3": "¡Ups, no deberías estar aquí!",
         "BUTTON": "Ejecutar"
     },
     "TEST6": {
         "TITLE": "Reemplazo",
-        "TEXT1": "Este test consiste en reemplazar el valor del campo userid por el valor que tu quieras mediante el registro de un usuario. Esto se consigue introduciendo a traves del campo password: {{text1}} y a traves del campo email: {{text2}}. Quedando en el archivo XML de esta forma:",
+        "TEXT1": "Este test consiste en reemplazar el valor del campo userid por el valor que tu quieras mediante el registro de un usuario. Esto se consigue introduciendo a traves del campo password: miC0nTR@s3ñA</password> <!- y a traves del campo email: -><userid>0</userid><mail>a@b.com. Quedando en el archivo XML de esta forma:",
         "TEXT2": "Vemos que la etiqueta de userid que había ha sido comentada introduciendo así un nuevo userid.",
         "TEXT3": "¡Ups, no deberías estar aquí!",
         "BUTTON": "Ejecutar"
