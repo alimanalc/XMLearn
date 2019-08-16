@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
+    <ion-title color="light" style="float: left;">
       <h1>Test</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -15,11 +23,11 @@
   <ng-container *ngIf="hayForm">
 
     <ion-text style="text-align: center;">
-      <h3>Aquí encontraras una serie de test estructurados por categorias:</h3><br>
+      <h3>{{'TESTS.TEXT1' | translate}}</h3><br>
     </ion-text>
 
     <ion-text style="text-align: center;">
-      <h3>Tests para principiantes:</h3>
+      <h3>{{'TESTS.TEXT2' | translate}}</h3>
     </ion-text>
     <ion-grid>
       <ion-row>
@@ -42,7 +50,7 @@
     </ion-grid>
 
     <ion-text style="text-align: center;">
-      <h3>Denegación de Servicios(DoS):</h3><br>
+      <h3>{{'TESTS.TEXT3' | translate}}</h3><br>
     </ion-text>
     <button ion-button block button-large (click)="test3()" class="buttonN">
       <h2> Test 3 </h2>
@@ -51,7 +59,7 @@
 
 
     <ion-text style="text-align: center;">
-      <h3>Comprobación de Login y Sign in:</h3>
+      <h3>{{'TESTS.TEXT4' | translate}}</h3>
     </ion-text>
     <ion-grid>
       <ion-row>
@@ -82,10 +90,10 @@
 
 
     <ion-text style="text-align: center;">
-      <h3>Ejecutar test 1, 2 y 3 juntos:</h3><br>
+      <h3>{{'TESTS.TEXT5' | translate}}</h3><br>
     </ion-text>
     <button ion-button block button-large (click)="allTests()" class="buttonN">
-      <h2> Ejecutar </h2>
+      <h2> {{'TESTS.BUTTON' | translate}}</h2>
     </button> <br>
 
 
@@ -101,8 +109,7 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: center;">
-            <h1>Los test aún no están disponible primero debes crear una petición o elegir una de las peticiones ya
-              creadas.</h1>
+            <h1>{{'TESTS.TEXT6' | translate}}</h1>
             <br>
           </ion-text>
         </ion-col>

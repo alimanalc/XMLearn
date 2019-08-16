@@ -1,21 +1,39 @@
 <ion-content padding>
 
 
-  <img src="../../assets/img/Logo.png" />
-  <br>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4"></ion-col>
+      <ion-col size="4">
+        <img src="../../assets/img/Logo.png" />
+        <br>
+      </ion-col>
+      <ion-col size="4">
+        <ion-item style="width:300px; float: right;">
+          <ion-icon name="globe" color="light"></ion-icon>
+          <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+          <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+            <ion-select-option value="es">Español</ion-select-option>
+            <ion-select-option value="en">English</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
 
   <ion-grid>
     <ion-row>
       <ion-col size="2"></ion-col>
       <ion-col size="8">
         <ion-text>
-          <p>Bienvenido a XMLearn, con esta aplicación web aprenderás sobre el mundo XML y cuales son sus
-            vulnerabilidades.
+          <p>{{ 'HOME.TEXT1' | translate }}
           </p>
-          <p>Consiste en realizar determinadas peticiones POST sospechosas a una URL que se indique. Para ello, solo
-            debes ofrecer la URL de la petición que quieres que se pruebe y el nombre de los campos que la componen. Si
-            un campo tiene que cumplir determinado formato se deberá introducir un valor valido para ese campo. En los
-            campos que son de tipo string y no deben cumplir ningún patrón se realizarán una serie de pruebas.
+          <p>{{ 'HOME.TEXT2' | translate }}
           </p>
         </ion-text>
       </ion-col>
@@ -26,10 +44,10 @@
 
 
   <ion-text>
-    <h1>Si estas preparado/a dale a</h1>
+    <h1>{{ 'HOME.TEXT3' | translate }}</h1>
   </ion-text><br>
   <button ion-button block button-large (click)="nextPage()" class="button">
-    <h2> Comenzar </h2>
+    <h2> {{ 'HOME.BUTTON' | translate }} </h2>
   </button>
 
 </ion-content>
@@ -38,9 +56,7 @@
   <ion-toolbar>
 
     <h4>
-      Al continuar usando nuestra aplicación usted acepta nuestros términos
-      y condiciones.
-      Para más información consulte nuestros <a href="{{path}}/gdpr" target="_blank">Términos y condiciones</a>
+      {{ 'HOME.GDPR' | translate }} <a href="{{path}}/gdpr" target="_blank">{{ 'HOME.GDPR2' | translate }}</a>
     </h4>
 
   </ion-toolbar>

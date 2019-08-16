@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
-      <h1>Inyección XPath</h1>
+    <ion-title color="light" style="float: left;">
+      <h1>{{'TEST4.TITLE' | translate}}</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -18,21 +26,19 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: justify;">
-            <h3>Este test es de tipo Inyección XPath, este tipo de ataque se da cuando un sitio web usa datos
-              suministrados por el usuario para crear consultas. Supongamos que tenemos este archivo XML:</h3> <br>
+            <h3>
+              {{'TEST4.TEXT1' | translate}}</h3> <br>
           </ion-text>
 
           <img style="height: 375px; width: 370px;" src="../../assets/img/test4.PNG" />
 
           <ion-text style="text-align: justify;">
-            <h3> Al tener una petición para la identificación de los usuarios, un usuario malintencionado puede
-              introducir en el campo username: blah' or 1=1 or 'a'='a , y en la contraseña: blah (Nota: el valor de la
-              contraseña es irrelevante).
+            <h3>{{'TEST4.TEXT2' | translate}}
             </h3>
           </ion-text>
           <ion-text style="text-align: justify;">
             <h3>
-              De esta forma cuando se haga una consulta como esta: </h3>
+              {{'TEST4.TEXT3' | translate}}</h3>
           </ion-text>
           <ion-text style="text-align: left;">
             <h3>
@@ -41,7 +47,7 @@
           </ion-text>
           <ion-text style="text-align: justify;">
             <h3>
-              Con los datos anteriores se quedaría de esta forma:
+              {{'TEST4.TEXT4' | translate}}
             </h3>
           </ion-text>
           <ion-text style="text-align: left;">
@@ -51,19 +57,13 @@
           </ion-text>
           <ion-text style="text-align: justify;">
             <h3>
-              Como 1=1 siempre va a
-              ser verdadero, va a devolver toda la lista de empleados.
-              Si esta consulta se realiza en una página accesible por los usuarios estos podrían acceder al listado
-              completo de empleados.</h3>
+              {{'TEST4.TEXT5' | translate}}</h3>
           </ion-text>
 
           <ion-text style="text-align: justify;">
             <h3>
-              Lo que se va a hacer en este test es introducir el valor blah' or 1=1 or 'a'='a en el campo username
-              y el valor blah en el resto, siempre y cuando no se le haya dado un valor por defecto. Por tanto,
-              este test no tiene sentido que se realice en peticiones que no sean para identificarse en alguna
-              aplicación web,
-              si se realiza en otro tipo de petición que no sea para identificarse puede dar resultados incongruentes.
+
+              {{'TEST4.TEXT6' | translate}}
             </h3> <br>
           </ion-text>
         </ion-col>
@@ -72,7 +72,7 @@
 
     </ion-grid>
     <button ion-button block button-large (click)="runTest()" class="buttonN">
-      <h2> Ejecutar </h2>
+      <h2>{{'TEST4.BUTTON' | translate}} </h2>
     </button>
   </ng-container>
   <ng-container *ngIf="!hayForm">
@@ -82,7 +82,7 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: center;">
-            <h1>Upss no deberías estar aquí.</h1>
+            <h1>{{'TEST4.TEXT7' | translate}}</h1>
             <br>
           </ion-text>
         </ion-col>

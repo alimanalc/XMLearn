@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController, AlertController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
 import { DataManagement } from 'src/app/services/dataManagement';
 import { Request } from 'src/app/app.data.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-list',
@@ -16,8 +17,7 @@ export class ListPage implements OnInit {
   constructor(public menuCtrl: MenuController,
     private cookieService: CookieService,
     public dM: DataManagement,
-    public navCtrl: NavController,
-    public alertController: AlertController) {
+    public translate: TranslateService) {
 
     this.name = this.cookieService.get('formUse');
   }
@@ -27,6 +27,7 @@ export class ListPage implements OnInit {
   }
 
 
+  //Cambiar la petición que se quiere usar
   changeForm(request: Request) {
     this.cookieService.set('form', JSON.stringify(request));
     this.cookieService.set('formUse', request.name);
@@ -34,6 +35,7 @@ export class ListPage implements OnInit {
   }
 
 
+  //Conseguir de la base de datos todas las peticiones del usuario
   getRequests() {
     this.dM
       .getRequests()
@@ -49,6 +51,12 @@ export class ListPage implements OnInit {
       .catch(error => {
         console.log(error);
       });
+  }
+
+  //Cambiar el idioma
+  changeLanguage(selectedValue: { detail: { value: string } }) {
+    this.cookieService.set('lang', selectedValue.detail.value);
+    this.translate.use(selectedValue.detail.value);
   }
 
 }

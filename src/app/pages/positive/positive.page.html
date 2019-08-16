@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
-      <h1>Ha superado el test</h1>
+    <ion-title color="light" style="float: left;">
+      <h1>{{'POSITIVE.TITLE' | translate}}</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -18,19 +26,14 @@
       <ion-col size="3"></ion-col>
       <ion-col size="6">
         <ion-text style="text-align: center;">
-          <h1>El test ha sido un exito.</h1>
-          <h1>Estado devuelto: {{status}}</h1>
+          <h1>{{'POSITIVE.TEXT1' | translate}}</h1>
+          <h1> {{'POSITIVE.TEXT2' | translate}} {{status}}</h1>
           <br>
-          <h3>Tu aplicación no es vulnerable ante este tipo de ataque.</h3>
+          <h3>{{'POSITIVE.TEXT3' | translate}}</h3>
         </ion-text>
 
         <ion-text style="text-align: justify;">
-          <h4>Nota informativa: Se determina que un test ha sido superado cuando la realización de este mediante
-            la petición ofrecida ha dado de respuesta 400 o 422. Esto es considerado así debido a que la base de datos
-            o el servidor al que se realizan las peticiones debería de tener ciertas restricciones en los datos
-            introducidos, al no superar los valores introducidos estas restricciones debería dar un 400.
-            Por tanto, si la respuesta es 201 o 200 implica que los valores que aporta en las entradas de la petición el
-            test son dados como válidos siendo vulnerable ante estos ataques.
+          <h4>{{'POSITIVE.TEXT4' | translate}}
           </h4>
         </ion-text>
       </ion-col>

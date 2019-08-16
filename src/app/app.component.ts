@@ -12,40 +12,9 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  public appPages = [
-    {
-      title: 'Crear petición',
-      url: '/data',
-      direct: 'root',
-    },
-    {
-      title: 'Lista de tus peticiones',
-      url: '/list',
-      direct: 'root',
-    },
-    {
-      title: 'Test',
-      url: '/tests',
-      direct: 'root',
-    },
-    {
-      title: 'Saber más',
-      url: '/more',
-      direct: 'root',
-    },
-    {
-      title: 'Sobre nosotros',
-      url: '/about',
-      direct: 'root',
-    },
-    {
-      title: 'Términos y condiciones',
-      url: '/gdpr2',
-      direct: 'root',
-    }
 
+  public appPages = [];
 
-  ];
 
   constructor(
     private platform: Platform,
@@ -56,16 +25,55 @@ export class AppComponent {
     public navCtrl: NavController,
     private translateService: TranslateService
   ) {
+    this.appPages = [
+      {
+        title: 'Crear petición',
+        url: '/data',
+        direct: 'root',
+      },
+      {
+        title: 'Lista de tus peticiones',
+        url: '/list',
+        direct: 'root',
+      },
+      {
+        title: 'Test',
+        url: '/tests',
+        direct: 'root',
+      },
+      {
+        title: 'Saber más',
+        url: '/more',
+        direct: 'root',
+      },
+      {
+        title: 'Sobre nosotros',
+        url: '/about',
+        direct: 'root',
+      },
+      {
+        title: 'Términos y condiciones',
+        url: '/gdpr2',
+        direct: 'root',
+      }
+    ];
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.translateService.setDefaultLang('es');
-      this.translateService.use('es');
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    this.translateService.setDefaultLang('es');
+    if (this.cookieService.check('lang')) {
+      let language = this.cookieService.get('lang');
+      this.translateService.use(language);
+    } else {
+      this.translateService.use('es');
+    }
+
   }
 
   logout() {

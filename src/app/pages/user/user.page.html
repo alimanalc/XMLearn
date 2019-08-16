@@ -1,6 +1,24 @@
 <ion-content>
-  <img src="../../assets/img/Logo.png" /><br><br><br>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4"></ion-col>
+      <ion-col size="4">
+        <img src="../../assets/img/Logo.png" />
+        <br>
+      </ion-col>
+      <ion-col size="4">
+        <ion-item style="width:300px; float: right;">
+          <ion-icon name="globe" color="light"></ion-icon>
+          <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+          <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+            <ion-select-option value="es">Español</ion-select-option>
+            <ion-select-option value="en">English</ion-select-option>
+          </ion-select>
+        </ion-item>
 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
 
@@ -11,11 +29,11 @@
       </ion-col>
       <ion-col size="4">
         <button ion-button block button-large style="float:left;" (click)="formLogin()" class="buttonN">
-          <h2> Indetificarse </h2>
+          <h2> {{ 'USER.BUTTONI' | translate }} </h2>
         </button>
 
         <button ion-button block button-large style="float: right;" (click)="formSignin()" class="buttonN">
-          <h2> Registrarse </h2>
+          <h2> {{ 'USER.BUTTONR' | translate }}</h2>
         </button><br>
       </ion-col>
       <ion-col size="3"></ion-col>
@@ -31,11 +49,11 @@
         <ion-col size="4">
         </ion-col>
         <ion-col size="4">
-          <ion-input [(ngModel)]="username" class="input" maxlength="15" minlength="1" placeholder="Usuario"
-            type="text">
+          <ion-input [(ngModel)]="username" class="input" maxlength="15" minlength="1"
+            placeholder="{{'USER.NAME' | translate}}" type="text">
           </ion-input><br>
-          <ion-input [(ngModel)]="password" class="input" maxlength="15" minlength="4" placeholder="Contraseña"
-            type="password">
+          <ion-input [(ngModel)]="password" class="input" maxlength="15" minlength="4"
+            placeholder="{{'USER.PASS' | translate}}" type="password">
           </ion-input><br>
         </ion-col>
         <ion-col size="3"></ion-col>
@@ -43,7 +61,7 @@
     </ion-grid>
 
     <button ion-button block button-large (click)="login()" class="buttonN">
-      <h2> Indetificate </h2>
+      <h2> {{ 'USER.BUTTONI2' | translate }}</h2>
     </button><br>
 
   </ng-container>
@@ -54,14 +72,14 @@
         <ion-col size="4">
         </ion-col>
         <ion-col size="4">
-          <ion-input [(ngModel)]="username" class="input" maxlength="15" minlength="1" placeholder="Usuario"
-            type="text">
+          <ion-input [(ngModel)]="username" class="input" maxlength="15" minlength="1"
+            placeholder="{{'USER.NAME' | translate}}" type="text">
           </ion-input><br>
-          <ion-input [(ngModel)]="password" class="input" maxlength="15" minlength="4" placeholder="Contraseña"
-            type="password">
+          <ion-input [(ngModel)]="password" class="input" maxlength="15" minlength="4"
+            placeholder="{{'USER.PASS' | translate}}" type="password">
           </ion-input><br>
           <ion-input [(ngModel)]="password1" class="input" maxlength="15" minlength="4"
-            placeholder="Repita la Contraseña" type="password">
+            placeholder="{{'USER.PASS2' | translate}}" type="password">
           </ion-input><br>
         </ion-col>
         <ion-col size="3"></ion-col>
@@ -69,7 +87,7 @@
     </ion-grid>
 
     <button ion-button block button-large (click)="signin()" class="buttonN">
-      <h2> Registrate </h2>
+      <h2> {{ 'USER.BUTTONR2' | translate }}</h2>
     </button><br>
 
   </ng-container>
@@ -84,9 +102,7 @@
   <ion-toolbar>
 
     <h4>
-      Al continuar usando nuestra aplicación usted acepta nuestros términos
-      y condiciones.
-      Para más información consulte nuestros <a href="{{path}}/gdpr" target="_blank">Términos y condiciones</a>
+      {{ 'USER.GDPR' | translate }} <a href="{{path}}/gdpr" target="_blank">{{ 'USER.GDPR2' | translate }}</a>
     </h4>
 
   </ion-toolbar>

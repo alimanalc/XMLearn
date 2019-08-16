@@ -14,8 +14,23 @@
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item color="medium" [routerDirection]="'root'" [routerLink]="[p.url]">
               <!-- <ion-icon slot="start" [name]="p.icon"></ion-icon> -->
-              <ion-label>
-                <h1 style="color: black;"> {{p.title}}</h1>
+              <ion-label *ngIf="[p.title] == 'Crear petición'">
+                <h1 style="color: black;"> {{'MENU.DATA' | translate}}</h1>
+              </ion-label>
+              <ion-label *ngIf="[p.title] == 'Lista de tus peticiones'">
+                <h1 style="color: black;"> {{'MENU.LIST' | translate}}</h1>
+              </ion-label>
+              <ion-label *ngIf="[p.title] == 'Saber más'">
+                <h1 style="color: black;"> {{'MENU.MORE' | translate}}</h1>
+              </ion-label>
+              <ion-label *ngIf="[p.title] == 'Sobre nosotros'">
+                <h1 style="color: black;"> {{'MENU.ABOUT' | translate}}</h1>
+              </ion-label>
+              <ion-label *ngIf="[p.title] == 'Términos y condiciones'">
+                <h1 style="color: black;"> {{'MENU.GDPR' | translate}}</h1>
+              </ion-label>
+              <ion-label *ngIf="[p.title] == 'Test'">
+                <h1 style="color: black;"> {{'MENU.TEST' | translate}}</h1>
               </ion-label>
             </ion-item>
           </ion-menu-toggle>

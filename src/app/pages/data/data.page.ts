@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController, PopoverController, AlertController } from '@ionic/angular';
+import { MenuController, PopoverController, AlertController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
 import { Attribute, Request } from 'src/app/app.data.model';
 import { InfoStringComponent } from 'src/app/components/info-string/info-string.component';
@@ -23,7 +23,7 @@ export class DataPage implements OnInit {
 
 
   constructor(public menuCtrl: MenuController,
-    public navCtrl: NavController, private cookieService: CookieService,
+    private cookieService: CookieService,
     private popoverController: PopoverController,
     public alertController: AlertController,
     public dM: DataManagement,
@@ -69,9 +69,12 @@ export class DataPage implements OnInit {
     }
     //Si los campos estan vacios
     if (vacio) {
+      const translationAlertEmpty: string = this.translate.instant(
+        'DATA.ALERT_EMPTY'
+      );
       this.alertController
         .create({
-          header: 'Todos los campos deben estar rellenos',
+          header: translationAlertEmpty,
           buttons: ['OK']
         }).then(alertEl => {
           alertEl.present();
@@ -94,9 +97,12 @@ export class DataPage implements OnInit {
           if (requests.length > 0) {
             for (let entry of requests) {
               if (this.request.name === entry.name) {
+                const translationAlertRepeatName: string = this.translate.instant(
+                  'DATA.ALERT_REPEAT_NAME'
+                );
                 this.alertController
                   .create({
-                    header: 'Ya tienes una petición con este nombre',
+                    header: translationAlertRepeatName,
                     buttons: ['OK']
                   }).then(alertEl => {
                     alertEl.present();
@@ -112,9 +118,12 @@ export class DataPage implements OnInit {
 
                 this.cookieService.set('formUse', this.request.name);
                 this.cookieService.set('form', JSON.stringify(this.request));
+                const translationAlertOk: string = this.translate.instant(
+                  'DATA.ALERT_OK'
+                );
                 this.alertController
                   .create({
-                    header: 'Los datos se han guardado correctamente',
+                    header: translationAlertOk,
                     buttons: ['OK']
                   }).then(alertEl => {
                     alertEl.present();
@@ -132,9 +141,12 @@ export class DataPage implements OnInit {
 
                 this.cookieService.set('formUse', this.request.name);
                 this.cookieService.set('form', JSON.stringify(this.request));
+                const translationAlertOk: string = this.translate.instant(
+                  'DATA.ALERT_OK'
+                );
                 this.alertController
                   .create({
-                    header: 'Los datos se han guardado correctamente',
+                    header: translationAlertOk,
                     buttons: ['OK']
                   }).then(alertEl => {
                     alertEl.present();

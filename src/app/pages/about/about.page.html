@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
-      <h1>Sobre nosotros</h1>
+    <ion-title color="light" style="float: left;">
+      <h1>{{ 'ABOUT.TITLE' | translate }}</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -18,9 +26,8 @@
       <ion-col size="2"></ion-col>
       <ion-col size="8">
         <ion-text style="text-align: justify;">
-          <h4>Esta aplicación web esta creada con objetivos solo académicos como parte de un Trabajo Fin de Grado en la
-            Escuela Técnica Superior de Ingeniería Informática en la Universidad de Sevilla.
-            Cuya finalidad es enseñar a otras personas sobre vulnerabilidades XML, como detectarlas y como evitarlas.
+          <h4>
+            {{ 'ABOUT.TEXT1' | translate }}
           </h4><br>
         </ion-text>
       </ion-col>
@@ -28,7 +35,7 @@
     </ion-row>
   </ion-grid>
   <ion-text style="text-align: center;">
-    <h4>Realizado por:</h4><br>
+    <h4>{{ 'ABOUT.TEXT2' | translate }}</h4><br>
   </ion-text>
   <img src="../../assets/img/alicia-redonda.png" />
   <ion-text style="text-align: center;">

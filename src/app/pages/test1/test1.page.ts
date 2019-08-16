@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController, AlertController } from '@ionic/angular';
+import { MenuController, AlertController } from '@ionic/angular';
 import { DataManagement } from 'src/app/services/dataManagement';
 import { CookieService } from 'ngx-cookie-service';
 import { Request } from 'src/app/app.data.model';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-test1',
@@ -17,9 +18,9 @@ export class Test1Page implements OnInit {
   constructor(public menuCtrl: MenuController,
     private cookieService: CookieService,
     public dM: DataManagement,
-    public navCtrl: NavController,
     public alertController: AlertController,
-    private router: Router) { }
+    private router: Router,
+    public translate: TranslateService) { }
 
   ngOnInit() {
     this.menuCtrl.enable(true);
@@ -28,6 +29,7 @@ export class Test1Page implements OnInit {
     }
   }
 
+  //Ejecución del test
   runTest() {
     let test: string = "]]>";
     let fd = new HttpParams();
@@ -53,17 +55,22 @@ export class Test1Page implements OnInit {
       .catch(error => {
         console.log(error);
 
-
+        const translationAlertStatus: string = this.translate.instant(
+          'TESTS.STATUS'
+        );
         switch (error.status) {
           case 400 || 422: {
             this.router.navigate(['/positive', error.status]);
             break;
           }
           case 500 || 502 || 503 || 504: {
+            const translationAlertErrorServer: string = this.translate.instant(
+              'TESTS.ERROR_SERVER'
+            );
             this.alertController
               .create({
-                header: 'Ha habido un error con su servidor por favor inténtelo más tarde.',
-                subHeader: 'Estado devuelto:',
+                header: translationAlertErrorServer,
+                subHeader: translationAlertStatus,
                 message: error.status,
                 buttons: ['OK']
               }).then(alertEl => {
@@ -72,10 +79,13 @@ export class Test1Page implements OnInit {
             break;
           }
           case 404: {
+            const translationAlertErrorRequest: string = this.translate.instant(
+              'TESTS.ERROR_REQUEST'
+            );
             this.alertController
               .create({
-                header: 'Hay un fallo con la petición creada por favor creala de nuevo.',
-                subHeader: 'Estado devuelto:',
+                header: translationAlertErrorRequest,
+                subHeader: translationAlertStatus,
                 message: error.status,
                 buttons: ['OK']
               }).then(alertEl => {
@@ -84,10 +94,13 @@ export class Test1Page implements OnInit {
             break;
           }
           case 429: {
+            const translationAlertErrorRequests: string = this.translate.instant(
+              'TESTS.ERROR_REQUESTS'
+            );
             this.alertController
               .create({
-                header: 'Han sido enviadas demasiadas solicitudes por favor inténtelo de nuevo más tarde.',
-                subHeader: 'Estado devuelto:',
+                header: translationAlertErrorRequests,
+                subHeader: translationAlertStatus,
                 message: error.status,
                 buttons: ['OK']
               }).then(alertEl => {
@@ -96,10 +109,13 @@ export class Test1Page implements OnInit {
             break;
           }
           case 408: {
+            const translationAlertErrorTime: string = this.translate.instant(
+              'TESTS.ERROR_TIME'
+            );
             this.alertController
               .create({
-                header: 'Por motivos ajenos a nosotros se ha excedido el tiempo de espera de la respuesta por favor inténtelo de nuevo más tarde.',
-                subHeader: 'Estado devuelto:',
+                header: translationAlertErrorTime,
+                subHeader: translationAlertStatus,
                 message: error.status,
                 buttons: ['OK']
               }).then(alertEl => {
@@ -108,9 +124,12 @@ export class Test1Page implements OnInit {
             break;
           }
           default: {
+            const translationAlertError: string = this.translate.instant(
+              'TESTS.ERROR'
+            );
             this.alertController
               .create({
-                header: 'Ha habido un error y no sabemos el motivo.',
+                header: translationAlertError,
                 buttons: ['OK']
               }).then(alertEl => {
                 alertEl.present();
@@ -119,6 +138,12 @@ export class Test1Page implements OnInit {
           }
         }
       });
+  }
+
+  //Cambiar el idioma
+  changeLanguage(selectedValue: { detail: { value: string } }) {
+    this.cookieService.set('lang', selectedValue.detail.value);
+    this.translate.use(selectedValue.detail.value);
   }
 
 }

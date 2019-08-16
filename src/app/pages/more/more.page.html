@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
-      <h1>Saber más</h1>
+    <ion-title color="light" style="float: left;">
+      <h1>{{'MORE.TITLE' | translate}}</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -18,10 +26,7 @@
       <ion-col size="2"></ion-col>
       <ion-col size="8">
         <ion-text style="text-align: justify;">
-          <h3>Aparte de las vulnerabilidades que se prueban hay otras vulnerabilidades XML que se deben tener en cuenta
-            ya que pueden hacer que tu servidor deje de funcionar o que se revelen datos de carácter confidencial. Todo
-            esto es muy importante que se evite y que se sepa como por ello si quieres saber más sobre vulnerabilidades
-            XML puedes también consultar distintas páginas como:
+          <h3>{{'MORE.TEXT' | translate}}
           </h3>
         </ion-text>
         <ion-text style="text-align: center;">

@@ -2,5 +2,169 @@
     "MENU": {
         "MENU": "Menú",
         "SESION": "Cerrar sesión",
+        "DATA": "Crear petición",
+        "LIST": "Lista de tus peticiones",
+        "MORE": "Saber más",
+        "ABOUT": "Sobre nosotros",
+        "GDPR": "Términos y condiciones",
+        "TEST": "Test",
+        "LANGUAGE": "Idioma"
+    },
+    "HOME": {
+        "TEXT1": "Bienvenido a XMLearn, con esta aplicación web aprenderás sobre el mundo XML y cuales son sus vulnerabilidades.",
+        "TEXT2": "Consiste en realizar peticiones POST sospechosas a una URL que se indique. Para ello, solo debes ofrecer la URL de la petición que quieres probar y el nombre de los campos que la componen. Si un campo tiene que cumplir determinado formato se deberá introducir un valor válido para ese campo. Se realizarán una serie de pruebas en los campos que son de tipo string y no deben cumplir ningún patrón.",
+        "TEXT3": "Si estas preparado/a dale a",
+        "BUTTON": "Comenzar",
+        "GDPR": " Al continuar usando nuestra aplicación usted acepta nuestros términos y condiciones. Para más información consulte nuestros",
+        "GDPR2": "Términos y condiciones."
+    },
+    "USER": {
+        "BUTTONI": "Indetificarse",
+        "BUTTONR": "Registrarse",
+        "BUTTONI2": "Indetifícate",
+        "BUTTONR2": "Regístrate",
+        "GDPR": " Al continuar usando nuestra aplicación usted acepta nuestros términos y condiciones. Para más información consulte nuestros",
+        "GDPR2": "Términos y condiciones",
+        "NAME": "Usuario",
+        "PASS": "Contraseña",
+        "PASS2": "Repita la contraseña",
+        "EMPTY": "Todos los campos deben estar rellenos",
+        "EQUAL": "Ambas contraseñas deben ser iguales",
+        "OKAY_SIGNIN": "Se ha registrado correctamente",
+        "NO_USER": "Ese usuario no está disponible.",
+        "ERROR": "Se ha producido un error por favor vuelva a intentarlo más tarde.",
+        "ERROR_PASSWORD": "La contraseña es incorrecta.",
+        "ERROR_USER": "Ese usuario no existe."
+    },
+    "DATA": {
+        "TITLE": "Crear petición",
+        "TEXT1": "Añade los distintos campos de tu formulario:",
+        "ADD1": "+ campo",
+        "ADD2": "+ campo y valor",
+        "BUTTON": " Listo ",
+        "NAME": "Nombre de la petición",
+        "URL": "URL petición",
+        "NAMEA": "Nombre del campo",
+        "VALUEA": "valor permitido del campo en caso de tener alguna restricción",
+        "ALERT_EMPTY": "Todos los campos deben estar rellenos",
+        "ALERT_REPEAT_NAME": "Ya tienes una petición con este nombre",
+        "ALERT_OK": "Los datos se han guardado correctamente"
+    },
+    "ABOUT": {
+        "TITLE": "Sobre nosotros",
+        "TEXT1": "Esta aplicación web ha sido creada con objetivos sólo académicos como parte de un Trabajo Fin de Grado en la Escuela Técnica Superior de Ingeniería Informática en la Universidad de Sevilla. Cuya finalidad es enseñar a otras personas sobre vulnerabilidades XML, cómo detectarlas y cómo evitarlas.",
+        "TEXT2": "Realizado por:"
+    },
+    "LIST": {
+        "TITLE": "Lista de tus peticiones",
+        "TEXT1": "Esta es una lista de tus peticiones, la flecha indica qué petición se está usando. Para cambiar de petición sólo hay que hacer click en ella.",
+        "TEXT2": "Nombre de la petición:",
+        "TEXT3": "Aún no tienes ninguna petición creada."
+    },
+    "MORE": {
+        "TITLE": "Saber más",
+        "TEXT": "Aparte de las vulnerabilidades que se prueban hay otras vulnerabilidades XML que se deben tener en cuenta, ya que pueden hacer que tu servidor deje de funcionar o que se revelen datos de carácter confidencial. Todo esto es muy importante que se evite y que se sepa cómo, por ello, si quieres saber más sobre vulnerabilidades XML puedes también consultar distintas aplicaciones web como:"
+    },
+    "GDPR": {
+        "TITLE": "Términos y condiciones",
+        "SUBTITLE1": "¿Quiénes somos?",
+        "TEXT1": "Esta aplicación ha sido creada por una estudiante del Grado en Ingeniería Informática del Software llamada Alicia Manzano Alcaide con la supervisión de su tutora Inmaculada Hernández. Este proyecto sólo tiene fines académicos por lo que será presentado como Proyecto de Fin de Grado aunque el proyecto se puede ampliar más adelante.",
+        "SUBTITLE2": "Datos personales",
+        "TEXT2": "Esta aplicación guarda de cada usuario, su nombre de usuario, contraseña y peticiones que crea. Todos estos datos que son guardados en nuestra base de datos no son compartidos ni vendidos a terceros.",
+        "SUBTITLE3": "Cookies",
+        "TEXT3": "Las cookies son archivos de información que nuestro servidor envía a tu navegador, en nuestra aplicación web hay diferentes cookies utilizadas para que la aplicación web funcione correctamente. A continuación se detallará con más detenimiento dónde se usan estas cookies y con qué fin se usan.",
+        "SUBTITLE4": "Al crear una petición",
+        "TEXT4": "Para poder crear una petición con la que realizar las pruebas, es necesario dar un mínimo de datos: una URL, los campos de los que va a estar formada la petición y un valor para aquellos campos que deben cumplir determinados requisitos. Esta información es guardada en nuestra base de datos con la intención de que el usuario tenga acceso a sus peticiones. Además, al crear una petición esta se guarda en una cookie para que el acceso a ella en la ejecución de los test sea más rápido.",
+        "SUBTITLE5": "Cuando ejecutas un test",
+        "TEXT5": "Al ejecutar un test este intentará encontrar ciertas vulnerabilidades en tu base de datos a través de la petición facilitada.",
+        "SUBTITLE6": "Al acceder a la lista de tus peticiones",
+        "TEXT6": "Cuando accedes a la lista de tus peticiones se encuentra la opción de cambiar la petición a la que realizar las pruebas, al realizar esta acción la petición elegida es guardada en cookies para conseguir un acceso más rápido a ella cuando se ejecute un test."
+    },
+    "TESTS": {
+        "TEXT1": "Aquí encontrarás una serie de test estructurados por categorías:",
+        "TEXT2": "Test para principiantes:",
+        "TEXT3": "Denegación de Servicios(DoS):",
+        "TEXT4": "Comprobación de Registro e Identificación:",
+        "TEXT5": "Ejecutar test 1, 2 y 3 juntos:",
+        "TEXT6": "Los test aún no están disponible primero debes crear una petición o elegir una de las peticiones ya creadas.",
+        "BUTTON": "Ejecutar",
+        "STATUS": "Estado devuelto:",
+        "ERROR_SERVER": "Ha habido un error con su servidor por favor inténtelo más tarde.",
+        "ERROR_REQUEST": "Hay un fallo con la petición creada por favor créala de nuevo.",
+        "ERROR_REQUESTS": "Han sido enviadas demasiadas solicitudes por favor inténtelo de nuevo más tarde.",
+        "ERROR_TIME": "Por motivos ajenos a nosotros se ha excedido el tiempo de espera de la respuesta por favor inténtelo de nuevo más tarde.",
+        "ERROR": "Ha ocurrido un error por favor vuelva a intentarlo más adelante.",
+        "OKAY": "Todos los test han sido superados con exito",
+        "FAIL": "Ha fallado en el test "
+    },
+    "NEGATIVE": {
+        "TITLE": "No ha superado el test",
+        "TEXT1": "El test no ha sido superado.",
+        "TEXT2": "Estado devuelto: ",
+        "TEXT3": "Para poder corregir esta vulnerabilidad se recomienda utilizar un gestor de base de datos que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de ciertos caracteres como <,> o / mediante expresiones regulares. Además de todo esto se debería limitar el consumo excesivo de los recursos del servidor.",
+        "TEXT4": "Para poder corregir esta vulnerabilidad se recomienda supervisar estas entradas para comprobar que no provocan fallos en las consultas que se realizan. Otra forma de evitarlo sería no utilizar este tipo de consultas en lugares a los que tenga acceso el usuario.",
+        "TEXT5": "Para poder corregir esta vulnerabilidad se recomienda utilizar un gestor de base de datos que tenga en cuenta este tipo de ataque. Otra medida sería restringir la entrada de ciertos caracteres como <,> o / mediante expresiones regulares.",
+        "TEXT6": "Nota informativa: Se determina que un test no ha sido superado cuando la realización de este mediante la petición ofrecida ha dado de respuesta 200 ó 201. Esto es considerado así debido a que la base de datos o el servidor al que se realizan las peticiones debería de tener ciertas restricciones en los datos introducidos dando por tanto como respuesta un 400 o 422."
+    },
+    "POSITIVE": {
+        "TITLE": "Ha superado el test",
+        "TEXT1": "El test ha sido un exito.",
+        "TEXT2": "Estado devuelto: ",
+        "TEXT3": "Tu aplicación no es vulnerable ante este tipo de ataque.",
+        "TEXT4": "Nota informativa: Se determina que un test ha sido superado cuando la realización de este mediante la petición ofrecida ha dado de respuesta 400 ó 422. Esto es considerado así debido a que la base de datos o el servidor al que se realizan las peticiones debería de tener ciertas restricciones en los datos introducidos, al no superar los valores introducidos estas restricciones debería dar un 400. Por tanto, si la respuesta es 201 ó 200 implica que los valores que aporta en las entradas de la petición el test son dados como válidos siendo vulnerable ante estos ataques."
+    },
+    "TEST1": {
+        "TITLE": "Deformación",
+        "TEXT1": "Este test consiste en introducir en determinados campos de la petición caracteres que son utilizados en la representación del lenguaje XML. De esta forma se pone en compromiso la estructura del archivo XML. Estos caracteres son >, <, ]]> .",
+        "TEXT2": "¡Ups, no deberías estar aquí!",
+        "BUTTON": "Ejecutar"
+    },
+    "TEST2": {
+        "TITLE": "Etiquetas cerradas aleatorias",
+        "TEXT1": "Este test consiste en introducir etiquetas de cierre aleatorias (como por ejemplo {{tag}}) con el objetivo de deformar los mensajes de error XML y así poderse ver la estructura del archivo XML.",
+        "TEXT2": "¡Ups, no deberías estar aquí!",
+        "BUTTON": "Ejecutar"
+    },
+    "TEST3": {
+        "TITLE": "Bomba XML",
+        "TEXT1": "Este test llamado XML Bomb consiste en introducir una gran cantidad de datos hasta llenar la memoria de la base de datos, para ello se introduce el siguiente esquema:",
+        "TEXT2": "En este esquema se crean 10 entidades desde lol-lol9, cada una de ellas en su interior hace referencia a la anterior, de esta forma la base de datos se llena al intentar resolver todas las referencias. El número de entidades que se crean se puede regular.",
+        "TEXT3": "Elige el numero de entidades que quieres que sean creadas: ",
+        "TEXT4": "Cantidad:",
+        "TEXT5": "¡Ups, no deberías estar aquí!",
+        "BUTTON": "Ejecutar"
+    },
+    "TEST4": {
+        "TITLE": "Inyección XPath",
+        "TEXT1": "Este test es de tipo Inyección XPath, este tipo de ataque se da cuando un sitio web usa datos suministrados por el usuario para crear consultas. Supongamos que tenemos este archivo XML:",
+        "TEXT2": "Al tener una petición para la identificación de los usuarios, un usuario malintencionado puede introducir en el campo username: blah' or 1=1 or 'a'='a , y en la contraseña: blah (Nota: el valor de la contraseña es irrelevante).",
+        "TEXT3": "De esta forma cuando se haga una consulta como esta: ",
+        "TEXT4": "Con los datos anteriores se quedaría de esta forma:",
+        "TEXT5": " Como 1=1 siempre va a ser verdadero, va a devolver toda la lista de empleados. Si esta consulta se realiza en una página accesible por los usuarios estos podrían acceder al listado completo de empleados.",
+        "TEXT6": "Lo que se va a hacer en este test es introducir el valor blah' or 1=1 or 'a'='a en el campo username y el valor blah en el resto, siempre y cuando no se le haya dado un valor por defecto. Por tanto, este test no tiene sentido que se realice en peticiones que no sean para identificarse en alguna aplicación web, si se realiza en otro tipo de petición que no sea para identificarse puede dar resultados incongruentes.",
+        "TEXT7": "¡Ups, no deberías estar aquí!",
+        "BUTTON": "Ejecutar"
+    },
+    "TEST5": {
+        "TITLE": "Replicado",
+        "TEXT1": "Este test consiste en repetir los campos id e email mediante el registro de un usuario con valores que produzcan fallos en la lectura de los datos. Esto se consigue introduciendo este valor por ejemplo en el campo email: a{{text1}}0 OR true{{text2}}a@b.com, esto puede ser realizado en otro campo sustituyendo email por el nombre del campo. De esta forma se conseguiría registrar un usuario de esta forma:",
+        "TEXT2": "Vemos que las etiquetas userid e email están repetidas. Al haber etiquetas repetidas el lector de código solo interpretará las últimas que se encuentren, en este caso las que tienen los valores introducidos por nosotros.",
+        "TEXT3": "¡Ups, no deberías estar aquí!",
+        "BUTTON": "Ejecutar"
+    },
+    "TEST6": {
+        "TITLE": "Reemplazo",
+        "TEXT1": "Este test consiste en reemplazar el valor del campo userid por el valor que tu quieras mediante el registro de un usuario. Esto se consigue introduciendo a traves del campo password: {{text1}} y a traves del campo email: {{text2}}. Quedando en el archivo XML de esta forma:",
+        "TEXT2": "Vemos que la etiqueta de userid que había ha sido comentada introduciendo así un nuevo userid.",
+        "TEXT3": "¡Ups, no deberías estar aquí!",
+        "BUTTON": "Ejecutar"
+    },
+    "COMPONENT1": {
+        "TEXT1": "En cada recuadro hay que escribir el nombre de los campos de la petición que se desea probar.",
+        "TEXT2": "Si este campo tiene que cumplir un determinado formato se debe añadir un valor que cumpla dicha restricción."
+    },
+    "COMPONENT2": {
+        "TEXT1": "En este recuadro debes añadir la URL de la petición con la cual quieres hacer pruebas. Por ejemplo: http://veteriApp/updateMascota/Rex",
+        "TEXT2": "Esta petición sirve para guardar una mascota en la base de datos. Para ello, la petición necesita tener campos con los datos de la mascota. Por ejemplo en este caso sería: nombre, propietario, especie, raza y sexo."
     }
 }

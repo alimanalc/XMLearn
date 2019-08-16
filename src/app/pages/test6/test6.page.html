@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
-      <h1>Reemplazo</h1>
+    <ion-title color="light" style="float: left;">
+      <h1>{{'TEST6.TITLE' | translate}}</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -18,14 +26,11 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: justify;">
-            <h3>Este test consiste en reemplazar el valor del campo userid por el valor que tu quieras mediante
-              el registro de un usuario. Esto se consigue introduciendo a traves del campo password:
-              "{{text1}}" y a traves del campo email: "{{text2}}" . Quedando en el
-              archivo XML de esta forma: </h3> <br>
+            <h3> {{'TEST6.TEXT1' | translate}}</h3> <br>
           </ion-text>
           <img style="height: 133px; width: 537px;" src="../../assets/img/test6.PNG" />
           <ion-text style="text-align: justify;">
-            <h3>Vemos que la etiqueta de userid que había ha sido comentada introduciendo así un nuevo userid.
+            <h3>{{'TEST6.TEXT2' | translate}}
             </h3><br>
           </ion-text>
         </ion-col>
@@ -35,7 +40,7 @@
 
     </ion-grid>
     <button ion-button block button-large (click)="runTest()" class="buttonN">
-      <h2> Ejecutar </h2>
+      <h2> {{'TEST6.BUTTON' | translate}}</h2>
     </button>
   </ng-container>
   <ng-container *ngIf="!hayForm">
@@ -45,7 +50,7 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: center;">
-            <h1>Upss no deberías estar aquí.</h1>
+            <h1> {{'TEST6.TEXT3' | translate}}</h1>
             <br>
           </ion-text>
         </ion-col>

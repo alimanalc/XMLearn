@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
-      <h1>Términos y condiciones</h1>
+    <ion-title color="light" style="float: left;">
+      <h1>{{'GDPR.TITLE' | translate}}</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +23,7 @@
   <br>
 
   <ion-title>
-    <h1 class="h1">Política de protección de datos</h1>
+    <h1 class="h1">{{'GDPR.TITLE' | translate}}</h1>
   </ion-title>
 
   <ion-grid>
@@ -23,66 +31,40 @@
       <ion-col size="2"></ion-col>
       <ion-col size="8">
         <ion-text>
-          <h2>¿Quienes somos?</h2>
+          <h2>{{'GDPR.SUBTITLE1' | translate}}</h2>
           <h4>
             <p>
-              Esta aplicación esta creada por una estudiante del Grado en Ingeniería Informática del Software llamada
-              Alicia Manzano Alcaide con la supervisión de su tutora Inmaculada Hernandez. Este proyecto solo tiene
-              fines académicos por lo que será presentado como Proyecto de Fin de Grado aunque el proyecto se puede
-              ampliar
-              más adelante.
+              {{'GDPR.TEXT1' | translate}}
             </p>
           </h4><br>
-          <h2>Datos personales</h2>
+          <h2>{{'GDPR.SUBTITLE2' | translate}}</h2>
           <h4>
             <p>
-              Esta aplicación guarda de cada usuario, su nombre de usuario, contraseña y peticiones que crea. Todos
-              estos datos que son guardados en nuestra base de datos no son compartidos ni vendidos a terceros.
+              {{'GDPR.TEXT2' | translate}}
             </p>
           </h4><br>
-          <h2>Cookies</h2>
+          <h2>{{'GDPR.SUBTITLE3' | translate}}</h2>
           <h4>
             <p>
-              Las cookies son archivos de información que nuestro servidor envía a tu navegador y que una vez ahí son
-              guardadas
-              por un breve periodo de tiempo. En nuestra aplicación se utilizan diversas cookies para conseguir un buen
-              funcionamiento
-              de la aplicación web y para evitar el uso de una base de datos donde guardar esta información. A
-              continuación se detallará
-              con más detenimiento donde se usan estas cookies y con que fin se usan.
+              {{'GDPR.TEXT3' | translate}}
             </p>
           </h4><br>
-          <h2>Al crear una petición</h2>
+          <h2>{{'GDPR.SUBTITLE4' | translate}}</h2>
           <h4>
             <p>
-              Para poder crear una petición con la que realizar las pruebas es necesario dar un mínimo de datos,
-              estos datos son una URL, los campos de los que va a estar formada la petición y un valor para aquellos
-              campos
-              que deben cumplir determinados requisitos. Esta información es guardada en nuestra base de datos con la
-              intención
-              de que el usuario tenga acceso a sus peticiones. Además, al crear una petición esta se guarda en una
-              cookie para que
-              el acceso a ella en la ejecución de los test sea más rápido.
+              {{'GDPR.TEXT4' | translate}}
             </p>
           </h4><br>
-          <h2>Cuando ejecutas un test</h2>
+          <h2>{{'GDPR.SUBTITLE5' | translate}}</h2>
           <h4>
             <p>
-              Al ejecutar un test este intentará descubrir ciertas vulnerabilidades en tu base de datos a través de la
-              petición facilitada. En este procedimiento no se guardará nada en cookies. Si este tipo de pruebas produce
-              fallos o un colapso en sus servidores o bases de datos no nos hacemos responsable de ello. Usted decide
-              previamente
-              utilizar esta aplicación web asumiendo las consecuencias que eso puede producir en sus proyectos.
+              {{'GDPR.TEXT5' | translate}}
             </p>
           </h4><br>
-          <h2>Al acceder a la lista de tus peticiones</h2>
+          <h2>{{'GDPR.SUBTITLE6' | translate}}</h2>
           <h4>
             <p>
-              Cuando accedes a la lista de tus peticiones se encuentra la opción de cambiar la petición a la que
-              realizar
-              las pruebas, al realizar esta acción la petición elegida es guardada en cookies para conseguir un
-              acceso más rápido
-              a ella cuando se ejecute un test.
+              {{'GDPR.TEXT6' | translate}}
             </p>
           </h4><br>
         </ion-text>

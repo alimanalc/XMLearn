@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
-      <h1>Replicado</h1>
+    <ion-title color="light" style="float: left;">
+      <h1>{{'TEST5.TITLE' | translate}}</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -18,20 +26,12 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: justify;">
-            <h3>Este test consiste en repetir los campos id e email mediante el registro de un usuario
-              con valores que produzcan fallos en la lectura de los datos. Esto se consigue introduciendo este valor
-              por ejemplo en el campo email: "a{{text1}}0 OR true{{text2}}a@b.com", esto puede ser realizado en otro
-              campo sustituyendo email por el nombre del campo. De esta forma se conseguiría registrar un usuario de
-              esta
-              forma:
+            <h3>{{'TEST5.TEXT1' | translate}}
             </h3><br>
           </ion-text>
           <img style="height: 179px; width: 360px;" src="../../assets/img/test5.PNG" />
           <ion-text style="text-align: justify;">
-            <h3>Vemos que las etiquetas userid e email están repetidas. Al haber etiquetas repetidas el lector de código
-              solo
-              interpretará las últimas que se encuentren, en este caso las que tienen los valores introducidos por
-              nosotros.
+            <h3>{{'TEST5.TEXT2' | translate}}
             </h3><br>
           </ion-text>
         </ion-col>
@@ -41,7 +41,7 @@
 
     </ion-grid>
     <button ion-button block button-large (click)="runTest()" class="buttonN">
-      <h2> Ejecutar </h2>
+      <h2>{{'TEST5.BUTTON' | translate}}</h2>
     </button>
 
   </ng-container>
@@ -53,7 +53,7 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: center;">
-            <h1>Upss no deberías estar aquí.</h1>
+            <h1>{{'TEST5.TEXT3' | translate}}</h1>
             <br>
           </ion-text>
         </ion-col>

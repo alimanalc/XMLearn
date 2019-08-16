@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
-      <h1>Lista de tus peticiones</h1>
+    <ion-title color="light" style="float: left;">
+      <h1>{{'LIST.TITLE' | translate}}</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -18,9 +26,7 @@
         <ion-col size="2"></ion-col>
         <ion-col size="8">
           <ion-text style="text-align: center;">
-            <h3>Esta es una lista de tus peticiones, la flecha indica que petición se está usando. Para cambiar de
-              petición solo
-              hay que hacer click en ella.
+            <h3>{{'LIST.TEXT1' | translate}}
             </h3><br>
           </ion-text>
         </ion-col>
@@ -30,7 +36,7 @@
     </ion-grid>
     <ion-text style="text-align: center;">
       <h2 style=" text-decoration: underline;
-      text-decoration-color: blueviolet;">Nombre de la petición</h2>
+      text-decoration-color: blueviolet;"> {{'LIST.TEXT2' | translate}}</h2>
     </ion-text>
     <ion-grid>
       <ng-container *ngFor="let request of requests">
@@ -57,7 +63,7 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: center;">
-            <h1>Aún no tienes ninguna petición creada.</h1>
+            <h1>{{'LIST.TEXT3' | translate}}</h1>
             <br>
           </ion-text>
         </ion-col>

@@ -3,12 +3,12 @@
         <ion-buttons slot="start">
             <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
         </ion-buttons>
-        <ion-title color="light">
-            <h1>Crear petición</h1>
+        <ion-title color="light" style="float: left;">
+            <h1>{{ 'DATA.TITLE' | translate }}</h1>
         </ion-title>
-        <ion-item style="width:350px; float: right;">
+        <ion-item style="width:300px; float: right; padding-top: 8px;">
             <ion-icon name="globe" color="light"></ion-icon>
-            <ion-label color="light">Idioma</ion-label>
+            <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
             <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
                 <ion-select-option value="es">Español</ion-select-option>
                 <ion-select-option value="en">English</ion-select-option>
@@ -25,7 +25,7 @@
             </ion-col>
             <ion-col size="4">
                 <ion-input [(ngModel)]="name" maxlength="25" minlength="1" class="url"
-                    placeholder="Nombre de la petición" type="text">
+                    placeholder="{{'DATA.NAME' | translate}}" type="text">
                 </ion-input>
             </ion-col>
             <ion-col size="3"></ion-col>
@@ -33,7 +33,7 @@
     </ion-grid>
 
     <ion-text style="text-align: center;">
-        <h2>Añade los distintos campos de tu formulario:</h2>
+        <h2>{{ 'DATA.TEXT1' | translate }}</h2>
     </ion-text>
 
     <div class="form">
@@ -46,8 +46,8 @@
                     </ion-icon>
                 </ion-col>
                 <ion-col size="4">
-                    <ion-input [(ngModel)]="url" class="url" maxlength="100" minlength="1" placeholder="URL petición"
-                        type="url"></ion-input>
+                    <ion-input [(ngModel)]="url" class="url" maxlength="100" minlength="1"
+                        placeholder="{{'DATA.URL' | translate}}" type="url"></ion-input>
                 </ion-col>
                 <ion-col size="3"></ion-col>
             </ion-row>
@@ -62,11 +62,10 @@
                     </ion-col>
                     <ion-col size="6">
                         <ion-input [(ngModel)]="attribute.name" maxlength="40" minlength="1"
-                            placeholder="nombre del campo" class="input" type="text">
+                            placeholder="{{'DATA.NAMEA' | translate}}" class="input" type="text">
                         </ion-input>
                         <ng-container *ngIf="attribute.type=='none'">
-                            <ion-input [(ngModel)]="attribute.value"
-                                placeholder="valor permitido del campo en caso de tener alguna restricción"
+                            <ion-input [(ngModel)]="attribute.value" placeholder="{{'DATA.VALUEA' | translate}}"
                                 class="input" maxlength="40" minlength="1" type="text">
                             </ion-input>
                         </ng-container>
@@ -90,15 +89,15 @@
 
     <ng-container *ngIf="request.attributes.length < 15 ">
         <ion-text (click)="addCampoString()" class="add">
-            <h3>+ campo</h3>
+            <h3>{{ 'DATA.ADD1' | translate }}</h3>
         </ion-text>
         <ion-text (click)="addCampo()" class="add">
-            <h3>+ campo y valor</h3>
+            <h3>{{ 'DATA.ADD2' | translate }}</h3>
         </ion-text>
         <br><br>
     </ng-container>
 
     <button ion-button block button-large (click)="createForm()" class="buttonN">
-        <h2> Listo </h2>
+        <h2>{{ 'DATA.BUTTON' | translate }}</h2>
     </button><br>
 </ion-content>

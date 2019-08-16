@@ -1,3 +1,170 @@
 {
-    "MENU": "Menu"
+    "MENU": {
+        "MENU": "Menu",
+        "SESION": "Log out",
+        "DATA": "Create request",
+        "LIST": "List of your requests",
+        "MORE": "Know more",
+        "ABOUT": "About us",
+        "GDPR": "Terms and Conditions",
+        "TEST": "Test",
+        "LANGUAGE": "Language"
+    },
+    "HOME": {
+        "TEXT1": "Welcome to XMLearn, with this app you will learn about the XML world and their vulnerabilities.",
+        "TEXT2": "It consists on making suspicious POST requests to the indicated URL. To do it, you should offer the URL of the request that you want to test and the name of the attributes. If an attribute has to fix a pattern, you should insert a valid value for this attribute. The app will make the test in the attributes with type string which don't have a pattern.",
+        "TEXT3": "If you are ready, click in",
+        "BUTTON": "Start",
+        "GDPR": "By continue using our web application, you accept our terms and conditions. For more information consult our",
+        "GDPR2": "Terms and conditions."
+    },
+    "USER": {
+        "BUTTONI": "Login",
+        "BUTTONR": "Sign in",
+        "BUTTONI2": "Login you",
+        "BUTTONR2": "Sign up",
+        "GDPR": "By continue using our web application, you accept our terms and conditions. For more information consult our",
+        "GDPR2": "Terms and conditions.",
+        "NAME": "User",
+        "PASS": "Password",
+        "PASS2": "Repeat the password",
+        "EMPTY": "All the imputs must be fill in",
+        "EQUAL": "Both passwords must match",
+        "OKAY_SIGNIN": "You are signed-in succesfully",
+        "NO_USER": "This user isn't available.",
+        "ERROR": "There is an error. Please, try it again later.",
+        "ERROR_PASSWORD": "The password is incorrect.",
+        "ERROR_USER": "This user doesn't exist."
+    },
+    "DATA": {
+        "TITLE": "Create request",
+        "TEXT1": "Add the differents attributes of your request:",
+        "ADD1": "+ attribute",
+        "ADD2": "+ attribute and value",
+        "BUTTON": " Create ",
+        "NAME": "Name of the request",
+        "URL": "URL request",
+        "NAMEA": "Name of the attribute",
+        "VALUEA": "Value for the attribute that pass the partner",
+        "ALERT_EMPTY": "All the imputs must be fill in",
+        "ALERT_REPEAT_NAME": "You have a request with this name",
+        "ALERT_OK": "The data has been saved correctly"
+    },
+    "ABOUT": {
+        "TITLE": "About us",
+        "TEXT1": "This web application has been created with academic goals like part of a work of the degree in Escuela Técnica Superior de Ingeniería Informática in the University of Seville. Its purpose is to teach other people about XML vulnerabilities, how to detected it and how avoid it.",
+        "TEXT2": "By:"
+    },
+    "LIST": {
+        "TITLE": "List of your requests",
+        "TEXT1": "This is the list of your requests, the arrow is pointing the request that is being using. For change the request you should click in the name of the desired request.",
+        "TEXT2": "Name of the request:",
+        "TEXT3": "You don't have requests."
+    },
+    "MORE": {
+        "TITLE": "Know more",
+        "TEXT": "Apart of the vulnerabilities we test, there are other XML vulnerabilities we need to know because this vulnerabilities can show confidential data or break your server. It's very important to know how to avoid, for that, if you want to know more about XML vulnerabilities you can visit differents web apps like this:"
+    },
+    "GDPR": {
+        "TITLE": "Terms and Conditions",
+        "SUBTITLE1": "Who we are?",
+        "TEXT1": "This web app is created by a student of Grado en Ingeniería Informática del Software with the supervision of her tutor Inmaculada Hernandez. The goals of the project are academic and the project will be part of a Proyecto de Fin de Grado although the project could be expanded in the future.",
+        "SUBTITLE2": "Personal data",
+        "TEXT2": "This web app save about the users: his name like user, password and his requests. All this data is saved in our data base and we don't share or sell the data to other people.",
+        "SUBTITLE3": "Cookies",
+        "TEXT3": "The cookies are files with information that our server send to your browser and the browser save during a time. In our web application there are different cookies to get a good work. Then, we are going to explain where we use this cookies and for what.",
+        "SUBTITLE4": "To create a request",
+        "TEXT4": "To create a request the web application need some data, this data is a URL, the attributes of the request and a value for the attributes that have a pattern. This information is saved in our data base with the intention of the users have access to his requests. In addition, when we create a request, this is saved in a cookie for the access in the test be faster.",
+        "SUBTITLE5": "When you execute a test",
+        "TEXT5": "When you execute a test, this will try to find a XML vulnerability in your data base with the request. In this way, the web application don't save any cookie.",
+        "SUBTITLE6": "When you access to the page of the list of your requests",
+        "TEXT6": "When you access to the page of the list of your requests there is the option to change the request that you use in the test. When you change the request, this request is saved in a cookie to get an access faster when you execute a test."
+    },
+    "TESTS": {
+        "TEXT1": "Here, you can find a list of test packing in categories:",
+        "TEXT2": "Test for beginners:",
+        "TEXT3": "Denial of Service(DDoS):",
+        "TEXT4": "Test of login and sign-in:",
+        "TEXT5": "Execute test 1,2 and 3 together:",
+        "TEXT6": "You don't have access to the test. First, you must create a request or choose one of the created requests.",
+        "BUTTON": "Execute",
+        "STATUS": "Returned status:",
+        "ERROR_SERVER": "There is an error with the server. Please, try it again later.",
+        "ERROR_REQUEST": "There is an error with the request. Please, create the request again.",
+        "ERROR_REQUESTS": "Have been sent a lot of requests. Please, try it again later.",
+        "ERROR_TIME": "For reason that we don't know, the request is timed out. Please, try it again later.",
+        "ERROR": "There is an error. Please, try it again late.",
+        "OKAY": "All test have been successfully passed.",
+        "FAIL": "Has failed in the test "
+    },
+    "NEGATIVE": {
+        "TITLE": "The test hasn't been passed",
+        "TEXT1": "The test hasn't been passed.",
+        "TEXT2": "Request status: ",
+        "TEXT3": "For can fix this vulnerability we advice to use a database manager that protect the database of this attack. Other way is to restrict the entries of strange characters like <, > or / used regular expressions. In addition, you should limit the excessive consumption of the server resources.",
+        "TEXT4": "For can fix this vulnerability we advice to supervise the entries for check that there aren't erros in the consult of the data base. Other way, you shouldn't use this type of consults in places where the user have access.",
+        "TEXT5": "For can fix this vulnerability we advice to use a database manager that protect the database of this attack. Other way is to restrict the entries of strange characters like <, > or / used regular expressions.",
+        "TEXT6": "Note: We consider that a test hasn't been passed when the status of the answer request is 200 or 201. This is because the data base or the server must have restrictions in the inside data, if the data base or the server have a restriction, the status of the answer request is 400 or 422."
+    },
+    "POSITIVE": {
+        "TITLE": "The test has been passed",
+        "TEXT1": "The test has been passed",
+        "TEXT2": "Request status: ",
+        "TEXT3": "Your web application isn't vulnerable in this type of attack.",
+        "TEXT4": "Note: We consider that a test has been passed when the status of the answer request is 400 or 422. This is because the data base or the server must have restrictions in the inside data, if the data base or the server haven't a restriction, the status of the answer request is 200 or 201."
+    },
+    "TEST1": {
+        "TITLE": "Deforming",
+        "TEXT1": "This test consist im introduce in some attributes of the request some characters which are used in the XML language. This way, the structure of the XML files is in danger. This characters are >, <, ]]>.",
+        "TEXT2": "Ups, you shouldn't be here!",
+        "BUTTON": "Execute"
+    },
+    "TEST2": {
+        "TITLE": "Random closing tags",
+        "TEXT1": "This test consist in introduce in some attributes of the request random closing tags (for example {{tag}}) with the goal to the deform the XML error messages. With this, can see the structure of the XML file.",
+        "TEXT2": "Ups, you shouldn't be here!",
+        "BUTTON": "Execute"
+    },
+    "TEST3": {
+        "TITLE": "XML Bomb",
+        "TEXT1": "This test consist in introdice a big quantity of data until to fill up the memory of the data base, for that we introduce the next schema:",
+        "TEXT2": "In this schema there are created 10 entities since lol-lol9, everyone in its inside there are a reference to the entity previous, of this way the memory of the data base is fill in because the data base try to resolve all the references. You can change the number of the entities.",
+        "TEXT3": "Choose the number of entities that you want that will be created.",
+        "TEXT4": "Quantity:",
+        "TEXT5": "Ups, you shouldn't be here!",
+        "BUTTON": "Execute"
+    },
+    "TEST4": {
+        "TITLE": "XPath Injection",
+        "TEXT1": "This test is a XPath Injection type, this type of attack appear when a web application use data supplied by the user to create consults. Let's suppose that we have this XML file:",
+        "TEXT2": "When we have a request for the login of the users, a bad user can enter in the attribute username: blah' or 1=1 or 'a'=a', and in the password: blah (Note: the value for the password is irrelenvat).",
+        "TEXT3": "For this way, when someone do a consult like that:",
+        "TEXT4": "With the previous data, the consult stay of this form:",
+        "TEXT5": "How 1=1 is always true, the consult return all the list of employers. If this consult is created in a page that the users have access, this could access to all list of employers.",
+        "TEXT6": "In this test, we are going to enter the value blah' or 1=1 or 'a'='a in the attribute username and the value blah in the other attributes that don't have a pattern. Is for this reason that this test don't make sense in requests differents of login. If this test is executed in a request different of login can give incongruous results.",
+        "TEXT7": "Ups, you shouldn't be here!",
+        "BUTTON": "Execute"
+    },
+    "TEST5": {
+        "TITLE": "Replicating",
+        "TEXT1": "This test consist in repeat the attributes id and email in the sign-in of an user, this attributes repeat have values which will make errors in the read of the data. This is possible when you enter for example in the attribute email, the value: a{{text1}}0 OR true{{text2}}a@b.com, this can be done in other attribute replacing email for the name of the attribute. In this way, we get to sign-in a user with this form:",
+        "TEXT2": "We can see that the tags userid and email were repeated. How there are repeated tags, the code reader only recognice the last tags, in this case this tags have the value that we want.",
+        "TEXT3": "Ups, you shouldn't be here!",
+        "BUTTON": "Execute"
+    },
+    "TEST6": {
+        "TITLE": "Replacing",
+        "TEXT1": "This test consist to replace the value of the attribute userid for the value that you want in the sign-in of the user. We can do this by inserting in the attribute password: {{text1}} and in the attribute email: {{text2}}. We get this XML file: ",
+        "TEXT2": "We can see that the tag of userid has been commented and the userid have a new value.",
+        "TEXT3": "Ups, you shouldn't be here!",
+        "BUTTON": "Execute"
+    },
+    "COMPONENT1": {
+        "TEXT1": "In each box, you should write the name of the attributes which are part of the request that you want to test.",
+        "TEXT2": "If this attribute has a pattern, you should add a value which follow the pattern."
+    },
+    "COMPONENT2": {
+        "TEXT1": "In this box you should add the URL of the request that you want to test. For example: http://veteriApp/updateMascota/Rex",
+        "TEXT2": "This request is to save a pet in a database. For that, the request need have attributes with the data of the pet. For example in this case is: name, owner, species, race and sex."
+    }
 }

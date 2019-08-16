@@ -7,6 +7,14 @@ import { IonicModule } from '@ionic/angular';
 
 import { Test6Page } from './test6.page';
 
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient, "../assets/i18n/", ".json");
+}
+
 const routes: Routes = [
   {
     path: '',
@@ -19,8 +27,15 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     RouterModule.forChild(routes)
   ],
   declarations: [Test6Page]
 })
-export class Test6PageModule {}
+export class Test6PageModule { }

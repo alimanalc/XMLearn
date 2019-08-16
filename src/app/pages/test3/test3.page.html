@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
-      <h1>Bomba XML</h1>
+    <ion-title color="light" style="float: left;">
+      <h1>{{'TEST3.TITLE' | translate}}</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -18,23 +26,17 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: justify;">
-            <h3>Este test llamado XML Bomb consiste en introducir una gran cantidad de datos hasta llenar la memoria de
-              la
-              base de datos,
-              para ello se introduce el siguiente esquema: </h3> <br>
+            <h3> {{'TEST3.TEXT1' | translate}}</h3> <br>
           </ion-text>
           <img src="../../assets/img/bombXML.PNG" />
           <ion-text style="text-align: justify;">
-            <h3>En este esquema se crean 10 entidades desde lol-lol9, cada una de ellas en su interior hace referencia
-              a la anterior, de esta forma la base de datos se llena al intentar resolver todas las referencias. El
-              número
-              de entidades que se crean se puede regular.</h3> <br>
+            <h3>{{'TEST3.TEXT2' | translate}}</h3> <br>
           </ion-text>
           <ion-text style="text-align: center;">
-            <h3>Elige el numero de entidades que quieres que sean creadas: </h3> <br>
+            <h3> {{'TEST3.TEXT3' | translate}}</h3> <br>
           </ion-text>
           <ion-item>
-            <ion-label>Cantidad:</ion-label>
+            <ion-label>{{'TEST3.TEXT4' | translate}}</ion-label>
             <ion-select placeholder="Seleccione una cantidad" [(ngModel)]="option">
               <ion-select-option value="diez">10</ion-select-option>
               <ion-select-option value="veinte">20</ion-select-option>
@@ -48,7 +50,7 @@
     </ion-grid>
     <ng-container *ngIf="option != diez || option != veinte || option != treinta">
       <button ion-button block button-large (click)="runTest()" class="buttonN">
-        <h2> Ejecutar </h2>
+        <h2>{{'TEST3.BUTTON' | translate}}</h2>
       </button>
     </ng-container>
   </ng-container>
@@ -60,7 +62,7 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: center;">
-            <h1>Upss no deberías estar aquí.</h1>
+            <h1>{{'TEST3.TEXT5' | translate}}</h1>
             <br>
           </ion-text>
         </ion-col>

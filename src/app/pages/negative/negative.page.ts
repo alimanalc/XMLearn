@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController, AlertController, NavParams } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
-import { DataManagement } from 'src/app/services/dataManagement';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-negative',
@@ -12,20 +11,22 @@ import { ActivatedRoute } from '@angular/router';
 export class NegativePage implements OnInit {
   test: string;
   status: string;
-  constructor(public menuCtrl: MenuController,
+  constructor(
     private cookieService: CookieService,
-    public dM: DataManagement,
-    public navCtrl: NavController,
-    public alertController: AlertController,
-    private activeRoute: ActivatedRoute) {
+    private activeRoute: ActivatedRoute,
+    public translate: TranslateService) {
 
   }
 
   ngOnInit() {
     this.test = this.activeRoute.snapshot.params.test;
-    console.log(this.test);
     this.status = this.activeRoute.snapshot.params.status;
-    console.log(this.status);
+  }
+
+  //Cambiar el idioma
+  changeLanguage(selectedValue: { detail: { value: string } }) {
+    this.cookieService.set('lang', selectedValue.detail.value);
+    this.translate.use(selectedValue.detail.value);
   }
 
 }

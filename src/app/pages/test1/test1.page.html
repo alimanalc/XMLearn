@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button color="light" class="buttonBack"></ion-menu-button>
     </ion-buttons>
-    <ion-title color="light">
-      <h1>Deformación</h1>
+    <ion-title color="light" style="float: left;">
+      <h1>{{'TEST1.TITLE' | translate}}</h1>
     </ion-title>
+    <ion-item style="width:300px; float: right; padding-top: 8px;">
+      <ion-icon name="globe" color="light"></ion-icon>
+      <ion-label color="light">{{ 'MENU.LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -19,9 +27,7 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: justify;">
-            <h3>Este test consiste en introducir en determinados campos de la petición
-              caracteres que son utilizados en la representación del lenguaje XML.
-              De esta forma se pone en compromiso la estructura del archivo XML. Estos caracteres son >, <, ]]> .</h3>
+            <h3>{{'TEST1.TEXT1' | translate}}</h3>
             <br>
           </ion-text>
         </ion-col>
@@ -30,7 +36,7 @@
 
     </ion-grid>
     <button ion-button block button-large (click)="runTest()" class="buttonN">
-      <h2> Ejecutar </h2>
+      <h2> Ejecutar {{'TEST1.BUTTON' | translate}}</h2>
     </button>
   </ng-container>
 
@@ -42,7 +48,7 @@
         <ion-col size="1"></ion-col>
         <ion-col size="10">
           <ion-text style="text-align: center;">
-            <h1>Upss no deberías estar aquí.</h1>
+            <h1>{{'TEST1.TEXT2' | translate}}</h1>
             <br>
           </ion-text>
         </ion-col>
