@@ -18,9 +18,6 @@ app.get('/', function (req, res) {
     res.send('hello world');
 })
 
-var http = require('http');
-
-
 const mongoose = require('mongoose');
 let dev_db_url = 'mongodb+srv://admin:png8M8iaHEFiZARc@cluster0-ikzak.mongodb.net/XMLearn';
 let mongoDB = process.env.MONGODB_URI || dev_db_url;

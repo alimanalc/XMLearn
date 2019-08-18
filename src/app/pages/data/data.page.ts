@@ -90,26 +90,28 @@ export class DataPage implements OnInit {
         .getRequests()
         .then(data => {
           let nombreBueno = false;
-
-
           let requests: Request[];
           requests = JSON.parse(JSON.stringify(data.requests));
+          let nameRepeat = false;
           if (requests.length > 0) {
             for (let entry of requests) {
               if (this.request.name === entry.name) {
-                const translationAlertRepeatName: string = this.translate.instant(
-                  'DATA.ALERT_REPEAT_NAME'
-                );
-                this.alertController
-                  .create({
-                    header: translationAlertRepeatName,
-                    buttons: ['OK']
-                  }).then(alertEl => {
-                    alertEl.present();
-                  });
-              } else {
-                nombreBueno = true;
+                nameRepeat = true;
               }
+            }
+            if (nameRepeat) {
+              const translationAlertRepeatName: string = this.translate.instant(
+                'DATA.ALERT_REPEAT_NAME'
+              );
+              this.alertController
+                .create({
+                  header: translationAlertRepeatName,
+                  buttons: ['OK']
+                }).then(alertEl => {
+                  alertEl.present();
+                });
+            } else {
+              nombreBueno = true;
             }
           } else {
             this.dM
