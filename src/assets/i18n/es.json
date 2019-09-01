@@ -140,7 +140,7 @@
         "TEXT2": "Al tener una petición para la identificación de los usuarios, un usuario malintencionado puede introducir en el campo username: blah' or 1=1 or 'a'='a , y en la contraseña: blah (Nota: el valor de la contraseña es irrelevante).",
         "TEXT3": "De esta forma cuando se haga una consulta como esta: ",
         "TEXT4": "Con los datos anteriores se quedaría de esta forma:",
-        "TEXT5": " Como 1=1 siempre va a ser verdadero, va a devolver toda la lista de empleados. Si esta consulta se realiza en una página accesible por los usuarios estos podrían acceder al listado completo de empleados.",
+        "TEXT5": "Como 1=1 siempre va a ser verdadero, va a devolver toda la lista de empleados. Si esta consulta se realiza en una página accesible por los usuarios estos podrían acceder al listado completo de empleados.",
         "TEXT6": "Lo que se va a hacer en este test es introducir el valor blah' or 1=1 or 'a'='a en el campo username y el valor blah en el resto, siempre y cuando no se le haya dado un valor por defecto. Por tanto, este test no tiene sentido que se realice en peticiones que no sean para identificarse en alguna aplicación web, si se realiza en otro tipo de petición que no sea para identificarse puede dar resultados incongruentes.",
         "TEXT7": "¡Ups, no deberías estar aquí!",
         "BUTTON": "Ejecutar"
